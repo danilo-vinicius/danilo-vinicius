@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
+    <title>Danilo Vinícius | Projetos</title>
+  </head>
+  <body>
+    
+    <header>
+      <nav id="navbar">
+        <div class="nav-logo">
+          <a href="index.html">DV <span style="color: #C6A46E;">|</span> Data Analyst</a>
+        </div>
+
+        <div class="mobile-menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+          <a href="sobre.html"><li>Sobre</li></a>
+          <a href="projetos.html"><li>Projetos</li></a> 
+          <a href="contato.html"><li>Contato</li></a>
+        </ul>
+      </nav>
+    </header>
+    
+    <main style="padding-top: 80px;">
+      <section id="projects">
+        <h2>Portfólio de Dados</h2>
+        <p class="subtitle">Dashboards, Análises e Automações</p>
+        
+        <div class="projects-grid" id="project-list">
+  
+          <div class="project-card">
+            <div class="project-img"><i class="fas fa-chart-line"></i></div>
+            <div class="project-info">
+              <h3>Dashboards Corporativos</h3>
+              <p>Desenvolvimento de painéis estratégicos na Brasfort para visualização de dados de segurança eletrônica e KPIs operacionais.</p>
+            </div>
+            <div class="project-tags">
+                <span>Power BI</span>
+                <span>DAX</span>
+                <span>ETL</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-img"><i class="fab fa-python"></i></div>
+            <div class="project-info">
+              <h3>Análise de Dados com Python</h3>
+              <p>Scripts de automação e manipulação de grandes volumes de dados usando Pandas e NumPy para limpeza e tratamento.</p>
+            </div>
+            <div class="project-tags">
+                <span>Python</span>
+                <span>Pandas</span>
+                <span>NumPy</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-img"><i class="fas fa-cogs"></i></div>
+            <div class="project-info">
+              <h3>Automação de Processos</h3>
+              <p>Criação de fluxos no Power Automate integrados ao Power Apps para otimizar rotinas administrativas internas.</p>
+            </div>
+            <div class="project-tags">
+                <span>Power Automate</span>
+                <span>AppSheet</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+             <div class="project-img"><i class="fas fa-gamepad"></i></div>
+             <div class="project-info">
+               <h3>Lógica e Algoritmos</h3>
+               <p>Desenvolvimento de jogos (como Tetris) em Python para aprimoramento de lógica de programação complexa.</p>
+             </div>
+             <div class="project-tags">
+                 <span>Python</span>
+                 <span>Pygame</span>
+                 <span>Lógica</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-img"><i class="fas fa-file-excel"></i></div>
+            <div class="project-info">
+              <h3>Relatórios Avançados</h3>
+              <p>Análise de dados educacionais na EBSERH gerando relatórios de suporte à decisão com Excel Avançado.</p>
+            </div>
+            <div class="project-tags">
+                <span>Excel</span>
+                <span>VBA</span>
+                <span>Análise</span>
+            </div>
+         </div>
+         
+         <div class="project-card">
+            <div class="project-img"><i class="fas fa-database"></i></div>
+            <div class="project-info">
+              <h3>Integração de Dados</h3>
+              <p>Estudos de integração via API e modelagem de dados para sistemas de segurança eletrônica.</p>
+            </div>
+            <div class="project-tags">
+                <span>SQL</span>
+                <span>API</span>
+                <span>Integração</span>
+            </div>
+         </div>
+
+        </div>
+
+        <div class="pagination" id="pagination-controls"></div>
+
+        <div class="button-div" style="margin-top: 40px;">
+          <a href="https://github.com/danilo-vinicius" target="_blank">
+            <i class="fab fa-github" style="margin-right: 5px;"></i> Ver GitHub Completo
+          </a>
+        </div>
+      </section>
+    </main>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
