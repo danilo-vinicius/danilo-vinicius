@@ -550,120 +550,360 @@ header {
 }
 
 /* =========================================
-   5. PÁGINA PROJETOS (projetos.html)
+   PÁGINA PROJETOS (ESTILO SOLUÇÕES & SERVIÇOS)
    ========================================= */
-#projects {
-    width: 100%;
-    padding: 100px 20px 60px 20px; 
+
+/* --- 1. Hero Projetos --- */
+#proj-hero {
+    height: 100vh; /* Altura menor que a Home, foco no texto */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+    background: radial-gradient(circle at center, #2E2E2E 0%, #1F2A44 100%);
+    padding: 0 20px;
 }
 
-#projects h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
+.proj-hero-content { max-width: 800px; }
 
-.subtitle {
+/* =========================================
+   BADGE COM BORDA GIRATÓRIA (MAGIC BORDER)
+   ========================================= */
+
+.badge-gold {
+    position: relative; /* Necessário para posicionar os efeitos */
+    background: transparent; /* Fundo transparente */
+    
+    /* Cores e Texto */
     color: #C6A46E;
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Espaçamento interno */
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    
+    /* Arredondamento e Ocultação de excessos */
+    border-radius: 50px;
+    overflow: hidden; 
+    
+    /* Remove a borda sólida antiga se houver */
+    border: none; 
+    
+    /* Garante que o texto fique acima do fundo */
+    z-index: 1; 
 }
 
+/* 1. O DEGRADÊ QUE GIRA (Fica por trás de tudo) */
+.badge-gold::before {
+    content: '';
+    position: absolute;
+    
+    /* Centraliza o efeito */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg); 
+    
+    /* Tamanho exagerado para garantir que cubra tudo ao girar */
+    width: 400%; 
+    height: 400%; 
+    
+    /* O Segredo: Conic Gradient com as 3 cores */
+    background: conic-gradient(
+        #C6A46E, /* Dourado */
+        #1F2A44, /* Azul Escuro */
+        #F9F9F9, /* Branco (Brilho) */
+        #C6A46E  /* Repete a primeira cor para fechar o ciclo suavemente */
+    );
+    
+    /* A animação de rotação */
+    animation: rotate-border 4s linear infinite;
+    z-index: -2; /* Fica bem no fundo */
+}
+
+/* 2. O FUNDO ESCURO (A Máscara interna) */
+/* Isso cria o "buraco" no meio para parecer que é só uma borda */
+.badge-gold::after {
+    content: '';
+    position: absolute;
+    
+    /* Inset define a espessura da borda (3px aqui) */
+    inset: 3px; 
+    
+    background: #2E2E2E; /* A mesma cor de fundo da sua seção Hero */
+    border-radius: 48px; /* Um pouco menor que o pai */
+    z-index: -1; /* Fica entre o texto e o degradê */
+}
+
+/* Animação de Rotação */
+@keyframes rotate-border {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+#proj-hero h1 { font-size: 3rem; margin-bottom: 20px; }
+#proj-hero p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
+
+.btn-scroll-down {
+    color: #C6A46E;
+    font-weight: bold;
+    font-size: 1.1rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* --- 2. Serviços (Cards de Solução) --- */
+#services {
+    padding: 80px 20px;
+    background-color: #161e31; /* Fundo levemente mais escuro */
+}
+
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2.2rem; color: #F9F9F9; margin-bottom: 10px; }
+.section-header p { color: #888; }
+
+/* =========================================
+   CARROSSEL DE SERVIÇOS
+   ========================================= */
+
+/* O container limita a visão (esconde o que está fora) */
+.carousel-container {
+    position: relative;
+    max-width: 600px; /* Largura focada para leitura de 1 card */
+    margin: 0 auto;
+    overflow: hidden; /* Importante: esconde os slides laterais */
+    padding: 20px 0;
+}
+
+/* O trilho segura todos os slides lado a lado */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Movimento suave */
+    width: 100%;
+}
+
+/* Cada slide ocupa 100% da largura do container */
+.carousel-slide {
+    min-width: 100%; 
+    display: flex;
+    justify-content: center;
+    padding: 10px; /* Espaço para a sombra não cortar */
+}
+
+/* Ajuste no Card para caber no slider */
+.service-card {
+    /* Mantém o estilo anterior, mas garante que preencha o slide */
+    width: 100%; 
+    max-width: 400px; /* Tamanho máximo do cartão */
+    background: #1F2A44;
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(198, 164, 110, 0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+/* Ícones e Textos (Mantendo seu estilo) */
+.icon-box { font-size: 3rem; color: #C6A46E; margin-bottom: 20px; }
+.service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+.service-card p { font-size: 1rem; color: #aaa; line-height: 1.6; }
+
+/* Navegação (Bolinhas) */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #C6A46E;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-dot.current-slide {
+    background: #C6A46E;
+    box-shadow: 0 0 8px rgba(198, 164, 110, 0.6);
+}
+
+.service-card {
+    background: #1F2A44;
+    padding: 35px 25px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    border: 1px solid rgba(198, 164, 110, 0.1);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: #C6A46E;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Detalhe dourado no topo do card */
+.service-card::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+    background: #C6A46E; transform: scaleX(0); transform-origin: left; transition: 0.3s;
+}
+.service-card:hover::after { transform: scaleX(1); }
+
+.icon-box {
+    font-size: 2.5rem; color: #C6A46E; margin-bottom: 20px;
+}
+.service-card h3 { color: #fff; margin-bottom: 15px; font-size: 1.3rem; }
+.service-card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
+
+/* --- 3. Processo de Trabalho (Steps) --- */
+#work-process { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 50px;
+    position: relative;
+}
+
+.step {
+    text-align: center;
+    flex: 1;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 60px; height: 60px;
+    background: #1F2A44;
+    border: 2px solid #C6A46E;
+    border-radius: 50%;
+    color: #C6A46E;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex; justify-content: center; align-items: center;
+    margin: 0 auto 20px auto;
+    transition: 0.3s;
+}
+
+.step:hover .step-number { background: #C6A46E; color: #1F2A44; }
+
+.step h3 { color: #fff; font-size: 1.2rem; margin-bottom: 10px; }
+.step p { color: #888; font-size: 0.9rem; }
+
+/* Linha conectora entre os passos */
+.step-line {
+    flex: 1;
+    height: 2px;
+    background: #333;
+    margin-top: 30px; /* Alinha com o centro das bolinhas */
+}
+
+/* --- 4. Portfólio & Filtros --- */
+#portfolio { padding: 80px 20px; }
+.portfolio-header { text-align: center; margin-bottom: 40px; }
+
+.filter-buttons {
+    display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: #ccc;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: #C6A46E;
+    border-color: #C6A46E;
+    color: #1F2A44;
+}
+
+/* Ajustes nos Cards de Projetos (Baseado no seu CSS anterior, com melhorias) */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     max-width: 1200px;
+    margin: 0 auto;
 }
 
 .project-card {
     background: #2E2E2E;
-    border: 1px solid rgba(198, 164, 110, 0.2);
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-    height: 100%;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    text-align: left; 
+    transition: 0.3s;
+    border: 1px solid transparent;
+    display: flex; flex-direction: column;
 }
 
-.project-card:hover {
-    transform: translateY(-7px);
-    border-color: #C6A46E;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+.project-card:hover { transform: translateY(-5px); border-color: #C6A46E; }
+
+/* Ocultar cards quando filtrado */
+.project-card.hide { display: none; }
+/* Animação suave ao aparecer */
+.project-card.show { animation: fadeIn 0.5s ease; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .project-img {
-    height: 160px;
-    background: linear-gradient(135deg, #1F2A44 0%, #151b2b 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 180px;
+    background: #151b2b;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; color: #333;
     border-bottom: 1px solid #333;
 }
-.project-img img { width: 100%; height: 100%; object-fit: cover; }
-.project-img i { font-size: 4rem; color: #C6A46E; transition: 0.3s; }
-.project-card:hover .project-img i { color: #fff; transform: scale(1.1); }
+.project-card:hover .project-img { color: #C6A46E; }
 
-.project-info { padding: 25px; flex-grow: 1; }
-.project-info h3 { color: #F9F9F9; margin-top: 0; font-size: 1.4rem; }
-.project-info p { color: #ccc; font-size: 0.95rem; line-height: 1.5; }
+.project-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.project-cat { font-size: 0.75rem; color: #C6A46E; text-transform: uppercase; margin-bottom: 5px; font-weight: bold; }
+.project-info h3 { color: #fff; margin-bottom: 10px; }
+.project-info p { color: #aaa; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; }
 
-.project-tags {
-    padding: 0 25px 25px 25px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: auto;
+.tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; margin-top: auto; }
+.tech-stack span {
+    background: rgba(255,255,255,0.05);
+    color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px;
 }
 
-.project-tags span {
-    background-color: rgba(31, 42, 68, 0.6);
-    color: #C6A46E;
-    border: 1px solid #C6A46E;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
+.project-links { border-top: 1px solid #444; padding-top: 15px; display: flex; gap: 15px; }
+.project-links a { color: #fff; font-size: 0.9rem; font-weight: bold; }
+.project-links a:hover { color: #C6A46E; }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 50px;
-    width: 100%;
-}
-
-.page-btn {
-    background-color: transparent;
-    border: 1px solid #C6A46E;
-    color: #C6A46E;
-    padding: 10px 18px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.page-btn:hover { background-color: rgba(198, 164, 110, 0.2); }
-
-.page-btn.active {
-    background-color: #C6A46E;
-    color: #1F2A44;
-    box-shadow: 0 0 10px rgba(198, 164, 110, 0.4);
+/* --- Responsividade Processo --- */
+@media (max-width: 768px) {
+    .process-steps { flex-direction: column; gap: 20px; }
+    .step-line { display: none; } /* Remove a linha horizontal no mobile */
+    .step { display: flex; text-align: left; align-items: center; gap: 15px; width: 100%; padding: 0; }
+    .step-number { margin: 0; min-width: 50px; height: 50px; font-size: 1rem; }
+    
+    #proj-hero h1 { font-size: 2.2rem; }
 }
 
 /* =========================================
