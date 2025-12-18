@@ -154,79 +154,200 @@ header {
 }
 
 /* =========================================
-   3. HOME (index.html)
+   NOVA HOME (PROFISSIONAL & TECH)
    ========================================= */
-#welcome-section {
+
+/* --- 1. Configuração do Hero (Tela Cheia) --- */
+#home-hero {
+    position: relative;
     width: 100%;
-    height: 95vh;
+    height: 100vh; /* Ocupa a tela toda */
     display: flex;
-    align-items: center;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    background: radial-gradient(circle at center, #2E2E2E 0%, #1F2A44 100%);
-    padding-top: 70px; 
+    padding: 0 20px;
+    overflow: hidden;
+    
+    /* Fundo Gradiente Base */
+    background: radial-gradient(circle at center, #252e42 0%, #161e31 100%);
 }
 
-.profile-photo {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    border: 4px solid #C6A46E;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 25px auto;
-    box-shadow: 0 0 25px rgba(198, 164, 110, 0.3);
-    transition: transform 0.3s ease;
+/* Efeito de Grid no Fundo (Estilo Data Science) */
+.hero-bg-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(198, 164, 110, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(198, 164, 110, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px; /* Tamanho dos quadradinhos */
+    opacity: 0.5;
+    z-index: 0;
 }
 
-.profile-photo:hover {
-    transform: scale(1.05);
-    border-color: #F9F9F9;
+.hero-content {
+    position: relative;
+    z-index: 2; /* Fica acima do grid */
+    max-width: 800px;
+    margin-top: -50px; /* Leve ajuste para subir visualmente */
 }
 
-#welcome-section h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+/* Tipografia */
+#home-hero h1 {
+    font-size: 3.5rem;
+    color: #F9F9F9;
+    margin: 20px 0 10px 0;
+    line-height: 1.1;
 }
 
-#welcome-section p {
-    font-size: 1.5rem;
-    color: #E6E6E6;
-}
-
-.typing-effect { color: #C6A46E; font-weight: bold; }
-.cursor { font-weight: bold; color: #C6A46E; animation: blink 1s infinite; }
-
-@keyframes blink { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
-
-.button-div > a , .btn-secondary {
+.text-highlight {
+    color: #C6A46E;
+    position: relative;
     display: inline-block;
-    padding: 12px 30px;
-    margin: 0 10px;
-    color: #1F2A44;
-    background-color: #C6A46E;
-    font-size: 1.1rem;
+}
+
+/* Typewriter Styles */
+.typing-container {
+    font-size: 1.8rem;
+    color: #ccc;
+    font-weight: 300;
+    margin-bottom: 20px;
+    min-height: 40px; /* Evita pulo de layout */
+}
+
+.typewriter-text {
+    color: #fff;
     font-weight: bold;
+    border-bottom: 2px solid #C6A46E; /* Sublinhado estiloso */
+}
+
+.cursor {
+    animation: blink 1s infinite;
+    color: #C6A46E;
+    font-weight: 100;
+    margin-left: 2px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botões Grandes da Home */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-primary-lg {
+    background-color: #C6A46E;
+    color: #1F2A44;
+    padding: 15px 35px;
     border-radius: 5px;
-    border: 1px solid #C6A46E;
-    box-shadow: 0 0 10px rgba(198, 164, 110, 0.3);
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 2px solid #C6A46E;
+    box-shadow: 0 0 20px rgba(198, 164, 110, 0.4); /* Glow Dourado */
+    transition: 0.3s;
 }
 
-.button-div > a:hover {
-    background-color: transparent;
+.btn-primary-lg:hover {
+    background: transparent;
+    color: #C6A46E;
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(198, 164, 110, 0.6);
+}
+
+.btn-outline-lg {
+    background: transparent;
+    color: #F9F9F9;
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: 0.3s;
+}
+
+.btn-outline-lg:hover {
+    border-color: #C6A46E;
     color: #C6A46E;
 }
 
-/*.btn-secondary {
-    background: transparent !important;
-    color: #C6A46E !important;
-    border: none !important;
-    box-shadow: none !important;
-}*/
-.btn-secondary:hover {
-    background-color: transparent;
+
+/* --- 2. TECH TICKER (Faixa no Rodapé) --- */
+.tech-ticker-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(31, 42, 68, 0.95);
+    border-top: 1px solid rgba(198, 164, 110, 0.3);
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+.ticker-label {
+    padding: 0 30px;
+    font-weight: bold;
     color: #C6A46E;
+    white-space: nowrap;
+    z-index: 12;
+    background: #1F2A44; /* Cobre o ticker que passa por baixo */
+    box-shadow: 5px 0 10px rgba(0,0,0,0.5);
+}
+
+.tech-ticker {
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* Fade nas pontas */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.ticker-track {
+    display: flex;
+    gap: 50px;
+    animation: scroll-ticker 20s linear infinite; /* Velocidade do loop */
+    width: max-content;
+}
+
+.ticker-track span {
+    color: #ccc;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ticker-track span i {
+    color: #C6A46E;
+    font-size: 1.2rem;
+}
+
+@keyframes scroll-ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Move metade (já que duplicamos o conteúdo) */
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #home-hero h1 { font-size: 2.5rem; }
+    .typing-container { font-size: 1.2rem; min-height: 60px; }
+    .ticker-label { display: none; } /* Remove label no mobile para dar espaço */
 }
 
 /* =========================================
