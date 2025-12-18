@@ -496,5 +496,6 @@ footer h4 { color: #C6A46E; font-size: 0.9rem; margin: 0; }
     
     .projects-grid { grid-template-columns: 1fr; }
     
-    .profile-photo { width: 140px; height: 140px; }
+    .profile-photo { width: 200px; height: 200px; }
 }
+
