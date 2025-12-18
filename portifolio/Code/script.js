@@ -116,3 +116,84 @@ document.addEventListener('click', (e) => {
         toggleMenu(); // Fecha o menu
     }
 });
+
+// Filtro de Projetos
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove a classe 'active' de todos os botões
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Adiciona 'active' no botão clicado
+        button.classList.add('active');
+
+        const filterValue = button.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                card.classList.remove('hide');
+                card.classList.add('show');
+            } else {
+                card.classList.add('hide');
+                card.classList.remove('show');
+            }
+        });
+    });
+});
+
+/* =========================================
+   CARROSSEL AUTOMÁTICO
+   ========================================= */
+const track = document.querySelector('.carousel-track');
+const slides = Array.from(track.children);
+const dots = document.querySelectorAll('.nav-dot');
+let currentSlideIndex = 0;
+let slideInterval;
+
+// Função para mover o slide
+const updateSlide = (index) => {
+    // Move o trilho para a esquerda (index * 100%)
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    
+    // Atualiza as bolinhas
+    dots.forEach(dot => dot.classList.remove('current-slide'));
+    dots[index].classList.add('current-slide');
+    
+    currentSlideIndex = index;
+};
+
+// Função de Próximo Slide
+const nextSlide = () => {
+    let nextIndex = currentSlideIndex + 1;
+    if (nextIndex >= slides.length) {
+        nextIndex = 0; // Volta para o começo (loop)
+    }
+    updateSlide(nextIndex);
+};
+
+// Iniciar o Loop Automático
+const startAutoSlide = () => {
+    slideInterval = setInterval(nextSlide, 3000); // 3000ms = 3 segundos
+};
+
+const stopAutoSlide = () => {
+    clearInterval(slideInterval);
+};
+
+// Event Listeners
+startAutoSlide(); // Começa assim que carrega
+
+// Pausa quando o mouse está em cima (para ler com calma)
+const carouselContainer = document.querySelector('.carousel-container');
+carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+carouselContainer.addEventListener('mouseleave', startAutoSlide);
+
+// Clique nas bolinhas para navegar manualmente
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        stopAutoSlide(); // Para o timer momentaneamente
+        updateSlide(index);
+        // O timer volta ao tirar o mouse do container (evento mouseleave acima)
+    });
+});
