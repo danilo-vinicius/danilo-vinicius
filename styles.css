@@ -1,148 +1,525 @@
-/* MANTIVE O INÍCIO IGUAL ATÉ A PARTE DE NAV DO SEU CÓDIGO ORIGINAL */
-* { box-sizing: border-box; }
-html { margin: 0; padding: 0; scroll-behavior: smooth; font-family: 'Josefin Sans', sans-serif; }
-body { margin: 0; padding: 0; width: 100%; min-height: 100vh; background: linear-gradient(90deg, #191919 0%, #050505 50%, #191919 100%); color: #efefef; }
-
-/* HEADER E NAV IGUAIS AO SEU ORIGINAL */
-header { width: 100%; height: 60px; background: linear-gradient(90deg, #191919 0%, #050505 50%, #191919 100%); position: fixed; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,255,0,0.1); }
-#navbar { height: 100%; display: flex; justify-content: flex-end; align-items: center; padding-right: 20px;}
-#navbar ul { display: flex; align-items: center; margin: 0 10px; height: 100%; }
-#navbar li { list-style-type: none; padding: 0 10px; }
-#navbar a { color: green; font-weight: 700; font-size: 1.1rem; text-decoration: none; padding: 5px 10px; border-radius: 5px; transition: 0.3s;}
-#navbar a:hover { color: lightgreen; background: rgba(0, 255, 0, 0.1); }
-
-/* Welcome Section Refinada */
-#welcome-section { width: 100%; height: 100vh; display: flex; align-items: center; flex-direction: column; justify-content: center; text-align: center; }
-#welcome-section h1 { font-size: 3rem; color: #efefef; margin-bottom: 10px;}
-#welcome-section p { font-size: 1.8rem; color: green; min-height: 40px; }
-.cta-buttons { margin-top: 30px; }
-.btn-primary { padding: 10px 20px; border: 2px solid green; color: green; text-decoration: none; font-size: 1.2rem; border-radius: 5px; transition: 0.3s; }
-.btn-primary:hover { background: green; color: black; box-shadow: 0 0 15px green; }
-
-/* Sobre */
-#sobre, .sobre-div { width: 100%; display: flex; align-items: center; flex-direction: column; justify-content: center; }
-.sobre-div { width: 80%; max-width: 900px; padding: 40px 0; text-align: justify; }
-#sobre h1 { font-size: 2.5rem; color: green; margin-bottom: 20px; }
-#sobre p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px; }
-
-/* NOVA: Skills Section */
-#skills { padding: 50px 0; text-align: center; }
-#skills h2 { color: #efefef; font-size: 2.2rem; margin-bottom: 40px; }
-.skills-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; max-width: 1000px; margin: 0 auto; }
-.skill-card { background: #111; border: 1px solid green; border-radius: 10px; width: 150px; padding: 20px; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-.skill-card:hover { transform: translateY(-5px); box-shadow: 0 0 15px green; }
-.skill-card i { font-size: 3rem; color: green; margin-bottom: 10px; }
-
-/* PROJETOS (Estilo Card Profissional) */
-#projects { width: 100%; padding: 50px 0; background: linear-gradient(90deg, #050505 0%, #191919 50%, #050505 100%); }
-#projects h2 { font-size: 2.2rem; color: #efefef; text-align: center; }
-.subtitle { text-align: center; color: green; margin-bottom: 20px; }
-
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; width: 80%; max-width: 1200px; margin: 0 auto 4rem auto; }
-
-.project-card { background: #0a0a0a; border: 1px solid #333; border-radius: 10px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
-.project-card:hover { border-color: green; box-shadow: 0 0 10px rgba(0,255,0,0.2); }
-
-/* Placeholder para a imagem do projeto - se não tiver imagem, fica um quadrado cinza/preto */
-.project-img { width: 100%; height: 180px; background-color: #222; display: flex; justify-content: center; align-items: center; color: #555; font-size: 3rem; border-bottom: 1px solid #333; }
-.project-img img { width: 100%; height: 100%; object-fit: cover; }
-
-.project-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.project-info h3 { color: lightgreen; margin: 0 0 10px 0; font-size: 1.4rem; }
-.project-info p { font-size: 0.95rem; color: #ccc; flex-grow: 1; }
-.project-tags { margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
-.tag { font-size: 0.75rem; background: #1f1f1f; color: green; padding: 3px 8px; border-radius: 4px; border: 1px solid green; }
-
-.project-links { margin-top: 20px; display: flex; justify-content: flex-start; gap: 15px; }
-.project-links a { text-decoration: none; color: #fff; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: 0.2s;}
-.project-links a:hover { color: green; }
-
-/* Contato e Footer */
-#contact { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.contact-header { text-align: center; margin-bottom: 40px; }
-.contact-header h3 { font-size: 2.5rem; color: #efefef; }
-#contact-link { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-.icon-div i { color: green; transition: 0.3s; }
-.icon-div i:hover { color: lightgreen; transform: scale(1.2); text-shadow: 0 0 10px green; }
-
-.button-div { display: flex; justify-content: center; margin-bottom: 20px;}
-.button-div > a { width: 200px; text-align: center; padding: 10px; text-decoration: none; color: green; border: 1px solid green; border-radius: 5px; transition: 0.3s; }
-.button-div > a:hover { background: green; color: #000; }
-
-hr { border: 0; border-top: 1px solid green; width: 80%; margin: 20px auto; opacity: 0.3; }
-footer { text-align: center; padding: 20px; color: #555; font-size: 0.8rem; }
-
-/* Responsividade simples */
-@media (max-width: 600px) {
-    #navbar { justify-content: center; }
-    #navbar ul { display: none; } /* Em mobile idealmente precisa de um menu hambúrguer, mas simplifiquei aqui */
-    #welcome-section h1 { font-size: 2rem; }
-    .projects-grid { grid-template-columns: 1fr; }
+/* --- RESET E GERAL --- */
+* {
+    box-sizing: border-box;
 }
-/* Estilo para a Timeline de Experiência */
+
+html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* Fundo Azul Marinho com degradê suave */
+    background: linear-gradient(135deg, #1F2A44 0%, #161e31 100%);
+    color: #E6E6E6; /* Texto Cinza Claro */
+}
+
+h1, h2, h3, h4 {
+    color: #F9F9F9; /* Títulos em Branco Gelo */
+}
+
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* --- HEADER E NAVBAR --- */
+header {
+    width: 100%;
+    height: 60px;
+    background-color: #1F2A44; /* Azul Marinho Sólido */
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #C6A46E; /* Linha sutil dourada */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+#navbar {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#navbar ul {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    height: 100%;
+    padding: 0;
+}
+
+#navbar li {
+    list-style-type: none;
+    padding: 0 10px;
+}
+
+#navbar a {
+    color: #E6E6E6;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+#navbar a:hover {
+    color: #1F2A44; /* Texto escuro */
+    background: #C6A46E; /* Fundo Dourado */
+}
+
+/* --- WELCOME SECTION --- */
+#welcome-section {
+  width: 100%;
+  height: 100vh;
+  display: flex; /* Habilita o Flexbox */
+  align-items: center; /* Centraliza HORIZONTALMENTE */
+  justify-content: center; /* Centraliza VERTICALMENTE */
+  flex-direction: column; /* Coloca um item embaixo do outro */
+  text-align: center; /* Garante que o texto também fique centralizado */
+  background: radial-gradient(circle at center, #2E2E2E 0%, #1F2A44 100%);
+}
+
+#welcome-section h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+#welcome-section p {
+    font-size: 1.8rem;
+    color: #E6E6E6;
+    min-height: 40px;
+}
+
+/* Botões da Home */
+.cta-buttons {
+    margin-top: 30px;
+}
+
+.btn-primary {
+    padding: 10px 25px;
+    border: 2px solid #C6A46E; /* Borda Dourada */
+    color: #C6A46E; /* Texto Dourado */
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #C6A46E;
+    color: #1F2A44; /* Texto Azul ao passar o mouse */
+    box-shadow: 0 0 15px rgba(198, 164, 110, 0.4);
+}
+
+/* --- SOBRE --- */
+#sobre, .sobre-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sobre-div {
+    width: 80%;
+    max-width: 900px;
+    padding: 60px 0;
+    text-align: justify;
+}
+
+#sobre h1 {
+    font-size: 2.5rem;
+    color: #C6A46E; /* Título Dourado */
+    margin-bottom: 20px;
+}
+
+#sobre p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* --- SKILLS SECTION --- */
+#skills {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #1F2A44;
+}
+
+#skills h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+.skills-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: #2E2E2E; /* Card Cinza Escuro */
+    border: 1px solid #3d3d3d;
+    border-radius: 10px;
+    width: 150px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: #C6A46E;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.skill-card i {
+    font-size: 3rem;
+    color: #C6A46E; /* Ícone Dourado */
+    margin-bottom: 10px;
+}
+
+/* --- EXPERIÊNCIA (TIMELINE) --- */
 .timeline {
-  max-width: 800px;
-  margin: 0 auto;
-  border-left: 2px solid green;
-  padding-left: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-left: 2px solid #C6A46E; /* Linha Dourada */
+    padding-left: 20px;
+    margin-bottom: 50px;
 }
 
 .job-card {
-  background: rgba(255, 255, 255, 0.05);
-  margin-bottom: 30px;
-  padding: 20px;
-  border-radius: 8px;
-  position: relative;
-  transition: transform 0.3s;
+    background: #2E2E2E; /* Fundo do card */
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid transparent;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .job-card:hover {
-  transform: translateX(10px);
-  background: rgba(0, 128, 0, 0.1);
-  border: 1px solid green;
+    transform: translateX(10px);
+    border-color: #C6A46E;
 }
 
 .job-card::before {
-  content: '';
-  position: absolute;
-  left: -26px; /* Ajuste para alinhar com a linha verde */
-  top: 20px;
-  width: 10px;
-  height: 10px;
-  background: green;
-  border-radius: 50%;
-  box-shadow: 0 0 10px green;
+    content: '';
+    position: absolute;
+    left: -27px; /* Ajuste fino */
+    top: 25px;
+    width: 12px;
+    height: 12px;
+    background: #1F2A44; /* Centro Azul */
+    border: 2px solid #C6A46E; /* Borda Dourada */
+    border-radius: 50%;
 }
 
 .job-card h3 {
-  color: lightgreen;
-  margin-top: 0;
+    color: #C6A46E;
+    margin-top: 0;
 }
 
 .job-card h4 {
-  color: #ccc;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    font-style: italic;
 }
 
 .job-card ul {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
 .job-card li {
-  margin-bottom: 5px;
-  line-height: 1.4;
+    margin-bottom: 5px;
+    line-height: 1.4;
+    color: #E6E6E6;
 }
 
-/* Efeito Piscante do Cursor */
+/* --- FORMAÇÃO ACADÊMICA --- */
+.edu-card {
+    background: #2E2E2E;
+    border: 1px solid #C6A46E;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.edu-card h3 {
+    color: #C6A46E;
+}
+
+/* --- SEÇÃO PROJETOS ATUALIZADA --- */
+
+/* Grid Responsivo */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* O Card em si */
+.project-card {
+    background: #2E2E2E; /* Cinza Escuro */
+    border: 1px solid rgba(198, 164, 110, 0.2); /* Borda Dourada bem suave */
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    height: 100%; /* Garante que todos tenham a mesma altura */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+.project-card:hover {
+    transform: translateY(-7px); /* Sobe um pouquinho */
+    border-color: #C6A46E; /* Borda fica Dourada forte */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* Área da Imagem/Ícone */
+.project-img {
+    height: 140px;
+    background: linear-gradient(135deg, #1F2A44 0%, #151b2b 100%); /* Fundo Azul Marinho */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+/* Ícone dentro da imagem */
+.project-img i {
+    font-size: 4rem;
+    color: #C6A46E; /* Ícone Dourado */
+    transition: 0.3s;
+}
+
+.project-card:hover .project-img i {
+    transform: scale(1.1);
+    color: #fff; /* Fica branco ao passar o mouse */
+}
+
+/* Informações de Texto */
+.project-info {
+    padding: 25px;
+    flex-grow: 1; /* Empurra as tags para baixo */
+}
+
+.project-info h3 {
+    color: #F9F9F9;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- O TRUQUE DAS TAGS (BADGES) --- */
+.project-tags {
+    padding: 0 25px 25px 25px; /* Espaçamento interno */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Espaço entre as etiquetas */
+    margin-top: auto; /* Garante que fique no rodapé do card */
+}
+
+.project-tags span {
+    background-color: rgba(31, 42, 68, 0.6); /* Fundo Azul Transparente */
+    color: #C6A46E; /* Texto Dourado */
+    border: 1px solid #C6A46E;
+    padding: 5px 12px;
+    border-radius: 20px; /* Borda redonda (Pílula) */
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- SEÇÃO PROJETOS (Centralizada) --- */
+#projects {
+    width: 100%;
+    padding: 60px 20px;
+    background-color: #1F2A44;
+    
+    /* O SEGREDO DA CENTRALIZAÇÃO: */
+    display: flex;
+    flex-direction: column; /* Coloca um item embaixo do outro */
+    align-items: center;    /* Centraliza os itens no meio da tela */
+    text-align: center;     /* Garante que o texto dentro das tags também centralize */
+}
+
+#projects h2 {
+    font-size: 2.5rem;
+    color: #F9F9F9;
+    margin-bottom: 10px; /* Espaço pequeno entre Título e Subtítulo */
+    width: 100%;
+}
+
+/* Estilo para o Subtítulo ("Dashboards, Análises...") */
+#projects p.subtitle, 
+#projects > p { /* Pega o parágrafo solto logo abaixo do h2 */
+    color: #C6A46E; /* Dourado para destacar */
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 50px; /* Espaço maior antes dos cards */
+    max-width: 600px; /* Evita que o texto fique muito largo em monitores grandes */
+}
+/* --- CONTATO E FOOTER --- */
+#contact {
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1F2A44;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-header h3 {
+    font-size: 2.5rem;
+    color: #C6A46E;
+}
+
+#contact-link {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.icon-div i {
+    color: #C6A46E;
+    transition: 0.3s;
+}
+
+.icon-div i:hover {
+    color: #F9F9F9;
+    transform: scale(1.1);
+}
+
+/* Botão de Download ou Ver Tudo */
+.button-div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.button-div > a {
+    min-width: 180px;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    color: #C6A46E;
+    border: 1px solid #C6A46E;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 30px;
+}
+
+.button-div > a:hover {
+    background: #C6A46E;
+    color: #1F2A44;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(198, 164, 110, 0), rgba(198, 164, 110, 0.75), rgba(198, 164, 110, 0));
+    width: 80%;
+    margin: 40px auto;
+}
+
+footer {
+    background-color: #1F2A44;
+    text-align: center;
+    padding: 20px;
+    color: #a0a0a0;
+    font-size: 0.85rem;
+    border-top: 1px solid #C6A46E;
+}
+
+footer h4 {
+    color: #C6A46E;
+    margin: 0;
+}
+
+/* --- EFEITO DE DIGITAÇÃO --- */
 .cursor {
-  font-weight: bold;
-  color: green;
-  animation: blink 1s infinite;
+    font-weight: bold;
+    color: #C6A46E;
+    animation: blink 1s infinite;
+}
+
+.typing-effect {
+    color: #C6A46E;
+    font-weight: bold;
 }
 
 @keyframes blink {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 600px) {
+    #navbar { justify-content: center; }
+    #navbar ul { display: none; }
+    #welcome-section h1 { font-size: 2.2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .timeline { border-left: none; padding-left: 0; }
+    .job-card::before { display: none; }
+    .job-card { margin-bottom: 20px; }
+}
+
+.profile-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%; /* Deixa redonda */
+  border: 4px solid #C6A46E; /* Borda Dourada */
+  object-fit: cover; /* Garante que a foto não estique */
+  display: block; /* Remove comportamentos estranhos de imagem inline */
+  margin: 0 auto 25px auto; /* CENTRALIZAÇÃO: 0 em cima, auto nos lados (centro), 25px embaixo */
+  box-shadow: 0 0 25px rgba(198, 164, 110, 0.3); /* Brilho dourado suave */
+  transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.01); /* Um zoom leve quando passa o mouse */
+  border-color: #F9F9F9; /* A borda fica branca no hover */
 }
