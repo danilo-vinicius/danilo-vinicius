@@ -1,6 +1,95 @@
 /* =========================================
-   1. CONFIGURAÇÕES GERAIS, CORES E RESET
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (TEMAS)
    ========================================= */
+
+:root {
+    /* --- TEMA ESCURO (PADRÃO) --- */
+    --bg-gradient: linear-gradient(135deg, #1F2A44 0%, #161e31 100%);
+    --bg-solid: #1F2A44;         /* Usado em Footer, Navbar */
+    --bg-card: #2E2E2E;          /* Cards */
+    --bg-card-hover: #161e31;    /* Hovers */
+    --text-primary: #E6E6E6;     /* Texto principal */
+    --text-secondary: #a0a0a0;   /* Texto secundário */
+    --text-title: #F9F9F9;       /* Títulos */
+    --accent-color: #C6A46E;     /* Dourado */
+    --nav-bg: rgba(31, 42, 68, 0.95);
+    --border-color: #333;
+    --shadow-color: rgba(0,0,0,0.4);
+    --timeline-line: #333;
+    --bg-overlay: linear-gradient(rgba(198, 164, 110, 0.05) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(198, 164, 110, 0.05) 1px, transparent 1px);
+}
+
+/* --- TEMA CLARO (PREMIUM CLEAN) --- */
+body.light-mode {
+    /* Fundo: Um branco gelo sutil, mais limpo */
+    --bg-gradient: linear-gradient(135deg, #efefef 0%, #F3F4F6 100%);
+    
+    /* Elementos Sólidos */
+    --bg-solid: #FFFFFF;
+    
+    /* Cards: Branco puro para destacar do fundo gelo */
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #F9FAFB; /* Cinza ultra leve no hover */
+    
+    /* Tipografia: Azul Marinho Profundo (quase preto) para leitura perfeita */
+    --text-primary: #1F2937; 
+    --text-secondary: #4B5563;
+    --text-title: #111827;
+    
+    /* Acento: Um dourado levemente mais escuro/bronze para não sumir no branco */
+    --accent-color: #B4925A; 
+    
+    /* Navbar: Branco vidro */
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    
+    /* Bordas e Sombras: O segredo do design clean */
+    --border-color: #E5E7EB; /* Cinza bem claro */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra suave e difusa */
+    --timeline-line: #D1D5DB;
+    
+    /* Grid: Azul marinho super transparente (3%) */
+    --bg-overlay: linear-gradient(rgba(31, 42, 68, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(31, 42, 68, 0.1) 1px, transparent 1px);
+}
+
+/* --- AJUSTE FINO: BOTÕES NO MODO CLARO --- */
+body.light-mode .btn-outline,
+body.light-mode .btn-outline-lg {
+    border-color: var(--text-title); /* Borda escura em vez de cinza */
+    color: var(--text-title);
+    font-weight: 700;
+}
+
+body.light-mode .btn-primary,
+body.light-mode .btn-primary-lg {
+    /* No claro, o botão sólido precisa de uma sombra colorida para "popping" */
+    box-shadow: 0 4px 15px rgba(180, 146, 90, 0.4); 
+}
+
+/* Deixa o grid menos agressivo no claro */
+body.light-mode .hero-bg-overlay {
+    opacity: 0.6; /* Mais suave */
+}
+
+/* Reforço de sombra para Cards no Modo Claro */
+body.light-mode .project-card,
+body.light-mode .service-card,
+body.light-mode .edu-card-premium,
+body.light-mode .skill-box {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Sombra dupla suave */
+    border: 1px solid #E5E7EB; /* Borda física ajuda a definir o limite */
+}
+
+body.light-mode .project-card:hover,
+body.light-mode .service-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Sombra maior ao passar o mouse */
+    border-color: var(--accent-color);
+}
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,277 +100,607 @@ html, body {
     width: 100%;
     max-width: 100vw;
     min-height: 100vh;
-    overflow-x: hidden; /* Bloqueia rolagem lateral */
-    
-    /* --- AS CORES QUE FALTAVAM (CORREÇÃO AQUI) --- */
-    background: linear-gradient(135deg, #1F2A44 0%, #161e31 100%); /* Fundo Azul Tech */
-    color: #E6E6E6; /* Texto Cinza Claro */
-    font-family: 'Josefin Sans', sans-serif; /* Fonte Padrão */
-    
-    /* --- REMOÇÃO DA BARRA DE ROLAGEM --- */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge antigo */
-    
+    overflow-x: hidden;
     position: relative;
+
+    /* APLICA AS VARIÁVEIS */
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    font-family: 'Josefin Sans', sans-serif;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Chrome, Safari, Edge Novo e Opera */
-::-webkit-scrollbar {
-    display: none;
-}
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
 
-h1, h2, h3, h4 {
-    color: #F9F9F9; /* Títulos em Branco Gelo */
-}
+h1, h2, h3, h4 { color: var(--text-title); transition: color 0.3s; }
+a { text-decoration: none; transition: 0.3s; }
 
-a {
-    text-decoration: none;
-    transition: 0.3s;
+/* Ícone de Troca de Tema */
+.theme-switch-item {
+    cursor: pointer; padding: 0 15px; display: flex; align-items: center;
 }
+#theme-icon {
+    font-size: 1.2rem; color: var(--accent-color); transition: transform 0.3s;
+}
+#theme-icon:hover { transform: rotate(20deg) scale(1.1); }
 
 /* =========================================
-   2. HEADER E NAVEGAÇÃO (Universal)
+   2. NAVEGAÇÃO "DYNAMIC ISLAND" (Menu Flutuante)
    ========================================= */
-header {
-    width: 100%;
-    height: 50px;
-    background-color: rgba(31, 42, 68, 0.95); /* Azul com leve transparência */
-    backdrop-filter: blur(5px); /* Efeito de vidro */
-    border-bottom: 1px solid rgba(198, 164, 110, 0.3);
+
+/* --- 1. LOGO FIXA (Superior Esquerda) --- */
+.fixed-logo {
     position: fixed;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-
-#navbar {
-    height: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 30px;
-}
-
-/* Logo */
-.nav-logo a {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #F9F9F9;
-    text-decoration: none;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* Ícone do Menu (Visível Sempre) */
-.mobile-menu-icon {
-    display: block; 
-    font-size: 1.8rem;
-    color: #C6A46E;
-    cursor: pointer;
+    top: 10px;
+    left: 30px;
+    z-index: 1001; /* Acima de tudo */
+    background: var(--nav-bg); /* Vidro fosco */
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(198, 164, 110, 0.2);
+    box-shadow: 0 4px 15px var(--shadow-color);
     transition: transform 0.3s;
 }
 
-.mobile-menu-icon:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 10px rgba(198, 164, 110, 0.6);
-}
-
-/* --- MENU LATERAL --- */
-.nav-links {
-    position: absolute;
-    top: 60px; /* Logo abaixo do header */
-    right: 0;
-    height: calc(100vh - 70px); 
-    width: 0%; 
-    background: linear-gradient(to left, #1F2A44, rgba(31, 42, 68, 0.98));
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    list-style: none;
-    transition: width 0.4s ease-in-out;
-    overflow-x: hidden;
-    white-space: nowrap;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-    border-left: 1px solid #C6A46E;
-}
-
-.nav-links.active {
-    width: 300px; 
-}
-
-@media screen and (max-width: 500px) {
-    .nav-links.active {
-        width: 80%;
-    }
-}
-
-.nav-links li {
-    margin: 25px 0;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: 0.3s;
-}
-
-.nav-links.active li {
-    opacity: 1;
-    transform: translateX(0);
-}
-.nav-links.active li:nth-child(1) { transition-delay: 0.2s; }
-.nav-links.active li:nth-child(2) { transition-delay: 0.3s; }
-.nav-links.active li:nth-child(3) { transition-delay: 0.4s; }
-
-.nav-links a {
-    color: #E6E6E6;
+.fixed-logo a {
+    font-size: 1.0rem;
     font-weight: 700;
-    font-size: 1.3rem;
+    color: var(--text-title);
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: 0.3s;
-    display: block;
+    letter-spacing: 1px;
 }
 
-.nav-links a:hover {
-    color: #1F2A44;
-    background-color: #C6A46E;
-    transform: translateX(-5px);
+.fixed-logo:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+}
+
+.logo-accent {
+    color: var(--accent-color);
+    font-weight: 300;
+}
+
+/* --- 2. MENU FLUTUANTE (Centro) --- */
+.floating-menu {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza na tela */
+    z-index: 1000;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background: var(--nav-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(198, 164, 110, 0.3);
+    border-radius: 50px;
+    padding: 5px;
+    
+    box-shadow: 0 10px 25px var(--shadow-color);
+    
+    /* Transições suaves */
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.3s, 
+                padding 0.3s;
+    
+    /* Tamanho inicial (fechado) */
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+}
+
+/* O Estado HOVER (Expandir) */
+.floating-menu:hover {
+    width: 620px; /* Largura suficiente para não quebrar o layout */
+    padding: 0 10px;
+    border-color: var(--accent-color);
+}
+
+/* Ícone Central (Hambúrguer) - Fixo no Meio */
+.menu-center-icon {
+    /* Impede que o ícone encolha ou estique */
+    flex: 0 0 45px; 
+    height: 45px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    background: var(--bg-solid);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    
+    /* Garante que fique acima */
+    z-index: 5;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-menu:hover .menu-center-icon {
+    background: var(--accent-color);
+    color: var(--bg-solid);
+    transform: rotate(90deg);
+}
+
+/* Containers dos Links (A Mágica da Simetria) */
+.menu-links {
+    /* flex: 1 faz com que ambos os lados ocupem espaço IGUAL */
+    flex: 1; 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    
+    /* Escondido inicialmente */
+    opacity: 0;
+    max-width: 0; 
+    overflow: hidden;
+    white-space: nowrap; /* Impede texto de quebrar */
+    
+    transition: opacity 0.3s ease-in, max-width 0.5s ease-out;
+}
+
+/* Mostrar links ao passar o mouse */
+.floating-menu:hover .menu-links {
+    opacity: 1;
+    max-width: 300px; /* Permite crescer */
+    transition-delay: 0.1s;
+}
+
+/* Lado Esquerdo - Alinha itens perto do ícone (Direita) */
+.left-links {
+    justify-content: flex-end; 
+    padding-right: 20px; /* Espaço entre texto e ícone central */
+}
+
+/* Lado Direito - Alinha itens perto do ícone (Esquerda) */
+.right-links {
+    justify-content: flex-start;
+    padding-left: 20px; /* Espaço entre texto e ícone central */
+}
+
+/* --- FORMATAÇÃO DOS LINKS (Correção Visual) --- */
+.nav-item {
+    color: var(--text-primary) !important; /* Força a cor certa */
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 30px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+}
+
+/* Efeito Hover nos itens individuais */
+.nav-item:hover {
+    background: rgba(198, 164, 110, 0.15);
+    color: var(--accent-color) !important;
+    transform: translateY(-2px);
+}
+
+/* Correção para o botão de Contato dentro do menu */
+.btn-contact {
+    border: 1px solid var(--accent-color);
+    padding: 6px 18px !important;
+}
+.btn-contact:hover {
+    background: var(--accent-color);
+    color: var(--bg-solid) !important;
+}
+
+
+/* --- 3. BOTÃO DE TEMA FLUTUANTE (Superior Direito) --- */
+.theme-floater {
+    position: fixed;
+    top: 10px;   /* Mesma altura da Logo */
+    right: 30px; /* Canto Direito */
+    z-index: 1002;
+    
+    width: 45px;
+    height: 45px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(198, 164, 110, 0.2); /* Borda sutil igual à logo */
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: 0.3s;
+}
+
+.theme-floater i {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    transition: transform 0.5s;
+}
+
+.theme-floater:hover {
+    transform: scale(1.1); /* Efeito de zoom leve */
+    border-color: var(--accent-color);
+}
+
+.theme-floater:hover i {
+    transform: rotate(30deg); /* Gira levemente a lua/sol */
 }
 
 /* =========================================
-   NOVA HOME (PROFISSIONAL & TECH)
+   LÓGICA DE ESCONDER NAVEGAÇÃO (SMART HIDE)
    ========================================= */
 
-/* --- 1. Configuração do Hero (Tela Cheia) --- */
-#home-hero {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Ocupa a tela toda */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-    overflow: hidden;
+/* Aplica transição suave a todos os elementos fixos */
+.fixed-logo, .floating-menu, .theme-floater {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Classe que esconde os elementos (Adicionada via JS) */
+.nav-hidden {
+    opacity: 0; /* Torna invisível */
+    pointer-events: none; /* Impede cliques quando invisível */
+    transform: translateY(-150%); /* Joga para cima da tela */
+}
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE FIX)
+   ========================================= */
+@media screen and (max-width: 768px) {
     
-    /* Fundo Gradiente Base */
-    background: radial-gradient(circle at center, #252e42 0%, #161e31 100%);
+    /* --- 1. LOGO CENTRALIZADA E ESTÁVEL --- */
+    .fixed-logo {
+        left: 50%;
+        top: 20px;
+        /* Centraliza perfeitamente */
+        transform: translateX(-50%); 
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        width: max-content; /* Garante que a largura seja apenas o conteúdo */
+    }
+
+    /* CORREÇÃO DO BUG: Mantém o translate ao dar zoom */
+    .fixed-logo:hover {
+        transform: translateX(-50%) scale(1.05); 
+        border-color: var(--accent-color);
+    }
+
+    /* --- 2. BOTÃO TEMA (TOPO DIREITO) --- */
+    .theme-floater {
+        top: 20px;      /* Mesma altura da logo */
+        right: 20px;    /* Cola na direita */
+        left: auto;     /* Garante que não obedeça regras de esquerda */
+        bottom: auto;   /* Garante que não vá para baixo */
+        
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-floater i { font-size: 1rem; }
+
+    /* --- 3. MENU INFERIOR (APP BAR) --- */
+    .floating-menu {
+        top: auto;          /* Remove topo */
+        bottom: 20px;       /* Cola embaixo */
+        left: 50%;
+        transform: translateX(-50%);
+        
+        width: 90%;         /* Ocupa quase toda a largura */
+        height: 65px;       /* Altura fixa confortável para o dedo */
+        border-radius: 20px;
+        padding: 0 10px;
+        
+        /* Remove animações de largura do desktop */
+        transition: bottom 0.3s ease; 
+        overflow: visible; /* Permite ver sombras/glows */
+    }
+
+    /* Desativa a expansão de hover do desktop */
+    .floating-menu:hover {
+        width: 90%;
+        padding: 0 10px;
+    }
+
+    /* ESCONDE O ÍCONE HAMBÚRGUER NO MOBILE */
+    .menu-center-icon {
+        display: none; 
+    }
+
+    /* FORÇA OS LINKS A APARECEREM SEMPRE */
+    .menu-links {
+        opacity: 1;
+        width: 100%;
+        max-width: none; /* Remove limite de largura */
+        gap: 0;
+        overflow: visible;
+    }
+
+    /* Remove os paddings laterais que empurravam o texto no desktop */
+    .left-links {
+        padding-right: 0;
+        justify-content: space-evenly; /* Distribui igualmente */
+    }
+
+    .right-links {
+        padding-left: 0;
+        justify-content: space-evenly; /* Distribui igualmente */
+    }
+
+    /* Estilo dos Ícones no Mobile */
+    .nav-item {
+        flex-direction: column; /* Ícone em cima, texto embaixo */
+        font-size: 0.7rem;
+        padding: 5px 10px;
+        gap: 4px;
+        background: transparent !important; /* Remove fundo de hover */
+    }
+
+    .nav-item i {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+    
+    /* Remove o translateY do hover no mobile para não pular */
+    .nav-item:hover {
+        transform: none;
+    }
+
+    /* --- 4. LOGICA DE ESCONDER (SMART HIDE) NO MOBILE --- */
+    
+    /* Logo e Tema sobem para sumir */
+    .fixed-logo.nav-hidden, 
+    .theme-floater.nav-hidden {
+        transform: translateY(-150%) translateX(0); /* Ajuste para manter centralização da logo se necessário */
+    }
+    
+    /* Correção específica para a logo não perder o eixo X ao esconder */
+    .fixed-logo.nav-hidden {
+        transform: translateY(-150%) translateX(-50%);
+    }
+
+    /* Menu desce para sumir */
+    .floating-menu.nav-hidden {
+        transform: translateY(150%) translateX(-50%); /* Mantém eixo X centralizado */
+        bottom: 20px;
+    }
 }
 
-/* Efeito de Grid no Fundo (Estilo Data Science) */
-.hero-bg-overlay {
+/* =========================================
+   MAGIC BORDER EFFECT (LOGO, MENU, TEMA)
+   ========================================= */
+
+/* 1. Preparação dos Elementos (Base) */
+.fixed-logo,
+.floating-menu,
+.theme-floater {
+    /* Garante que o gradiente não vaze para fora das bordas arredondadas */
+    overflow: hidden !important; 
+    /* Removemos a cor de borda fixa na transição para o gradiente assumir */
+    transition: all 0.3s ease, border-color 0s; 
+}
+
+/* 2. O Gradiente Giratório (Inicialmente Invisível) */
+.fixed-logo::before,
+.floating-menu::before,
+.theme-floater::before {
+    content: '';
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: 
-        linear-gradient(rgba(198, 164, 110, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(198, 164, 110, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px; /* Tamanho dos quadradinhos */
-    opacity: 0.5;
-    z-index: 0;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    
+    /* Tamanho exagerado para cobrir a rotação mesmo quando o menu abre */
+    width: 300%; 
+    height: 1000%; 
+    
+    /* O Gradiente com as cores do tema */
+    background: conic-gradient(
+        var(--accent-color), 
+        transparent 30%, 
+        transparent 70%, 
+        var(--accent-color)
+    );
+    
+    animation: rotate-border 4s linear infinite;
+    z-index: -2; /* Fica atrás de tudo */
+    opacity: 0;  /* Invisível por padrão */
+    transition: opacity 0.3s ease;
 }
 
-.hero-content {
+/* 3. A Máscara Interna (O fundo que cria o "buraco" no meio) */
+.fixed-logo::after,
+.floating-menu::after,
+.theme-floater::after {
+    content: '';
+    position: absolute;
+    
+    /* Define a espessura da borda brilhante (2px) */
+    inset: 2px; 
+    
+    /* Usa a mesma cor do fundo da nav para parecer transparente */
+    background: var(--nav-bg); 
+    backdrop-filter: blur(15px); /* Mantém o efeito de vidro */
+    
+    /* Herda o formato (redondo no tema, pílula no menu) */
+    border-radius: inherit; 
+    
+    z-index: -1; /* Fica na frente do gradiente, mas atrás do texto */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 4. O Gatilho (HOVER) - A mágica acontece aqui */
+.fixed-logo:hover::before, .fixed-logo:hover::after,
+.floating-menu:hover::before, .floating-menu:hover::after,
+.theme-floater:hover::before, .theme-floater:hover::after {
+    opacity: 1; /* Torna visível */
+}
+
+.fixed-logo:hover, 
+.floating-menu:hover, 
+.theme-floater:hover {
+    border-color: transparent; /* Remove a borda sólida original */
+    box-shadow: 0 0 20px var(--shadow-color), 
+                0 0 10px rgba(198, 164, 110, 0.2); /* Glow extra */
+}
+
+/* 5. Correção de Camadas (Z-Index) */
+/* Garante que o texto e ícones fiquem ACIMA da máscara nova */
+.fixed-logo a,
+.menu-center-icon,
+.menu-links,
+.theme-floater i {
     position: relative;
-    z-index: 2; /* Fica acima do grid */
-    max-width: 800px;
-    margin-top: -50px; /* Leve ajuste para subir visualmente */
+    z-index: 5;
 }
 
-/* Tipografia */
+/* =========================================
+   RESPONSIVIDADE (Ajuste Mobile)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* Mantém o botão no topo direito também no celular, 
+       pois o menu principal foi para baixo (Bottom Bar) */
+    
+    .theme-floater {
+        top: 20px;
+        right: 20px;
+        width: 40px; /* Um pouco menor no celular */
+        height: 40px;
+    }
+    
+    .theme-floater i {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE (Mobile)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* No celular, o menu não deve expandir no hover (não existe hover).
+       Vamos deixá-lo fixo na parte inferior como uma "App Bar" */
+    
+    .fixed-logo {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15px;
+        padding: 5px 15px;
+        font-size: 0.9rem;
+    }
+
+    .floating-menu {
+        top: auto;
+        bottom: 20px; /* Vai para baixo da tela */
+        width: 90%; /* Ocupa quase toda largura */
+        height: 60px;
+        border-radius: 20px;
+        padding: 0;
+        justify-content: space-around; /* Espalha os itens */
+    }
+    
+    /* Remove a lógica de hover do desktop */
+    .floating-menu:hover { width: 90%; }
+    
+    /* Esconde o ícone central no mobile (opcional, ou usa ele como home) */
+    .menu-center-icon { display: none; }
+    
+    /* Mostra os links sempre */
+    .menu-links {
+        opacity: 1;
+        transform: none;
+        gap: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .left-links, .right-links { margin: 0; }
+    
+    /* Ajuste dos ícones para mobile (Foco no ícone, texto menor ou oculto) */
+    .nav-item {
+        flex-direction: column;
+        font-size: 0.7rem;
+        gap: 2px;
+        padding: 5px;
+    }
+    .nav-item i { font-size: 1.2rem; margin-bottom: 2px; }
+    
+    /* Botão de tema sobe um pouco para não atrapalhar o menu */
+    .theme-floater {
+        bottom: 90px; 
+        left: 20px;
+        width: 40px; 
+        height: 40px;
+    }
+}
+
+/* =========================================
+   NOVA HOME
+   ========================================= */
+#home-hero {
+    position: relative; width: 100%; height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 0 20px; overflow: hidden;
+    background: var(--bg-gradient);
+}
+
+.hero-bg-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: var(--bg-overlay);
+    background-size: 50px 50px; opacity: 0.5; z-index: 0;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 800px; margin-top: -50px; }
+
 #home-hero h1 {
-    font-size: 3.5rem;
-    color: #F9F9F9;
-    margin: 20px 0 10px 0;
-    line-height: 1.1;
+    font-size: 3.5rem; color: var(--text-title); margin: 20px 0 10px 0; line-height: 1.1;
 }
 
-.text-highlight {
-    color: #C6A46E;
-    position: relative;
-    display: inline-block;
-}
+.text-highlight { color: var(--accent-color); position: relative; display: inline-block; }
 
-/* Typewriter Styles */
 .typing-container {
-    font-size: 1.8rem;
-    color: #ccc;
-    font-weight: 300;
-    margin-bottom: 20px;
-    min-height: 40px; /* Evita pulo de layout */
+    font-size: 1.8rem; color: var(--text-secondary); font-weight: 300;
+    margin-bottom: 20px; min-height: 40px;
 }
-
 .typewriter-text {
-    color: #fff;
-    font-weight: bold;
-    border-bottom: 2px solid #C6A46E; /* Sublinhado estiloso */
+    color: var(--text-primary); font-weight: bold; border-bottom: 2px solid var(--accent-color);
 }
-
 .cursor {
-    animation: blink 1s infinite;
-    color: #C6A46E;
-    font-weight: 100;
-    margin-left: 2px;
+    animation: blink 1s infinite; color: var(--accent-color); font-weight: 100; margin-left: 2px;
 }
-
 .hero-description {
-    font-size: 1.1rem;
-    color: #a0a0a0;
-    margin-bottom: 40px;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px;
+    line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;
 }
 
-/* Botões Grandes da Home */
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+.hero-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 
 .btn-primary-lg {
-    background-color: #C6A46E;
-    color: #1F2A44;
-    padding: 15px 35px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border: 2px solid #C6A46E;
-    box-shadow: 0 0 20px rgba(198, 164, 110, 0.4); /* Glow Dourado */
-    transition: 0.3s;
+    background-color: var(--accent-color); color: var(--bg-solid);
+    padding: 15px 35px; border-radius: 5px; font-weight: bold; font-size: 1.1rem;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(198, 164, 110, 0.4); transition: 0.3s;
 }
-
 .btn-primary-lg:hover {
-    background: transparent;
-    color: #C6A46E;
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(198, 164, 110, 0.6);
+    background: transparent; color: var(--accent-color);
+    transform: translateY(-3px); box-shadow: 0 0 30px rgba(198, 164, 110, 0.6);
 }
 
 .btn-outline-lg {
-    background: transparent;
-    color: #F9F9F9;
-    padding: 15px 35px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: 0.3s;
+    background: transparent; color: var(--text-title);
+    padding: 15px 35px; border-radius: 5px; font-weight: bold; font-size: 1.1rem;
+    border: 1px solid var(--text-secondary); transition: 0.3s;
 }
-
-.btn-outline-lg:hover {
-    border-color: #C6A46E;
-    color: #C6A46E;
-}
-
+.btn-outline-lg:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
 /* --- 2. TECH TICKER (Faixa no Rodapé) --- */
 .tech-ticker-wrapper {
@@ -289,222 +708,162 @@ header {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(31, 42, 68, 0.95);
+    height: 50px; /* Define altura fixa para não oscilar */
+    background: var(--nav-bg);
     border-top: 1px solid rgba(198, 164, 110, 0.3);
-    padding: 15px 0;
+    /* padding: 15px 0; -> Removido para usar flex center */
     display: flex;
-    align-items: center;
+    align-items: center; /* Centraliza verticalmente */
     backdrop-filter: blur(5px);
     z-index: 10;
+    overflow: hidden; /* Garante que nada saia da barra */
 }
 
 .ticker-label {
     padding: 0 30px;
+    height: 100%; /* Ocupa toda altura */
+    display: flex; 
+    align-items: center; /* Centraliza o texto "Tech Stack" */
     font-weight: bold;
-    color: #C6A46E;
+    color: var(--accent-color);
     white-space: nowrap;
     z-index: 12;
-    background: #1F2A44; /* Cobre o ticker que passa por baixo */
-    box-shadow: 5px 0 10px rgba(0,0,0,0.5);
+    background: var(--bg-solid);
+    box-shadow: 5px 0 15px var(--shadow-color);
 }
 
 .tech-ticker {
+    flex-grow: 1; /* Ocupa o resto do espaço */
     overflow: hidden;
-    width: 100%;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); /* Fade nas pontas */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* Máscara para suavizar o corte nas pontas */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .ticker-track {
     display: flex;
-    gap: 50px;
-    animation: scroll-ticker 20s linear infinite; /* Velocidade do loop */
-    width: max-content;
+    align-items: center;
+    gap: 60px; /* Mais espaço entre os itens para respirar */
+    width: max-content; /* O segredo: largura baseada no conteúdo, não na tela */
+    animation: scroll-ticker 40s linear infinite; /* Mais lento (40s) para leitura suave */
+}
+
+/* Pausa a animação ao passar o mouse (Melhoria de UX) */
+.tech-ticker-wrapper:hover .ticker-track {
+    animation-play-state: paused;
 }
 
 .ticker-track span {
-    color: #ccc;
+    color: var(--text-secondary);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Um pouco menor para ficar elegante */
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap; /* OBRIGATÓRIO: Impede quebra de linha */
+    flex-shrink: 0;      /* OBRIGATÓRIO: Impede que o item seja esmagado */
 }
 
 .ticker-track span i {
-    color: #C6A46E;
-    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-size: 1.1rem;
 }
 
 @keyframes scroll-ticker {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Move metade (já que duplicamos o conteúdo) */
+    100% { transform: translateX(-50%); }
 }
 
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-/* Responsividade */
+/* Ajuste Mobile */
 @media (max-width: 768px) {
-    #home-hero h1 { font-size: 2.5rem; }
-    .typing-container { font-size: 1.2rem; min-height: 60px; }
-    .ticker-label { display: none; } /* Remove label no mobile para dar espaço */
+    .ticker-label { 
+        padding: 0 15px; 
+        font-size: 0.8rem;
+    }
+    .ticker-track span {
+        font-size: 0.8rem;
+        gap: 5px;
+    }
 }
 
 /* =========================================
-   NOVA PÁGINA SOBRE (ESTILO ROBUSTO)
+   PÁGINA SOBRE
    ========================================= */
-
-/* --- 1. Hero Section Dividida --- */
-#sobre-hero {
-    padding: 80px 20px 40px;
+#sobre-hero, #services, #work-process, #portfolio { 
     max-width: 1200px;
-    margin: 0 auto;
+     margin: 0 auto;
 }
 
-.hero-container {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    flex-wrap: wrap; /* Para mobile */
+#sobre-hero { 
+    padding: 80px 20px 40px;
+    height: 80vh;
 }
 
-/* Imagem com Borda Estilizada */
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.hero-image img {
-    width: 280px;
-    height: 280px;
-    border-radius: 20px;
-    object-fit: cover;
-    border: 3px solid #C6A46E;
-    box-shadow: 15px 15px 0px rgba(198, 164, 110, 0.2); /* Efeito de sombra sólida */
-    transition: transform 0.3s;
-}
-
-.hero-image img:hover {
-    transform: translateY(-5px);
-}
-
-/* Texto do Hero */
-.hero-text {
-    flex: 1.5;
-    text-align: left;
-}
-
-.hero-text .badge {
-    background-color: rgba(198, 164, 110, 0.2);
-    color: #C6A46E;
-    padding: 5px 15px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.hero-text h1 {
-    font-size: 3rem;
-    margin: 15px 0;
-    color: #F9F9F9;
-    line-height: 1.1;
-    padding-top: 10px;
-}
-
-.hero-text p {
-    color: #ccc;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-/* Botões do Hero */
-.hero-btns {
-    margin-top: 30px;
-    display: flex;
-    gap: 15px;
-}
-
-.btn-primary {
-    background-color: #C6A46E;
-    color: #1F2A44;
-    padding: 12px 25px;
-    border-radius: 5px;
-    font-weight: bold;
-    border: 2px solid #C6A46E;
-}
-
-.btn-primary:hover {
-    background: transparent;
-    color: #C6A46E;
-}
-
-.btn-outline {
-    background: transparent;
-    color: #F9F9F9;
-    padding: 12px 25px;
-    border-radius: 5px;
-    font-weight: bold;
-    border: 2px solid #555;
-}
-
-.btn-outline:hover {
-    border-color: #C6A46E;
-    color: #C6A46E;
-}
-
-/* --- 2. Barra de Stats (Numbers) --- */
-#stats-bar {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    padding: 40px 20px;
-    background: rgba(255, 255, 255, 0.03); /* Leve destaque do fundo */
-    margin: 40px 0;
+.hero-container { 
+    display: flex; 
+    align-items: center; 
+    gap: 50px; 
     flex-wrap: wrap;
 }
 
-.stat-item {
-    text-align: center;
+.hero-image { flex: 1;
+     display: flex;
+      justify-content: center;
 }
 
-.stat-item h2 {
-    font-size: 3rem;
-    color: #C6A46E;
-    margin: 0;
+.hero-image img {
+    width: 280px; height: 280px; border-radius: 20px; object-fit: cover;
+    border: 3px solid var(--accent-color);
+    box-shadow: 15px 15px 0px rgba(198, 164, 110, 0.2); transition: transform 0.3s;
 }
+.hero-image img:hover { transform: translateY(-5px); }
 
-.stat-item p {
-    color: #a0a0a0;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 5px;
+.hero-text { flex: 1.5; text-align: left; }
+.hero-text .badge {
+    background-color: rgba(198, 164, 110, 0.2); color: var(--accent-color);
+    padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: bold;
+    text-transform: uppercase; letter-spacing: 1px;
 }
+.hero-text h1 { font-size: 3rem; margin: 15px 0; color: var(--text-title); padding-top: 10px; }
+.hero-text p { color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 15px; }
 
-/* --- Divisor --- */
+.hero-btns { margin-top: 30px; display: flex; gap: 15px; }
+.btn-primary {
+    background-color: var(--accent-color); color: var(--bg-solid);
+    padding: 12px 25px; border-radius: 5px; font-weight: bold; border: 2px solid var(--accent-color);
+}
+.btn-primary:hover { background: transparent; color: var(--accent-color); }
+.btn-outline {
+    background: transparent; color: var(--text-title);
+    padding: 12px 25px; border-radius: 5px; font-weight: bold; border: 2px solid #555;
+}
+.btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+/* Stats Bar */
+#stats-bar {
+    display: flex; justify-content: center; gap: 60px; padding: 40px 20px;
+    background: var(--bg-card-hover); margin: 40px 0; flex-wrap: wrap;
+    border-radius: 10px;
+}
+.stat-item { text-align: center; }
+.stat-item h2 { font-size: 3rem; color: var(--accent-color); margin: 0; }
+.stat-item p { color: var(--text-secondary); font-size: 1rem; text-transform: uppercase; margin-top: 5px; }
+
 .section-divider {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #333, transparent);
-    margin-top: 20px;
+    border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--border-color), transparent); margin-top: 20px;
 }
-
 .section-title {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    color: #F9F9F9;
-    padding-top: 20px;
+    text-align: center; font-size: 2.2rem; margin-bottom: 50px; color: var(--text-title); padding-top: 20px;
 }
+.section-title i { color: var(--accent-color); margin-right: 10px; }
 
-.section-title i { color: #C6A46E; margin-right: 10px; }
+/* =========================================
+   TIMELINE (Experiência Profissional) - REDESIGN
+   ========================================= */
 
-
-/* --- 3. Timeline Conectada --- */
 .timeline-container {
     max-width: 800px;
     margin: 0 auto;
@@ -517,7 +876,7 @@ header {
     content: '';
     position: absolute;
     width: 2px;
-    background-color: #333;
+    background: linear-gradient(to bottom, transparent, var(--timeline-line), transparent); /* Degradê nas pontas */
     top: 0;
     bottom: 0;
     left: 40px; /* Posição da linha */
@@ -526,629 +885,1297 @@ header {
 
 .timeline-item {
     position: relative;
-    margin-bottom: 40px;
-    padding-left: 80px; /* Espaço para a linha e bolinha */
+    margin-bottom: 50px; /* Mais espaço entre os cards */
+    padding-left: 80px;
 }
 
 /* A bolinha da timeline */
 .timeline-dot {
     position: absolute;
-    left: 31px; /* Ajuste fino para centralizar na linha */
-    top: 0;
+    left: 31px;
+    top: 25px; /* Alinhado com o topo do card */
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #1F2A44;
-    border: 3px solid #C6A46E;
+    background-color: var(--bg-solid);
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 0 4px var(--bg-solid); /* Cria um espaço visual entre a linha e a bolinha */
     z-index: 1;
     transition: 0.3s;
 }
 
+/* Efeito na bolinha ao passar o mouse no item */
 .timeline-item:hover .timeline-dot {
-    background-color: #C6A46E;
-    box-shadow: 0 0 15px rgba(198, 164, 110, 0.6);
+    background-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color), 0 0 0 4px var(--bg-solid);
+    transform: scale(1.2);
 }
 
+/* O CARD DE EXPERIÊNCIA */
 .timeline-content {
-    background: #252e42;
-    padding: 25px;
-    border-radius: 8px;
-    border-left: 4px solid #C6A46E; /* Detalhe dourado */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
+    background: var(--bg-card);
+    padding: 30px; /* Mais respiro interno */
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    /* Sombra suave para destacar do fundo */
+    box-shadow: 0 10px 30px -10px var(--shadow-color);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de borda lateral dourada */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
 }
 
 .timeline-item:hover .timeline-content {
-    transform: translateX(5px);
+    transform: translateY(-5px); /* Levanta levemente */
+    box-shadow: 0 15px 35px -5px rgba(0,0,0,0.3);
+    border-color: var(--accent-color); /* Borda toda acende */
 }
 
+/* Cabeçalho do Card (Cargo e Data) */
 .job-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 5px;
-}
-
-.job-header h3 { font-size: 1.3rem; color: #fff; margin: 0; }
-.job-date { 
-    background: #161e31; 
-    padding: 5px 10px; 
-    border-radius: 4px; 
-    font-size: 0.85rem; 
-    color: #C6A46E; 
-    font-weight: bold;
-}
-
-.company { color: #aaa; margin-bottom: 15px; font-weight: 400; }
-.timeline-content ul { padding-left: 20px; color: #d0d0d0; }
-.timeline-content li { margin-bottom: 8px; }
-
-/* --- 4. Cards de Formação --- */
-.education-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.edu-card-premium {
-    flex: 1;
-    min-width: 300px;
-    background: #252e42;
-    padding: 25px;
-    border-radius: 10px;
-    display: flex;
+    justify-content: space-between; /* Separa título e data */
     align-items: flex-start;
-    gap: 20px;
-    border: 1px solid transparent;
-    transition: 0.3s;
-}
-
-.edu-card-premium:hover {
-    border-color: #C6A46E;
-    transform: translateY(-5px);
-}
-
-.edu-icon {
-    font-size: 2.5rem;
-    color: #C6A46E;
-    background: rgba(198, 164, 110, 0.1);
-    padding: 15px;
-    border-radius: 10px;
-}
-
-.edu-info h3 { font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
-.edu-info p { color: #ccc; margin-bottom: 10px; font-size: 0.95rem; }
-.edu-place { font-size: 0.85rem; color: #888; display: block; }
-
-/* --- 5. Skills Box --- */
-.skills-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
     flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 5px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color); /* Linha separadora sutil */
 }
 
-.skill-box {
-    background: #161e31;
-    padding: 15px 30px;
-    border-radius: 50px; /* Pílula */
+.job-header h3 {
+    font-size: 1.4rem;
+    color: var(--text-title);
+    margin: 0;
+    font-weight: 700;
+}
+
+/* Badge da Data (Estilo Pílula) */
+.job-date {
+    background: rgba(198, 164, 110, 0.1); /* Fundo dourado transparente */
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: 700;
+    border: 1px solid var(--accent-color);
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Nome da Empresa */
+.company {
+    color: var(--text-secondary);
+    margin: 15px 0;
+    font-weight: 600;
+    font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 10px;
-    border: 1px solid #333;
-    transition: 0.3s;
+    gap: 8px;
 }
 
-.skill-box:hover {
-    border-color: #C6A46E;
-    box-shadow: 0 0 10px rgba(198, 164, 110, 0.2);
-    transform: scale(1.05);
+.company::before {
+    content: '\f1ad'; /* Ícone de prédio (FontAwesome) */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--accent-color);
 }
 
-.skill-box span { color: #fff; font-weight: bold; }
-.skill-box i { font-size: 1.5rem; }
+/* Lista de Atividades (Custom Bullet Points) */
+.timeline-content ul {
+    padding-left: 0;
+    list-style: none;
+    margin-top: 15px;
+}
 
-/* --- Responsividade Extra --- */
-@media (max-width: 768px) {
-    .hero-container { flex-direction: column; text-align: center; }
-    .hero-text { text-align: center; }
-    .hero-btns { justify-content: center; }
-    
-    .timeline-container::after { left: 20px; }
-    .timeline-dot { left: 11px; }
-    .timeline-item { padding-left: 50px; }
-    
-    .job-header { flex-direction: column; align-items: flex-start; gap: 5px; }
-    
-    .stat-item h2 { font-size: 2.5rem; }
+.timeline-content li {
+    position: relative;
+    padding-left: 25px; /* Espaço para o ícone */
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* O ícone de seta dourada antes de cada item */
+.timeline-content li::before {
+    content: '▹'; /* Seta geométrica */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.5;
 }
 
 /* =========================================
-   PÁGINA PROJETOS (ESTILO SOLUÇÕES & SERVIÇOS)
+   CORREÇÃO MOBILE (SOBRE E HERO)
    ========================================= */
+
+@media screen and (max-width: 768px) {
+    
+    /* 1. HERO SECTION: Removemos altura fixa e deixamos fluir */
+    #sobre-hero, #home-hero, #proj-hero {
+        height: auto; /* IMPORTANTE: Deixa o conteúdo empurrar a altura */
+        min-height: 100vh; /* Garante que ocupe pelo menos a tela toda */
+        padding-top: 100px; /* Espaço para não ficar colado no topo */
+        padding-bottom: 50px;
+    }
+
+    /* 2. HERO CONTAINER: Empilha Imagem e Texto */
+    .hero-container {
+        flex-direction: column; /* Um embaixo do outro */
+        gap: 30px;
+        text-align: center; /* Centraliza tudo */
+    }
+
+    /* 3. HERO TEXT: Ajuste de margens */
+    .hero-text {
+        text-align: center; /* Garante que o texto fique centralizado */
+        padding: 0 15px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem; /* Reduz fonte para não quebrar */
+        line-height: 1.2;
+    }
+
+    /* 4. BOTÕES: Empilha se necessário ou ajusta margem */
+    .hero-btns {
+        justify-content: center;
+        flex-wrap: wrap; /* Se não couber na linha, quebra */
+        margin-bottom: 20px; /* Garante espaço embaixo */
+    }
+
+    /* 5. STATS BAR: O culpado da sobreposição */
+    #stats-bar {
+        margin-top: 40px; /* Afasta do Hero */
+        margin-bottom: 40px; /* Afasta da Trajetória */
+        flex-direction: column; /* Empilha os números */
+        gap: 30px;
+        padding: 30px;
+        position: relative; /* Garante que respeite o fluxo */
+        z-index: 2;
+    }
+
+    /* 6. TRAJETÓRIA: Ajuste de padding */
+    #experiencia {
+        padding-top: 20px;
+    }
+}
+
+/* =========================================
+   FORMAÇÃO ACADÊMICA (PREMIUM CARDS)
+   ========================================= */
+
+.education-container {
+    display: grid;
+    /* Cria colunas automáticas de no mínimo 350px. Se couber 2, põe 2. Se não, 1. */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.edu-card-premium {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    overflow: hidden; /* Para o brilho não vazar */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Hover: Card sobe e borda acende */
+.edu-card-premium:hover {
+    transform: translateY(-7px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px -10px var(--shadow-color);
+}
+
+/* Luz de Fundo (Glow Effect) */
+.card-glow {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+    opacity: 0.1;
+    filter: blur(30px);
+    transition: opacity 0.3s;
+}
+.edu-card-premium:hover .card-glow {
+    opacity: 0.2; /* Brilha mais no hover */
+}
+
+/* Cabeçalho do Card (Ícone + Badge) */
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.edu-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--bg-solid);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Badge de Status */
+.edu-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Estilo para "Em Andamento" */
+.running .edu-badge {
+    background: rgba(37, 211, 102, 0.1); /* Verde bem claro */
+    color: #25D366;
+    border: 1px solid #25D366;
+}
+
+/* Bolinha pulsante verde */
+.pulse {
+    width: 8px;
+    height: 8px;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(37, 211, 102, 0.4);
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Estilo para "Concluído" */
+.completed .edu-badge {
+    background: var(--bg-card-hover);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+/* Conteúdo de Texto */
+.edu-content h3 {
+    font-size: 1.3rem;
+    color: var(--text-title);
+    margin: 0 0 5px 0;
+}
+
+.edu-sub {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Metadados (Universidade e Data) */
+.edu-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.edu-meta span {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.edu-meta i {
+    color: var(--accent-color);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .education-container {
+        grid-template-columns: 1fr; /* Um por linha no mobile */
+    }
+}
+
+#skills {
+    padding: 40px 20px 80px 20px; /* Reduzi o padding superior para aproximar da seção anterior */
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Texto de Introdução */
+.skills-desc {
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Tags de Competência (Pílulas acima do dock) */
+.skills-tags {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.tag {
+    background: rgba(198, 164, 110, 0.1); /* Fundo Dourado bem suave */
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: default;
+}
+
+.tag:hover {
+    background: var(--accent-color);
+    color: var(--bg-solid);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(198, 164, 110, 0.3);
+}
+
+/* Wrapper para centralizar o Dock */
+.dock-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.skill-box {
+    background: var(--bg-card); padding: 15px 30px; border-radius: 50px;
+    display: flex; align-items: center; gap: 10px; border: 1px solid var(--border-color);
+    transition: 0.3s; box-shadow: 0 2px 5px var(--shadow-color);
+}
+.skill-box:hover {
+    border-color: var(--accent-color); box-shadow: 0 0 10px rgba(198, 164, 110, 0.2); transform: scale(1.05);
+}
+.skill-box span { color: var(--text-primary); font-weight: bold; }
+.skill-box i { font-size: 1.5rem; }
+
+/* =========================================
+   SKILLS DOCK (EFEITO MACOS)
+   ========================================= */
+
+/* Variáveis de Interpolação (Define a curva de crescimento) */
+:root {
+    --lerp-0: 1;      /* O item que está com mouse em cima */
+    --lerp-1: 0.6;    /* Vizinhos imediatos */
+    --lerp-2: 0.3;    /* Vizinhos dos vizinhos */
+    --lerp-3: 0.1;    /* Distantes */
+    --lerp-4: 0;      /* Padrão */
+}
+
+/* =========================================
+   SKILLS & TECH STACK (REMODELADO)
+   ========================================= */
+
+#skills {
+    padding: 40px 20px 80px 20px; /* Reduzi o padding superior para aproximar da seção anterior */
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Texto de Introdução */
+.skills-desc {
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Tags de Competência (Pílulas acima do dock) */
+.skills-tags {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.tag {
+    background: rgba(198, 164, 110, 0.1); /* Fundo Dourado bem suave */
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: default;
+}
+
+.tag:hover {
+    background: var(--accent-color);
+    color: var(--bg-solid);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(198, 164, 110, 0.3);
+}
+
+/* Wrapper para centralizar o Dock */
+.dock-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* O Dock Compacto */
+.skills-dock {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    padding: 15px 25px; /* Padding menor */
+    
+    /* Tamanho automático baseado no conteúdo */
+    width: max-content; 
+    
+    /* Vidro Fosco */
+    background: var(--nav-bg); 
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px -10px var(--shadow-color);
+    
+    height: 100px; /* Altura base controlada */
+    margin-top: 0; /* Remove margem extra */
+}
+
+/* --- Ajuste nos Itens do Dock (Mantenha o resto das animações igual) --- */
+/* Só um ajuste fino no tamanho base para ficar mais elegante */
+.dock-item {
+    /* Base um pouco menor para ficar mais "Apple" */
+    width: calc(45px + (var(--lerp, 0) * 50px));
+    height: calc(45px + (var(--lerp, 0) * 50px));
+    /* ... resto das propriedades do dock-item que já existiam ... */
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    transition: width 0.2s, height 0.2s, background-color 0.3s;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* --- Ícone dentro do Dock --- */
+.dock-icon {
+    font-size: calc(1.5rem + (var(--lerp, 0) * 1.5rem));
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transição fluida */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: 1; /* Fica atrás do texto */
+}
+
+/* NOVO: Quando hoverado, o ícone vira "fundo" */
+.dock-item:hover .dock-icon {
+    color: var(--sk-color);
+    opacity: 0.15; /* Fica bem transparente (marca d'água) */
+    transform: scale(1.2); /* Cresce para preencher o fundo */
+    filter: blur(2px); /* Desfoca levemente para não atrapalhar o texto */
+}
+
+/* ... Mantenha as regras de :hover e :has() que já criamos ... */
+
+/* Ajuste Responsivo */
+@media (max-width: 768px) {
+    .skills-dock {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+        border-radius: 15px;
+    }
+    .dock-item {
+        width: 70px;
+        height: 70px;
+        --lerp: 0;
+    }
+    .skills-tags {
+        gap: 10px;
+    }
+    .tag {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+    }
+}
+
+/* Quando o item cresce, ele ganha a cor da marca */
+.dock-item:hover .dock-icon,
+.dock-item:focus-visible .dock-icon {
+    color: var(--sk-color);
+}
+
+/* Borda colorida suave ao expandir */
+.dock-item:hover {
+    border-color: var(--sk-color);
+    box-shadow: 0 0 15px var(--sk-color);
+    background: var(--bg-card-hover);
+}
+
+/* --- LÓGICA DO :HAS() (A Mágica dos Vizinhos) --- */
+
+/* 1. O Item Hoverado */
+.dock-item:hover, .dock-item:focus-visible {
+    --lerp: var(--lerp-0);
+    z-index: 5;
+}
+
+/* 2. Os Vizinhos Imediatos (Esquerda e Direita) */
+.dock-item:has( + .dock-item:hover),
+.dock-item:hover + .dock-item {
+    --lerp: var(--lerp-1);
+    z-index: 4;
+}
+
+/* 3. Os Vizinhos dos Vizinhos */
+.dock-item:has( + .dock-item + .dock-item:hover),
+.dock-item:hover + .dock-item + .dock-item {
+    --lerp: var(--lerp-2);
+    z-index: 3;
+}
+
+/* --- TEXTO EXPLICATIVO (Tooltip Interno) --- */
+.dock-label {
+    position: absolute;
+    top: 50%;      /* Centraliza verticalmente */
+    left: 50%;     /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%) scale(0.8); /* Centraliza exato e começa pequeno */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;   /* Ocupa largura total para centralizar */
+    padding: 0 5px;
+    
+    opacity: 0;    /* Invisível por padrão */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    z-index: 10;   /* Fica NA FRENTE do ícone */
+}
+
+/* Estilo do Título (Ex: "Power BI") */
+.dock-label strong {
+    font-size: 0.9rem;
+    color: var(--text-title); /* Usa cor de título para contraste máximo */
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2px;
+    text-shadow: 0 2px 10px var(--bg-card); /* Sombra para garantir leitura */
+}
+
+/* Estilo do Subtítulo (Ex: "DAX & Storytelling") */
+.dock-label span {
+    font-size: 0.7rem;
+    color: var(--sk-color); /* A cor da marca vai aqui */
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* GATILHO: Só mostra o texto quando o item está HOVERADO */
+.dock-item:hover .dock-label {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* Cresce para tamanho normal */
+}
+
 
 /* --- 1. Hero Projetos --- */
 #proj-hero {
-    height: 100vh; /* Altura menor que a Home, foco no texto */
+    position: relative; /* Necessário para o overlay funcionar */
+    height: 100vh; /* Altura um pouco menor que a home para focar no conteúdo */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: radial-gradient(circle at center, #2E2E2E 0%, #1F2A44 100%);
+    background: var(--bg-gradient);
     padding: 0 20px;
+    overflow: hidden;
 }
 
-.proj-hero-content { max-width: 800px; }
+/* Reutiliza o overlay da home, mas garante que ele apareça aqui */
+#proj-hero .hero-bg-overlay {
+    z-index: 0;
+    opacity: 0.4; /* Um pouco mais sutil que na home */
+}
 
-/* =========================================
-   BADGE COM BORDA GIRATÓRIA (MAGIC BORDER)
-   ========================================= */
+.proj-hero-content { 
+    max-width: 900px; 
+    position: relative; 
+    z-index: 2; /* Fica acima do fundo */
+}
 
+#proj-hero h1 { 
+    font-size: 3.5rem; 
+    margin-bottom: 20px; 
+    color: var(--text-title);
+    line-height: 1.1;
+}
+
+#proj-hero p { 
+    font-size: 1.25rem; 
+    color: var(--text-secondary); 
+    margin-bottom: 40px; 
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #proj-hero { height: 70vh; }
+    #proj-hero h1 { font-size: 2.5rem; }
+    #proj-hero p { font-size: 1rem; }
+}
+
+/* Badge Magic Border */
 .badge-gold {
-    position: relative; /* Necessário para posicionar os efeitos */
-    background: transparent; /* Fundo transparente */
-    
-    /* Cores e Texto */
-    color: #C6A46E;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    
-    /* Espaçamento interno */
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    display: inline-block;
-    
-    /* Arredondamento e Ocultação de excessos */
-    border-radius: 50px;
-    overflow: hidden; 
-    
-    /* Remove a borda sólida antiga se houver */
-    border: none; 
-    
-    /* Garante que o texto fique acima do fundo */
-    z-index: 1; 
+    position: relative; background: transparent; color: var(--accent-color);
+    font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;
+    padding: 10px 20px; margin-bottom: 20px; display: inline-block;
+    border-radius: 50px; overflow: hidden; border: none; z-index: 1;
 }
-
-/* 1. O DEGRADÊ QUE GIRA (Fica por trás de tudo) */
 .badge-gold::before {
-    content: '';
-    position: absolute;
-    
-    /* Centraliza o efeito */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg); 
-    
-    /* Tamanho exagerado para garantir que cubra tudo ao girar */
-    width: 400%; 
-    height: 400%; 
-    
-    /* O Segredo: Conic Gradient com as 3 cores */
-    background: conic-gradient(
-        #C6A46E, /* Dourado */
-        #1F2A44, /* Azul Escuro */
-        #F9F9F9, /* Branco (Brilho) */
-        #C6A46E  /* Repete a primeira cor para fechar o ciclo suavemente */
-    );
-    
-    /* A animação de rotação */
-    animation: rotate-border 4s linear infinite;
-    z-index: -2; /* Fica bem no fundo */
+    content: ''; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg); width: 400%; height: 400%;
+    background: conic-gradient(var(--accent-color), var(--bg-solid), #fff, var(--accent-color));
+    animation: rotate-border 4s linear infinite; z-index: -2;
 }
-
-/* 2. O FUNDO ESCURO (A Máscara interna) */
-/* Isso cria o "buraco" no meio para parecer que é só uma borda */
 .badge-gold::after {
-    content: '';
-    position: absolute;
-    
-    /* Inset define a espessura da borda (3px aqui) */
-    inset: 3px; 
-    
-    background: #2E2E2E; /* A mesma cor de fundo da sua seção Hero */
-    border-radius: 48px; /* Um pouco menor que o pai */
-    z-index: -1; /* Fica entre o texto e o degradê */
+    content: ''; position: absolute; inset: 3px; background: var(--bg-solid);
+    border-radius: 48px; z-index: -1;
 }
+@keyframes rotate-border { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
 
-/* Animação de Rotação */
-@keyframes rotate-border {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-#proj-hero h1 { font-size: 3rem; margin-bottom: 20px; }
-#proj-hero p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; }
-
+#proj-hero h1 { font-size: 3rem; margin-bottom: 20px; color: var(--text-title); }
+#proj-hero p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 30px; }
 .btn-scroll-down {
-    color: #C6A46E;
-    font-weight: bold;
-    font-size: 1.1rem;
-    animation: bounce 2s infinite;
+    color: var(--accent-color); font-weight: bold; font-size: 1.1rem; animation: bounce 2s infinite;
 }
-
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
     40% {transform: translateY(-10px);}
     60% {transform: translateY(-5px);}
 }
 
-/* --- 2. Serviços (Cards de Solução) --- */
-#services {
-    padding: 80px 20px;
-    background-color: #161e31; /* Fundo levemente mais escuro */
-}
-
-.section-header { text-align: center; margin-bottom: 50px; }
-.section-header h2 { font-size: 2.2rem; color: #F9F9F9; margin-bottom: 10px; }
-.section-header p { color: #888; }
+/* Serviços / Carrossel */
+#services { padding: 80px 20px; background-color: var(--bg-card-hover); }
+.section-header h2 { font-size: 2.2rem; color: var(--text-title); margin-bottom: 10px; }
+.section-header p { color: var(--text-secondary); }
 
 /* =========================================
-   CARROSSEL DE SERVIÇOS
+   CARROSSEL DE SERVIÇOS (PREMIUM UPGRADE)
    ========================================= */
 
-/* O container limita a visão (esconde o que está fora) */
+/* Ajuste do Container para dar mais destaque */
 .carousel-container {
     position: relative;
-    max-width: 600px; /* Largura focada para leitura de 1 card */
+    max-width: 700px; /* Um pouco mais largo para caber mais texto */
     margin: 0 auto;
-    overflow: hidden; /* Importante: esconde os slides laterais */
-    padding: 20px 0;
+    overflow: hidden;
+    padding: 40px 0; /* Mais espaço para a sombra não cortar */
 }
 
-/* O trilho segura todos os slides lado a lado */
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease-in-out; /* Movimento suave */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Movimento mais elegante */
     width: 100%;
 }
 
-/* Cada slide ocupa 100% da largura do container */
 .carousel-slide {
-    min-width: 100%; 
+    min-width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px; /* Espaço para a sombra não cortar */
+    padding: 10px;
 }
 
-/* Ajuste no Card para caber no slider */
+/* O NOVO CARD DE SERVIÇO */
 .service-card {
-    /* Mantém o estilo anterior, mas garante que preencha o slide */
-    width: 100%; 
-    max-width: 400px; /* Tamanho máximo do cartão */
-    background: #1F2A44;
-    padding: 40px 30px;
-    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;
+    
+    /* Vidro Fosco Profundo */
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    padding: 40px 35px;
+    border-radius: 20px;
     text-align: center;
-    border: 1px solid rgba(198, 164, 110, 0.1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    
+    /* Borda sutil e Sombra */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 15px 40px -10px var(--shadow-color);
+    
     position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    
+    /* Flex para organizar o conteúdo verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-/* Ícones e Textos (Mantendo seu estilo) */
-.icon-box { font-size: 3rem; color: #C6A46E; margin-bottom: 20px; }
-.service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
-.service-card p { font-size: 1rem; color: #aaa; line-height: 1.6; }
+/* Efeito Hover: Levanta e brilha */
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); /* Sombra mais forte */
+}
 
-/* Navegação (Bolinhas) */
-.carousel-nav {
+/* Detalhe Dourado no Topo (Barra) */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-color);
+    transform: scaleX(0.3); /* Começa pequeno no meio */
+    transform-origin: center;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover::after {
+    transform: scaleX(1); /* Enche a largura ao passar o mouse */
+}
+
+/* Ícone */
+.icon-box {
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    /* Adiciona um brilho atrás do ícone */
+    filter: drop-shadow(0 0 15px rgba(198, 164, 110, 0.3));
+    transition: transform 0.4s;
+}
+
+.service-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Textos */
+.service-card h3 {
+    font-size: 1.6rem;
+    margin: 0;
+    color: var(--text-title);
+    font-weight: 700;
+}
+
+.service-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* --- NOVAS TAGS DENTRO DO CARD --- */
+.service-tags {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    margin-top: auto; /* Empurra para o fundo se sobrar espaço */
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color); /* Linha separadora */
+}
+
+.service-tags span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* Estilo Pílula */
+    padding: 6px 14px;
+    border-radius: 50px;
+    
+    /* Cores baseadas no tema */
+    background: rgba(198, 164, 110, 0.1); /* Dourado bem transparente */
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    
+    transition: 0.3s;
+}
+
+.service-card:hover .service-tags span {
+    background: var(--accent-color);
+    color: var(--bg-solid);
+}
+
+/* Navegação (Dots) */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
 }
 
 .nav-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    border: 1px solid #C6A46E;
+    border: 2px solid var(--text-secondary); /* Cor neutra inativa */
     background: transparent;
     cursor: pointer;
     transition: 0.3s;
+    padding: 0;
 }
 
 .nav-dot.current-slide {
-    background: #C6A46E;
-    box-shadow: 0 0 8px rgba(198, 164, 110, 0.6);
-}
-
-.service-card {
-    background: #1F2A44;
-    padding: 35px 25px;
-    border-radius: 12px;
-    width: 320px;
-    text-align: center;
-    border: 1px solid rgba(198, 164, 110, 0.1);
-    transition: 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    border-color: #C6A46E;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* Detalhe dourado no topo do card */
-.service-card::after {
-    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-    background: #C6A46E; transform: scaleX(0); transform-origin: left; transition: 0.3s;
-}
-.service-card:hover::after { transform: scaleX(1); }
-
-.icon-box {
-    font-size: 2.5rem; color: #C6A46E; margin-bottom: 20px;
-}
-.service-card h3 { color: #fff; margin-bottom: 15px; font-size: 1.3rem; }
-.service-card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; }
-
-/* --- 3. Processo de Trabalho (Steps) --- */
-#work-process { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-
-.process-steps {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 50px;
-    position: relative;
-}
-
-.step {
-    text-align: center;
-    flex: 1;
-    padding: 0 15px;
-    position: relative;
-    z-index: 2;
-}
-
-.step-number {
-    width: 60px; height: 60px;
-    background: #1F2A44;
-    border: 2px solid #C6A46E;
-    border-radius: 50%;
-    color: #C6A46E;
-    font-weight: bold;
-    font-size: 1.2rem;
-    display: flex; justify-content: center; align-items: center;
-    margin: 0 auto 20px auto;
-    transition: 0.3s;
-}
-
-.step:hover .step-number { background: #C6A46E; color: #1F2A44; }
-
-.step h3 { color: #fff; font-size: 1.2rem; margin-bottom: 10px; }
-.step p { color: #888; font-size: 0.9rem; }
-
-/* Linha conectora entre os passos */
-.step-line {
-    flex: 1;
-    height: 2px;
-    background: #333;
-    margin-top: 30px; /* Alinha com o centro das bolinhas */
-}
-
-/* --- 4. Portfólio & Filtros --- */
-#portfolio { padding: 80px 20px; }
-.portfolio-header { text-align: center; margin-bottom: 40px; }
-
-.filter-buttons {
-    display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px;
-}
-
-.filter-btn {
-    background: transparent;
-    border: 1px solid #555;
-    color: #ccc;
-    padding: 8px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    background: #C6A46E;
-    border-color: #C6A46E;
-    color: #1F2A44;
-}
-
-/* Ajustes nos Cards de Projetos (Baseado no seu CSS anterior, com melhorias) */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.project-card {
-    background: #2E2E2E;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: 0.3s;
-    border: 1px solid transparent;
-    display: flex; flex-direction: column;
-}
-
-.project-card:hover { transform: translateY(-5px); border-color: #C6A46E; }
-
-/* Ocultar cards quando filtrado */
-.project-card.hide { display: none; }
-/* Animação suave ao aparecer */
-.project-card.show { animation: fadeIn 0.5s ease; }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.project-img {
-    height: 180px;
-    background: #151b2b;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem; color: #333;
-    border-bottom: 1px solid #333;
-}
-.project-card:hover .project-img { color: #C6A46E; }
-
-.project-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
-.project-cat { font-size: 0.75rem; color: #C6A46E; text-transform: uppercase; margin-bottom: 5px; font-weight: bold; }
-.project-info h3 { color: #fff; margin-bottom: 10px; }
-.project-info p { color: #aaa; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; }
-
-.tech-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; margin-top: auto; }
-.tech-stack span {
-    background: rgba(255,255,255,0.05);
-    color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px;
-}
-
-.project-links { border-top: 1px solid #444; padding-top: 15px; display: flex; gap: 15px; }
-.project-links a { color: #fff; font-size: 0.9rem; font-weight: bold; }
-.project-links a:hover { color: #C6A46E; }
-
-/* --- Responsividade Processo --- */
-@media (max-width: 768px) {
-    .process-steps { flex-direction: column; gap: 20px; }
-    .step-line { display: none; } /* Remove a linha horizontal no mobile */
-    .step { display: flex; text-align: left; align-items: center; gap: 15px; width: 100%; padding: 0; }
-    .step-number { margin: 0; min-width: 50px; height: 50px; font-size: 1rem; }
-    
-    #proj-hero h1 { font-size: 2.2rem; }
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px var(--accent-color);
 }
 
 /* =========================================
-   6. CONTATO E FOOTER (contato.html)
+   WORK PROCESS (PIPELINE VISUAL)
    ========================================= */
+
+#work-process {
+    padding: 80px 20px;
+    background: var(--bg-gradient); /* Mantém consistência */
+    overflow: hidden; /* Evita rolagem horizontal se animar */
+}
+
+.process-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha pelo topo */
+    max-width: 1100px;
+    margin: 60px auto 0;
+    position: relative;
+    gap: 20px;
+}
+
+/* A Linha Conectora (Pipeline) */
+.process-line {
+    position: absolute;
+    top: 40px; /* Alinha com o centro dos ícones */
+    left: 50px;
+    right: 50px;
+    height: 4px;
+    background: var(--border-color);
+    z-index: 0;
+    border-radius: 4px;
+    /* Um gradiente sutil para dar ideia de fluxo */
+    background: linear-gradient(90deg, 
+        var(--border-color) 0%, 
+        var(--accent-color) 50%, 
+        var(--border-color) 100%);
+    opacity: 0.3;
+}
+
+/* O Cartão do Processo */
+.process-card {
+    flex: 1; /* Todos ocupam mesmo espaço */
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Fica acima da linha */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito "pulo" */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 280px; /* Altura mínima para ficarem iguais */
+}
+
+/* Hover no Card */
+.process-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px -10px var(--shadow-color);
+}
+
+/* Ícone no Topo */
+.process-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--bg-solid);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    /* Sombra para apagar a linha de fundo atrás do ícone */
+    box-shadow: 0 0 0 10px var(--bg-gradient); 
+    transition: 0.4s;
+}
+
+.process-card:hover .process-icon {
+    background: var(--accent-color);
+    color: var(--bg-solid);
+    transform: rotate(360deg);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+/* Textos */
+.process-content h3 {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.process-content h4 {
+    font-size: 0.9rem;
+    color: var(--text-title);
+    margin: 5px 0 15px 0;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.process-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 900px) {
+    .process-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    /* Esconde a linha horizontal */
+    .process-line {
+        width: 4px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, var(--border-color), var(--accent-color));
+    }
+
+    .process-card {
+        width: 100%;
+        max-width: 400px;
+        min-height: auto;
+    }
+    
+    /* Ajuste da sombra do ícone para mobile */
+    .process-icon {
+        box-shadow: 0 0 0 10px var(--bg-card); 
+    }
+}
+
+/* Portfolio */
+#portfolio { padding: 80px 20px; }
+.filter-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+.filter-btn {
+    background: transparent; border: 1px solid var(--text-secondary);
+    color: var(--text-secondary); padding: 8px 20px; border-radius: 30px;
+    cursor: pointer; font-family: 'Josefin Sans', sans-serif; font-weight: 600; transition: 0.3s;
+}
+.filter-btn:hover, .filter-btn.active {
+    background: var(--accent-color); border-color: var(--accent-color); color: var(--bg-solid);
+}
+
+/* =========================================
+   PROJETOS (DESIGN VISUAL PREMIUM)
+   ========================================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    padding-bottom: 50px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Hover: O card sobe e a sombra aumenta */
+.project-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px -10px var(--shadow-color);
+}
+
+/* Área da Imagem/Thumbnail */
+.project-thumb {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Efeito de Zoom na imagem ao passar o mouse */
+.project-card:hover .project-thumb img {
+    transform: scale(1.1);
+}
+
+/* Placeholder (Caso não tenha print ainda) */
+.thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Cores dos Placeholders */
+.python-bg { background: linear-gradient(135deg, #306998, #FFD43B); }
+.pbi-bg { background: linear-gradient(135deg, #F2C811, #E6ad00); }
+.sql-bg { background: linear-gradient(135deg, #00758F, #025E73); }
+
+/* Informações do Projeto */
+.project-info {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-cat {
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.project-info h3 {
+    font-size: 1.4rem;
+    color: var(--text-title);
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+.project-info p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Tech Stack (Tags) */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: auto; /* Empurra para baixo */
+    margin-bottom: 25px;
+}
+
+.tech-stack span {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tech-stack span i { color: var(--accent-color); }
+
+/* Botões de Link */
+.project-links {
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.btn-link {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background: var(--accent-color);
+    color: var(--bg-solid) !important; /* Texto escuro */
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-link:hover {
+    background: var(--text-title);
+    color: var(--bg-solid);
+    transform: translateY(-2px);
+}
+
+/* Botão Secundário (Docs/Repositorio) */
+.btn-link.sec {
+    background: transparent;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary) !important;
+}
+
+.btn-link.sec:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color) !important;
+}
+
+/* =========================================
+   CONTATO E FOOTER
+   ========================================= */
+
 #contact {
-    min-height: 90vh;
-    height: 80vh;
+    min-height: 95vh; /* Ajuste leve para centralizar melhor */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0 20px;
+    /* Fundo sutil para destacar a área */
+    background: radial-gradient(circle at center, rgba(198, 164, 110, 0.05) 0%, transparent 70%);
+}
+
+.contact-header {
+    max-width: 700px;
+    margin-bottom: 50px;
 }
 
 .contact-header h3 {
-    font-size: 2.5rem;
-    color: #C6A46E;
-    margin-bottom: 40px;
+    font-size: 2.8rem;
+    color: var(--text-title);
+    margin-bottom: 20px;
 }
 
-/* Configuração do Container Principal */
+.contact-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Container dos Ícones */
 #contact-link {
-  display: flex;
-  justify-content: center; /* Centraliza os ícones na tela */
-  gap: 20px; /* Espaço entre os botões */
-  padding: 20px;
-  padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Mais espaço entre eles */
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
-/* Estilo do Círculo (Link) */
+#contact-link { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    padding: 20px; 
+    padding-top: 30px; 
+}
+
 #contact-link a {
-  width: 80px;
-  height: 80px;
-  background-color: #fff;
-  text-align: center;
-  line-height: 80px; /* Alinha verticalmente */
-  font-size: 35px; /* Tamanho do ícone (substitui o fa-4x visualmente) */
-  display: block;
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden;
-  border: 3px solid #fff;
-  z-index: 1;
-  text-decoration: none; /* Remove sublinhado padrão de links */
+    width: 80px; height: 80px; background-color: #fff;
+    text-align: center; line-height: 80px; font-size: 35px;
+    display: block; border-radius: 50%; position: relative;
+    overflow: hidden; border: 3px solid #fff; z-index: 1;
 }
-
-/* Estilo do Ícone */
-#contact-link a i {
-  position: relative;
-  color: #262626;
-  transition: .5s;
-  z-index: 3;
-}
-
-/* Efeito de Rotação e Cor do Ícone ao passar o mouse */
-#contact-link a:hover i {
-  color: #fff;
-  transform: rotateY(360deg);
-}
-
-/* O elemento que preenche o fundo (inicialmente escondido embaixo) */
+#contact-link a i { position: relative; color: #262626; transition: .5s; z-index: 3; }
+#contact-link a:hover i { color: #fff; transform: rotateY(360deg); }
 #contact-link a:before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: .5s;
-  z-index: 2;
+    content: ""; position: absolute; top: 100%; left: 0; width: 100%; height: 100%; transition: .5s; z-index: 2;
 }
-
-/* Animação de subir o fundo ao passar o mouse */
-#contact-link a:hover:before {
-  top: 0;
-}
-
-/* --- Cores de Fundo Individuais (Preenchemos o botão com a cor da marca) --- */
-
-/* LinkedIn */
-.icon-div-linkedin a:before {
-  background: #0077b5;
-}
-
-/* GitHub */
-.icon-div-github a:before {
-  background: #333333;
-}
-
-/* Email (Vermelho estilo Gmail) */
-.icon-div-email a:before {
-  background: #dd4b39;
-}
-
-/* WhatsApp */
-.icon-div-wpp a:before {
-  background: #25D366;
-}
-
+#contact-link a:hover:before { top: 0; }
+.icon-div-linkedin a:before { background: #0077b5; }
+.icon-div-github a:before { background: #333333; }
+.icon-div-email a:before { background: #dd4b39; }
+.icon-div-wpp a:before { background: #25D366; }
 
 footer {
-    width: 100%;
-    margin-top: auto;
-    background-color: #1F2A44;
-    text-align: center;
-    padding: 10px;
-    border-top: 1px solid #C6A46E;
+    width: 100%; margin-top: auto; background-color: var(--bg-solid);
+    text-align: center; padding: 10px; border-top: 1px solid var(--accent-color);
 }
+footer h4 { color: var(--accent-color); font-size: 0.9rem; margin: 0; }
 
-footer h4 { color: #C6A46E; font-size: 0.9rem; margin: 0; }
-
-/* =========================================
-   7. RESPONSIVIDADE
-   ========================================= */
+/* RESPONSIVIDADE */
 @media only screen and (max-width: 600px) {
     #navbar { justify-content: space-between; }
-    
     #welcome-section h1 { font-size: 2.2rem; }
-    
     .timeline { border-left: none; padding-left: 0; }
     .job-card::before { display: none; }
-    
     .projects-grid { grid-template-columns: 1fr; }
-    
-    .profile-photo { width: 140px; height: 140px; }
+    .process-steps { flex-direction: column; gap: 20px; }
+    .step-line { display: none; }
+    .step { display: flex; text-align: left; align-items: center; gap: 15px; width: 100%; padding: 0; }
+    .step-number { margin: 0; min-width: 50px; height: 50px; font-size: 1rem; }
 }
