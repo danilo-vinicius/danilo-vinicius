@@ -10,37 +10,53 @@
   </head>
   <body>
     
-    <header>
-      <nav id="navbar">
-        <div class="nav-logo">
-          <a href="https://danilo-vinicius.github.io/danilo-vinicius/">DV <span style="color: #C6A46E;">|</span> Data Analyst</a>
-        </div>
+    <div class="fixed-logo">
+    <a href="index.html">DV <span class="logo-accent">|</span> Data Analyst</a>
+  </div>
 
-        <div class="mobile-menu-icon" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
+  <nav class="floating-menu">
+    
+    <div class="menu-links left-links">
+      <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+      <a href="sobre.html" class="nav-item"><i class="fas fa-user"></i> Sobre</a>
+    </div>
 
-        <ul class="nav-links">
-          <a href="sobre.html"><li>Sobre</li></a>
-          <a href="projetos.html"><li>Projetos</li></a> 
-          <a href="contato.html"><li>Contato</li></a>
-        </ul>
-      </nav>
-    </header>
+    <div class="menu-center-icon">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="menu-links right-links">
+      <a href="projetos.html" class="nav-item"><i class="fas fa-project-diagram"></i> Projetos</a>
+      <a href="contato.html" class="nav-item"><i class="fas fa-envelope"></i> Contato</a>
+    </div>
+
+  </nav>
+
+<div class="theme-floater" onclick="toggleTheme()">
+  <i class="fas fa-moon" id="theme-icon"></i>
+</div>
     
     <main>
 
   <section id="proj-hero">
+    <div class="hero-bg-overlay"></div>
+
     <div class="proj-hero-content">
-      <span class="badge-gold">Soluções & Portfólio</span>
-      <h1>Transformando Dados em <span style="color: #C6A46E;">Decisões</span></h1>
+      <span class="badge-gold">Catálogo de Soluções</span>
+      
+      <h1>
+        Soluções de <span style="color: var(--accent-color);">Impacto Real</span>
+      </h1>
+      
       <p>
-        Não entrego apenas códigos ou gráficos. Entrego <strong>clareza estratégica</strong> e <strong>eficiência operacional</strong>. 
-        Veja como posso ajudar seu negócio a sair do "achismo" e ir para a certeza baseada em dados.
+        Este portfólio vai além do código. Aqui apresento cases práticos onde utilizei a inteligência de dados para <strong>automatizar rotinas manuais</strong>, reduzir custos e eliminar a incerteza da tomada de decisão.
       </p>
-      <a href="#portfolio" class="btn-scroll-down">
-        Ver Projetos <i class="fas fa-arrow-down"></i>
-      </a>
+      
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn-scroll-down">
+           Explorar Cases <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -57,16 +73,28 @@
         <div class="carousel-slide">
           <div class="service-card">
             <div class="icon-box"><i class="fas fa-chart-pie"></i></div>
-            <h3>BI & Dashboards</h3>
-            <p>Criação de painéis interativos no Power BI para monitoramento de KPIs em tempo real, eliminando relatórios manuais e estáticos.</p>
+            <h3>Business Intelligence</h3>
+            <p>Transformação de dados complexos em painéis visuais intuitivos. Foco em storytelling de dados para facilitar a tomada de decisão estratégica.</p>
+            
+            <div class="service-tags">
+              <span>Power BI</span>
+              <span>DAX</span>
+              <span>Storytelling</span>
+            </div>
           </div>
         </div>
         
         <div class="carousel-slide">
           <div class="service-card">
-            <div class="icon-box"><i class="fas fa-cogs"></i></div>
+            <div class="icon-box"><i class="fas fa-robot"></i></div>
             <h3>Automação de Processos</h3>
-            <p>Uso de Python e Power Automate para substituir tarefas repetitivas por fluxos automáticos, economizando horas da equipe.</p>
+            <p>Substituição de tarefas manuais e repetitivas por robôs inteligentes. Redução de erros humanos e economia de horas operacionais.</p>
+            
+            <div class="service-tags">
+              <span>Python</span>
+              <span>Selenium</span>
+              <span>Power Automate</span>
+            </div>
           </div>
         </div>
 
@@ -74,7 +102,13 @@
           <div class="service-card">
             <div class="icon-box"><i class="fas fa-database"></i></div>
             <h3>Engenharia de Dados</h3>
-            <p>Limpeza, tratamento (ETL) e modelagem de dados brutos. Transformo planilhas bagunçadas em bases de dados confiáveis (SQL).</p>
+            <p>Construção de pipelines (ETL) robustos. Garanto que o dado saia da fonte e chegue ao analista limpo, tratado e confiável.</p>
+            
+            <div class="service-tags">
+              <span>SQL</span>
+              <span>ETL/ELT</span>
+              <span>Modelagem</span>
+            </div>
           </div>
         </div>
 
@@ -91,37 +125,65 @@
 
   <section id="work-process">
     <div class="section-header">
-      <h2>Como Eu Trabalho</h2>
-      <p>Metodologia clara para garantir entregas assertivas.</p>
+      <h2>Metodologia & Pipeline</h2>
+      <p>Do entendimento do negócio à entrega de valor: meu fluxo de trabalho ponta a ponta.</p>
     </div>
 
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-number">01</div>
-        <h3>Entendimento</h3>
-        <p>Mapeio a dor do negócio e defino as perguntas que os dados precisam responder.</p>
-      </div>
-      <div class="step-line"></div>
-      
-      <div class="step">
-        <div class="step-number">02</div>
-        <h3>Coleta & ETL</h3>
-        <p>Extraio dados de múltiplas fontes e faço a limpeza para garantir qualidade.</p>
-      </div>
-      <div class="step-line"></div>
+    <div class="process-container">
+      <div class="process-line"></div>
 
-      <div class="step">
-        <div class="step-number">03</div>
-        <h3>Análise</h3>
-        <p>Aplico estatística e lógica de negócio para encontrar padrões e insights.</p>
+      <div class="process-card">
+        <div class="process-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <div class="process-content">
+          <h3>1. Estratégia</h3>
+          <h4>Business Understanding</h4>
+          <p>
+            Mapeamento da dor do negócio. Defino quais perguntas precisam ser respondidas e quais KPIs indicam sucesso antes de escrever uma linha de código.
+          </p>
+        </div>
       </div>
-      <div class="step-line"></div>
 
-      <div class="step">
-        <div class="step-number">04</div>
-        <h3>Visualização</h3>
-        <p>Entrega de dashboards intuitivos e storytelling para a tomada de decisão.</p>
+      <div class="process-card">
+        <div class="process-icon">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <div class="process-content">
+          <h3>2. Engenharia</h3>
+          <h4>ETL & Data Prep</h4>
+          <p>
+            Extração de múltiplas fontes (API, SQL, Excel), limpeza e tratamento dos dados. Garanto a integridade e a arquitetura para performance.
+          </p>
+        </div>
       </div>
+
+      <div class="process-card">
+        <div class="process-icon">
+          <i class="fas fa-brain"></i>
+        </div>
+        <div class="process-content">
+          <h3>3. Inteligência</h3>
+          <h4>Analysis & Modeling</h4>
+          <p>
+            Aplicação de regras de negócio, estatística descritiva e algoritmos (Python/DAX) para descobrir padrões ocultos e tendências.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-card">
+        <div class="process-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <div class="process-content">
+          <h3>4. Entrega</h3>
+          <h4>Actionable Insights</h4>
+          <p>
+            Criação de dashboards intuitivos e storytelling. O foco não é o gráfico, mas a decisão que o gestor tomará ao olhar para ele.
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -129,38 +191,41 @@
 
   <section id="portfolio">
     <div class="portfolio-header">
-      <h2>Projetos em Destaque</h2>
+      <h2>Catálogo de Soluções</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 20px;">Navegue pelos projetos focados em resolver problemas reais.</p>
       
       <div class="filter-buttons">
         <button class="filter-btn active" data-filter="all">Todos</button>
         <button class="filter-btn" data-filter="powerbi">Power BI</button>
-        <button class="filter-btn" data-filter="python">Python/Automação</button>
-        <button class="filter-btn" data-filter="sql">SQL/Dados</button>
+        <button class="filter-btn" data-filter="python">Automação (Python)</button>
+        <button class="filter-btn" data-filter="sql">Engenharia de Dados</button>
       </div>
     </div>
 
     <div class="projects-grid">
 
       <div class="project-card" data-category="python">
-        <div class="project-img">
-          <i class="fab fa-python"></i>
-        </div>
+        <div class="project-thumb">
+            <div class="thumb-placeholder python-bg">
+                <i class="fab fa-python"></i>
+            </div>
+            </div>
+        
         <div class="project-info">
-          <div class="project-cat">Automação & DevOps</div>
+          <div class="project-cat">Automação & RPA</div>
           <h3>Automação de Relatórios Corporativos</h3>
           <p>
-            Sistema automatizado que gerencia o ciclo de envio de relatórios semanais e lembretes para equipes técnicas. 
-            Utiliza agendamento preciso (Cron jobs), logs de execução e variáveis de ambiente para segurança.
+            Eliminação de tarefas manuais repetitivas. Script que orquestra a coleta de arquivos em rede, valida dados e realiza disparos via SMTP com logs de auditoria.
           </p>
           
           <div class="tech-stack">
-            <span>Python</span>
-            <span>Schedule</span>
-            <span>SMTP</span>
+            <span><i class="fab fa-python"></i> Python</span>
+            <span><i class="fas fa-clock"></i> Schedule</span>
+            <span><i class="fas fa-server"></i> SMTP</span>
           </div>
           
           <div class="project-links">
-            <a href="https://github.com/danilo-vinicius/Envio_de_email_automatico" target="_blank">
+            <a href="https://github.com/danilo-vinicius/Envio_de_email_automatico" target="_blank" class="btn-link">
                 <i class="fab fa-github"></i> Ver Código
             </a>
           </div>
@@ -168,77 +233,49 @@
       </div>
       
       <div class="project-card" data-category="powerbi">
-        <div class="project-img">
-          <i class="fas fa-chart-line"></i> 
+        <div class="project-thumb">
+            <div class="thumb-placeholder pbi-bg">
+                <i class="fas fa-chart-pie"></i>
+            </div>
         </div>
+        
         <div class="project-info">
           <div class="project-cat">Business Intelligence</div>
-          <h3>Dashboard de Vendas Corporativo</h3>
-          <p>Painel para acompanhamento de metas e performance de vendedores, integrando 3 fontes de dados diferentes.</p>
+          <h3>Revenue Intelligence: Vendas</h3>
+          <p>
+            Painel estratégico para monitoramento de ticket médio e performance comercial. Inclui análise temporal (YoY) e segmentação de clientes.
+          </p>
           <div class="tech-stack">
-            <span>Power BI</span>
-            <span>DAX</span>
-            <span>Excel</span>
+            <span><i class="fas fa-chart-bar"></i> Power BI</span>
+            <span><i class="fas fa-calculator"></i> DAX</span>
+            <span><i class="fas fa-table"></i> Modelagem Star</span>
           </div>
           <div class="project-links">
-            <a href="#" target="_blank"><i class="fas fa-eye"></i> Ver Live</a>
-            <a href="#" target="_blank"><i class="fab fa-github"></i> Repositório</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="python">
-        <div class="project-img">
-          <i class="fab fa-python"></i>
-        </div>
-        <div class="project-info">
-          <div class="project-cat">Automação</div>
-          <h3>Bot de Envio de Relatórios</h3>
-          <p>Script Python que processa planilhas financeiras e envia e-mails automáticos personalizados para cada gestor.</p>
-          <div class="tech-stack">
-            <span>Python</span>
-            <span>Pandas</span>
-            <span>SMTP</span>
-          </div>
-          <div class="project-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i> Ver Código</a>
+            <a href="#" target="_blank" class="btn-link"><i class="fas fa-play-circle"></i> Demo Online</a>
+            <a href="#" target="_blank" class="btn-link sec"><i class="fab fa-github"></i> Docs</a>
           </div>
         </div>
       </div>
 
       <div class="project-card" data-category="sql">
-        <div class="project-img">
-          <i class="fas fa-database"></i>
+        <div class="project-thumb">
+             <div class="thumb-placeholder sql-bg">
+                <i class="fas fa-database"></i>
+            </div>
         </div>
         <div class="project-info">
           <div class="project-cat">Engenharia de Dados</div>
-          <h3>Modelagem de Banco de Dados RH</h3>
-          <p>Criação de um Data Warehouse para setor de RH, permitindo análise histórica de turnover e contratações.</p>
+          <h3>Data Warehouse de RH</h3>
+          <p>
+            Modelagem de banco de dados analítico para o setor de RH. Estruturação de tabelas fato e dimensão para análise histórica de turnover.
+          </p>
           <div class="tech-stack">
-            <span>SQL</span>
-            <span>PostgreSQL</span>
-            <span>ETL</span>
+            <span><i class="fas fa-database"></i> SQL</span>
+            <span><i class="fas fa-project-diagram"></i> PostgreSQL</span>
+            <span><i class="fas fa-filter"></i> ETL</span>
           </div>
           <div class="project-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i> Ver Schema</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="powerbi">
-        <div class="project-img">
-          <i class="fas fa-map-marked-alt"></i>
-        </div>
-        <div class="project-info">
-          <div class="project-cat">Business Intelligence</div>
-          <h3>Mapa de Segurança Logística</h3>
-          <p>Dashboard geoespacial para monitoramento de frotas e incidentes de segurança em tempo real.</p>
-          <div class="tech-stack">
-            <span>Power BI</span>
-            <span>GeoJSON</span>
-          </div>
-          <div class="project-links">
-            <a href="#" target="_blank"><i class="fas fa-eye"></i> Ver Live</a>
+            <a href="#" target="_blank" class="btn-link"><i class="fab fa-github"></i> Ver Schema SQL</a>
           </div>
         </div>
       </div>
@@ -247,10 +284,8 @@
   </section>
 
 </main>
+    <script src="https://unpkg.com/scrollreveal"></script>
     
     <script src="script.js"></script>
   </body>
 </html>
-
-
-
