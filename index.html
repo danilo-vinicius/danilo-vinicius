@@ -10,23 +10,31 @@
   </head>
   <body>
     
-    <header>
-      <nav id="navbar">
-        <div class="nav-logo">
-          <a href="https://danilo-vinicius.github.io/danilo-vinicius/">DV <span style="color: #C6A46E;">|</span> Data Analyst</a>
-        </div>
+    <div class="fixed-logo">
+    <a href="index.html">DV <span class="logo-accent">|</span> Data Analyst</a>
+  </div>
 
-        <div class="mobile-menu-icon" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
+  <nav class="floating-menu">
+    
+    <div class="menu-links left-links">
+      <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+      <a href="portifolio/Code/sobre.html" class="nav-item"><i class="fas fa-user"></i> Sobre</a>
+    </div>
 
-        <ul class="nav-links">
-          <a href="portifolio/Code/sobre.html"><li>Sobre</li></a>
-          <a href="portifolio/Code/projetos.html"><li>Projetos</li></a>
-          <a href="portifolio/Code/contato.html"><li>Contato</li></a>
-        </ul>
-      </nav>
-    </header>
+    <div class="menu-center-icon">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="menu-links right-links">
+      <a href="portifolio/Code/projetos.html" class="nav-item"><i class="fas fa-project-diagram"></i> Projetos</a>
+      <a href="portifolio/Code/contato.html" class="nav-item"><i class="fas fa-envelope"></i> Contato</a>
+    </div>
+
+  </nav>
+
+<div class="theme-floater" onclick="toggleTheme()">
+  <i class="fas fa-moon" id="theme-icon"></i>
+</div>
     
     <main>
   
@@ -36,7 +44,7 @@
     <div class="hero-content">
       
       <div class="badge-gold">
-        Business Intelligence & Tech
+        Data Scientist & BI Specialist
       </div>
 
       <h1>
@@ -48,16 +56,16 @@
       </h2>
 
       <p class="hero-description">
-        Conecto o mundo do <strong>Suporte Técnico</strong> à <strong>Ciência de Dados</strong>. 
-        Transformo problemas operacionais em soluções automatizadas e dados brutos em inteligência estratégica.
+        Transformo volumes complexos de dados em <strong>decisões estratégicas</strong>. 
+        Com foco em <strong>Engenharia de Dados</strong> e <strong>Business Intelligence</strong>, ajudo empresas a automatizar processos manuais e descobrir padrões ocultos para maximizar resultados.
       </p>
 
       <div class="hero-buttons">
-        <a href="portifolio/Code/projetos.html" class="btn-primary-lg">
-          <i class="fas fa-layer-group"></i> Ver Portfólio
+        <a href="projetos.html" class="btn-primary-lg">
+          <i class="fas fa-chart-line"></i> Ver Portfólio de Dados
         </a>
-        <a href="portifolio/Code/sobre.html" class="btn-outline-lg">
-          Conhecer Trajetória
+        <a href="sobre.html" class="btn-outline-lg">
+          Sobre Mim
         </a>
       </div>
 
@@ -65,23 +73,21 @@
 
     <div class="tech-ticker-wrapper">
       <p class="ticker-label">Tech Stack:</p>
-      <div class="tech-ticker">
-        <div class="ticker-track">
+      <div class="ticker-track">
           <span><i class="fab fa-python"></i> Python</span>
-          <span><i class="fas fa-database"></i> SQL</span>
-          <span><i class="fas fa-chart-bar"></i> Power BI</span>
-          <span><i class="fas fa-robot"></i> Power Automate</span>
-          <span><i class="fas fa-file-excel"></i> Excel Avançado</span>
+          <span><i class="fas fa-database"></i> SQL & ETL</span>
+          <span><i class="fas fa-chart-bar"></i> Power BI & DAX</span>
+          <span><i class="fas fa-robot"></i> Automação</span>
+          <span><i class="fas fa-brain"></i> Machine Learning</span>
           <span><i class="fab fa-git-alt"></i> Git</span>
           
-          <span><i class="fab fa-python"></i> Python</span>
-          <span><i class="fas fa-database"></i> SQL</span>
-          <span><i class="fas fa-chart-bar"></i> Power BI</span>
-          <span><i class="fas fa-robot"></i> Power Automate</span>
-          <span><i class="fas fa-file-excel"></i> Excel Avançado</span>
-          <span><i class="fab fa-git-alt"></i> Git</span>
+          <span><i class="fab fa-python"></i> Pandas/NumPy</span>
+          <span><i class="fas fa-database"></i> SQL & ETL</span>
+          <span><i class="fas fa-chart-bar"></i> Power BI & DAX</span>
+          <span><i class="fas fa-robot"></i> Automação</span>
+          <span><i class="fas fa-brain"></i> Machine Learning</span>
+          <span><i class="fab fa-git-alt"></i> GitHub</span>
         </div>
-      </div>
     </div>
   </section>
 
@@ -90,11 +96,3 @@
     <script src="portifolio/Code/script.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
