@@ -211,36 +211,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* =========================================
-   MENU MOBILE (DROPDOWN LOGIC)
+   5. FUNÇÕES GLOBAIS (FORA DO DOMContentLoaded)
    ========================================= */
-const menuContainer = document.querySelector('.floating-menu');
-const menuIcon = document.querySelector('.menu-center-icon');
 
-if (menuIcon) {
-    menuIcon.addEventListener('click', (e) => {
-        // Previne que o clique propague e feche imediatamente
-        e.stopPropagation();
-        menuContainer.classList.toggle('active');
-    });
-}
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const menuIcon = document.querySelector('.mobile-menu-icon i');
 
-// Fecha o menu ao clicar em qualquer lugar fora dele
-document.addEventListener('click', (e) => {
-    if (menuContainer && menuContainer.classList.contains('active')) {
-        // Se o clique NÃO foi dentro do menu, fecha
-        if (!menuContainer.contains(e.target)) {
-            menuContainer.classList.remove('active');
+    if (navLinks) {
+        navLinks.classList.toggle('active');
+        
+        if (menuIcon) {
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
         }
     }
-});
-
-// Fecha o menu ao clicar em um link (para navegar)
-const navLinksMobile = document.querySelectorAll('.nav-item');
-navLinksMobile.forEach(link => {
-    link.addEventListener('click', () => {
-        if (menuContainer) menuContainer.classList.remove('active');
-    });
-});
+}
 
 /* =========================================
    7. SCROLL REVEAL (Animações ao Rolar)
@@ -376,4 +367,3 @@ document.addEventListener('click', (e) => {
         toggleMenu();
     }
 });
-
