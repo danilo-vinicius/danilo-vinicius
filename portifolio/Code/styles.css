@@ -126,13 +126,48 @@ a { text-decoration: none; transition: 0.3s; }
 #theme-icon:hover { transform: rotate(20deg) scale(1.1); }
 
 /* =========================================
-   2. MENU FLUTUANTE (Dynamic Island Desktop)
+   2. NAVEGAÇÃO "DYNAMIC ISLAND" (Menu Flutuante)
    ========================================= */
+
+/* --- 1. LOGO FIXA (Superior Esquerda) --- */
+.fixed-logo {
+    position: fixed;
+    top: 10px;
+    left: 30px;
+    z-index: 1001; /* Acima de tudo */
+    background: var(--nav-bg); /* Vidro fosco */
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(198, 164, 110, 0.2);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s;
+}
+
+.fixed-logo a {
+    font-size: 1.0rem;
+    font-weight: 700;
+    color: var(--text-title);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.fixed-logo:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+}
+
+.logo-accent {
+    color: var(--accent-color);
+    font-weight: 300;
+}
+
+/* --- 2. MENU FLUTUANTE (Centro) --- */
 .floating-menu {
     position: fixed;
-    top: 25px;
+    top: 15px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); /* Centraliza na tela */
     z-index: 1000;
     
     display: flex;
@@ -146,160 +181,161 @@ a { text-decoration: none; transition: 0.3s; }
     padding: 5px;
     
     box-shadow: 0 10px 25px var(--shadow-color);
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                border-color 0.3s, padding 0.3s;
     
-    width: 60px; /* Fechado */
-    height: 60px;
+    /* Transições suaves */
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.3s, 
+                padding 0.3s;
+    
+    /* Tamanho inicial (fechado) */
+    width: 45px;
+    height: 45px;
     overflow: hidden;
 }
 
-/* Hover Desktop: Abre a Ilha */
+/* O Estado HOVER (Expandir) */
 .floating-menu:hover {
-    width: 600px;
-    padding: 0 20px;
+    width: 620px; /* Largura suficiente para não quebrar o layout */
+    padding: 0 10px;
     border-color: var(--accent-color);
 }
 
-/* Ícone Central */
+/* Ícone Central (Hambúrguer) - Fixo no Meio */
 .menu-center-icon {
-    position: absolute; /* Fica sempre no centro */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    /* Impede que o ícone encolha ou estique */
+    flex: 0 0 45px; 
+    height: 45px;
     
-    width: 50px; height: 50px;
-    display: flex; justify-content: center; align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     font-size: 1.5rem;
     color: var(--accent-color);
     background: var(--bg-solid);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 10;
-    transition: 0.4s;
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    
+    /* Garante que fique acima */
+    z-index: 5;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .floating-menu:hover .menu-center-icon {
     background: var(--accent-color);
     color: var(--bg-solid);
-    transform: translate(-50%, -50%) rotate(90deg);
+    transform: rotate(90deg);
 }
 
-/* Container dos Links */
+/* Containers dos Links (A Mágica da Simetria) */
 .menu-links {
+    /* flex: 1 faz com que ambos os lados ocupem espaço IGUAL */
+    flex: 1; 
     display: flex;
-    width: 100%;
-    justify-content: space-between;
     align-items: center;
+    gap: 15px;
+    
+    /* Escondido inicialmente */
     opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none; /* Não clica quando fechado */
+    max-width: 0; 
+    overflow: hidden;
+    white-space: nowrap; /* Impede texto de quebrar */
+    
+    transition: opacity 0.3s ease-in, max-width 0.5s ease-out;
 }
 
+/* Mostrar links ao passar o mouse */
 .floating-menu:hover .menu-links {
     opacity: 1;
-    pointer-events: auto;
+    max-width: 300px; /* Permite crescer */
     transition-delay: 0.1s;
 }
 
-/* Grupos de Links (Esq/Dir) */
-.left-group, .right-group {
-    display: flex;
-    gap: 15px;
+/* Lado Esquerdo - Alinha itens perto do ícone (Direita) */
+.left-links {
+    justify-content: flex-end; 
+    padding-right: 20px; /* Espaço entre texto e ícone central */
 }
 
-.left-group { margin-right: auto; padding-right: 40px; } /* Espaço pro ícone */
-.right-group { margin-left: auto; padding-left: 40px; }
+/* Lado Direito - Alinha itens perto do ícone (Esquerda) */
+.right-links {
+    justify-content: flex-start;
+    padding-left: 20px; /* Espaço entre texto e ícone central */
+}
 
+/* --- FORMATAÇÃO DOS LINKS (Correção Visual) --- */
 .nav-item {
-    color: var(--text-primary);
+    color: var(--text-primary) !important; /* Força a cor certa */
     font-weight: 600;
     font-size: 1rem;
-    padding: 8px 12px;
-    border-radius: 20px;
-    display: flex; align-items: center; gap: 8px;
-    white-space: nowrap;
+    padding: 8px 15px;
+    border-radius: 30px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
 }
-.nav-item:hover { background: rgba(198, 164, 110, 0.15); color: var(--accent-color); }
-.nav-item i { color: var(--accent-color); }
+
+.nav-item i {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+}
+
+/* Efeito Hover nos itens individuais */
+.nav-item:hover {
+    background: rgba(198, 164, 110, 0.15);
+    color: var(--accent-color) !important;
+    transform: translateY(-2px);
+}
+
+/* Correção para o botão de Contato dentro do menu */
+.btn-contact {
+    border: 1px solid var(--accent-color);
+    padding: 6px 18px !important;
+}
+.btn-contact:hover {
+    background: var(--accent-color);
+    color: var(--bg-solid) !important;
+}
 
 
-/* =========================================
-   RESPONSIVIDADE (MOBILE DROPDOWN)
-   ========================================= */
-@media screen and (max-width: 768px) {
+/* --- 3. BOTÃO DE TEMA FLUTUANTE (Superior Direito) --- */
+.theme-floater {
+    position: fixed;
+    top: 10px;   /* Mesma altura da Logo */
+    right: 30px; /* Canto Direito */
+    z-index: 1002;
     
-    /* Zera a posição fixa do Desktop */
-    .floating-menu {
-        top: 20px;
-        right: 20px;
-        left: auto;
-        transform: none;
-        width: 45px; height: 45px;
-        background: transparent;
-        border: none; box-shadow: none;
-        overflow: visible; /* Permite dropdown sair */
-    }
+    width: 45px;
+    height: 45px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(198, 164, 110, 0.2); /* Borda sutil igual à logo */
+    border-radius: 50%;
     
-    .floating-menu:hover { width: 45px; padding: 0; } /* Desativa hover */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: 0.3s;
+}
 
-    /* Ícone vira botão de menu */
-    .menu-center-icon {
-        position: relative; /* Volta ao fluxo normal */
-        left: auto; top: auto;
-        transform: none;
-        width: 45px; height: 45px;
-        border: 1px solid rgba(198, 164, 110, 0.3);
-        background: var(--nav-bg);
-    }
-    
-    /* Quando ativo (clicado) */
-    .floating-menu.active .menu-center-icon {
-        background: var(--accent-color);
-        color: var(--bg-solid);
-        transform: rotate(90deg);
-    }
+.theme-floater i {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    transition: transform 0.5s;
+}
 
-    /* Dropdown Mobile */
-    .menu-links {
-        position: absolute;
-        top: 60px; right: 0;
-        width: 200px;
-        flex-direction: column;
-        background: var(--nav-bg);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--border-color);
-        border-radius: 15px;
-        padding: 15px;
-        box-shadow: 0 10px 30px var(--shadow-color);
-        
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    }
+.theme-floater:hover {
+    transform: scale(1.1); /* Efeito de zoom leve */
+    border-color: var(--accent-color);
+}
 
-    /* Mostra quando ativo */
-    .floating-menu.active .menu-links {
-        opacity: 1; visibility: visible; transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    /* Ajusta os grupos para ficarem verticais */
-    .left-group, .right-group {
-        flex-direction: column;
-        width: 100%;
-        gap: 5px;
-        padding: 0; margin: 0;
-    }
-    
-    .nav-item { width: 100%; border-radius: 8px; justify-content: flex-start; }
-    
-    /* Oculta logo central no mobile se quiser, ou ajusta */
-    .fixed-logo { top: 20px; left: 20px; transform: none; width: auto; }
-    .theme-floater { top: 20px; right: 80px; }
+.theme-floater:hover i {
+    transform: rotate(30deg); /* Gira levemente a lua/sol */
 }
 
 /* =========================================
@@ -318,6 +354,127 @@ a { text-decoration: none; transition: 0.3s; }
     transform: translateY(-150%); /* Joga para cima da tela */
 }
 
+/* =========================================
+   RESPONSIVIDADE (MOBILE FIX)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    
+    /* --- 1. LOGO CENTRALIZADA E ESTÁVEL --- */
+    .fixed-logo {
+        left: 50%;
+        top: 20px;
+        /* Centraliza perfeitamente */
+        transform: translateX(-50%); 
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        width: max-content; /* Garante que a largura seja apenas o conteúdo */
+    }
+
+    /* CORREÇÃO DO BUG: Mantém o translate ao dar zoom */
+    .fixed-logo:hover {
+        transform: translateX(-50%) scale(1.05); 
+        border-color: var(--accent-color);
+    }
+
+    /* --- 2. BOTÃO TEMA (TOPO DIREITO) --- */
+    .theme-floater {
+        top: 20px;      /* Mesma altura da logo */
+        right: 20px;    /* Cola na direita */
+        left: auto;     /* Garante que não obedeça regras de esquerda */
+        bottom: auto;   /* Garante que não vá para baixo */
+        
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-floater i { font-size: 1rem; }
+
+    /* --- 3. MENU INFERIOR (APP BAR) --- */
+    .floating-menu {
+        top: auto;          /* Remove topo */
+        bottom: 20px;       /* Cola embaixo */
+        left: 50%;
+        transform: translateX(-50%);
+        
+        width: 90%;         /* Ocupa quase toda a largura */
+        height: 65px;       /* Altura fixa confortável para o dedo */
+        border-radius: 20px;
+        padding: 0 10px;
+        
+        /* Remove animações de largura do desktop */
+        transition: bottom 0.3s ease; 
+        overflow: visible; /* Permite ver sombras/glows */
+    }
+
+    /* Desativa a expansão de hover do desktop */
+    .floating-menu:hover {
+        width: 90%;
+        padding: 0 10px;
+    }
+
+    /* ESCONDE O ÍCONE HAMBÚRGUER NO MOBILE */
+    .menu-center-icon {
+        display: none; 
+    }
+
+    /* FORÇA OS LINKS A APARECEREM SEMPRE */
+    .menu-links {
+        opacity: 1;
+        width: 100%;
+        max-width: none; /* Remove limite de largura */
+        gap: 0;
+        overflow: visible;
+    }
+
+    /* Remove os paddings laterais que empurravam o texto no desktop */
+    .left-links {
+        padding-right: 0;
+        justify-content: space-evenly; /* Distribui igualmente */
+    }
+
+    .right-links {
+        padding-left: 0;
+        justify-content: space-evenly; /* Distribui igualmente */
+    }
+
+    /* Estilo dos Ícones no Mobile */
+    .nav-item {
+        flex-direction: column; /* Ícone em cima, texto embaixo */
+        font-size: 0.7rem;
+        padding: 5px 10px;
+        gap: 4px;
+        background: transparent !important; /* Remove fundo de hover */
+    }
+
+    .nav-item i {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+    
+    /* Remove o translateY do hover no mobile para não pular */
+    .nav-item:hover {
+        transform: none;
+    }
+
+    /* --- 4. LOGICA DE ESCONDER (SMART HIDE) NO MOBILE --- */
+    
+    /* Logo e Tema sobem para sumir */
+    .fixed-logo.nav-hidden, 
+    .theme-floater.nav-hidden {
+        transform: translateY(-150%) translateX(0); /* Ajuste para manter centralização da logo se necessário */
+    }
+    
+    /* Correção específica para a logo não perder o eixo X ao esconder */
+    .fixed-logo.nav-hidden {
+        transform: translateY(-150%) translateX(-50%);
+    }
+
+    /* Menu desce para sumir */
+    .floating-menu.nav-hidden {
+        transform: translateY(150%) translateX(-50%); /* Mantém eixo X centralizado */
+        bottom: 20px;
+    }
+}
 
 /* =========================================
    MAGIC BORDER EFFECT (LOGO, MENU, TEMA)
@@ -2022,6 +2179,3 @@ footer h4 { color: var(--accent-color); font-size: 0.9rem; margin: 0; }
     .step { display: flex; text-align: left; align-items: center; gap: 15px; width: 100%; padding: 0; }
     .step-number { margin: 0; min-width: 50px; height: 50px; font-size: 1rem; }
 }
-
-
-
