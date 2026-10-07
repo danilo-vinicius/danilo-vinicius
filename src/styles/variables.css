@@ -1,0 +1,54 @@
+/* =========================================
+   VARIÁVEIS DE TEMA (DARK / LIGHT)
+   ========================================= */
+
+:root {
+    /* --- TEMA ESCURO (PADRÃO) --- */
+    --bg-gradient: linear-gradient(135deg, #1F2A44 0%, #161e31 100%);
+    --bg-solid: #1F2A44;         /* Usado em Footer, Navbar */
+    --bg-card: #2E2E2E;          /* Cards */
+    --bg-card-hover: #161e31;    /* Hovers */
+    --text-primary: #E6E6E6;     /* Texto principal */
+    --text-secondary: #a0a0a0;   /* Texto secundário */
+    --text-title: #F9F9F9;       /* Títulos */
+    --accent-color: #C6A46E;     /* Dourado */
+    --nav-bg: rgba(31, 42, 68, 0.95);
+    --border-color: #333;
+    --shadow-color: rgba(0,0,0,0.4);
+    --timeline-line: #333;
+    --bg-overlay: linear-gradient(rgba(198, 164, 110, 0.05) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(198, 164, 110, 0.05) 1px, transparent 1px);
+}
+
+/* --- TEMA CLARO (PREMIUM CLEAN) --- */
+body.light-mode {
+    /* Fundo: Um branco gelo sutil, mais limpo */
+    --bg-gradient: linear-gradient(135deg, #efefef 0%, #F3F4F6 100%);
+    
+    /* Elementos Sólidos */
+    --bg-solid: #FFFFFF;
+    
+    /* Cards: Branco puro para destacar do fundo gelo */
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #F9FAFB; /* Cinza ultra leve no hover */
+    
+    /* Tipografia: Azul Marinho Profundo (quase preto) para leitura perfeita */
+    --text-primary: #1F2937; 
+    --text-secondary: #4B5563;
+    --text-title: #111827;
+    
+    /* Acento: Um dourado levemente mais escuro/bronze para não sumir no branco */
+    --accent-color: #B4925A; 
+    
+    /* Navbar: Branco vidro */
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    
+    /* Bordas e Sombras: O segredo do design clean */
+    --border-color: #E5E7EB; /* Cinza bem claro */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra suave e difusa */
+    --timeline-line: #D1D5DB;
+    
+    /* Grid: Azul marinho super transparente (3%) */
+    --bg-overlay: linear-gradient(rgba(31, 42, 68, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(31, 42, 68, 0.1) 1px, transparent 1px);
+}

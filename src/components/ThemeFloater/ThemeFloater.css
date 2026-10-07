@@ -1,0 +1,53 @@
+/* --- BOTÃO DE TEMA FLUTUANTE --- */
+.theme-floater {
+    position: fixed;
+    top: 10px;   /* Mesma altura da Logo */
+    right: 30px; /* Canto Direito */
+    z-index: 1002;
+    
+    width: 45px;
+    height: 45px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(198, 164, 110, 0.2); /* Borda sutil */
+    border-radius: 50%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: 0.3s;
+}
+
+.theme-floater i,
+.theme-floater svg {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    transition: transform 0.5s;
+}
+
+.theme-floater:hover {
+    transform: scale(1.1);
+    border-color: var(--accent-color);
+}
+
+.theme-floater:hover i,
+.theme-floater:hover svg {
+    transform: rotate(30deg);
+}
+
+/* RESPONSIVIDADE MOBILE */
+@media screen and (max-width: 768px) {
+    .theme-floater {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-floater i,
+    .theme-floater svg {
+        font-size: 1rem;
+    }
+}
