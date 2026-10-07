@@ -1,5 +1,5 @@
 /* =========================================
-   PROJETOS PAGE STYLES
+   PROJETOS PAGE STYLES (CLEAN & PROFESSIONAL)
    ========================================= */
 
 .projetos-page {
@@ -9,19 +9,14 @@
 
 #proj-hero {
     position: relative;
-    min-height: 70vh;
+    min-height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background: var(--bg-gradient);
-    padding: 100px 20px 60px;
+    padding: 120px 20px 60px;
     overflow: hidden;
-}
-
-#proj-hero .hero-bg-overlay {
-    z-index: 0;
-    opacity: 0.4;
 }
 
 .proj-hero-content {
@@ -36,13 +31,14 @@
     color: var(--text-title);
     line-height: 1.15;
     font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 #proj-hero p {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
     margin-bottom: 40px;
-    line-height: 1.6;
+    line-height: 1.65;
     max-width: 720px;
     margin-left: auto;
     margin-right: auto;
@@ -54,19 +50,17 @@
 
 .btn-scroll-down {
     color: var(--accent-color);
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1rem;
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    animation: bounce 2s infinite;
     cursor: pointer;
+    transition: opacity 0.2s ease;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+.btn-scroll-down:hover {
+    opacity: 0.8;
 }
 
 /* Services Section */
@@ -115,79 +109,69 @@
     top: 40px;
     left: 50px;
     right: 50px;
-    height: 4px;
+    height: 2px;
     z-index: 0;
-    border-radius: 4px;
-    background: linear-gradient(90deg, 
-        var(--border-color) 0%, 
-        var(--accent-color) 50%, 
-        var(--border-color) 100%);
-    opacity: 0.3;
+    background: var(--border-color);
+    opacity: 0.6;
 }
 
 .process-card {
     flex: 1;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 30px 20px;
     text-align: center;
     position: relative;
     z-index: 1;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 280px;
+    min-height: 260px;
 }
 
 .process-card:hover {
-    transform: translateY(-12px);
     border-color: var(--accent-color);
-    box-shadow: 0 15px 30px -10px var(--shadow-color);
 }
 
 .process-icon {
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     background: var(--bg-solid);
-    border: 2px solid var(--accent-color);
+    border: 1px solid var(--border-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     color: var(--accent-color);
     margin-bottom: 20px;
-    box-shadow: 0 0 0 10px var(--bg-solid);
-    transition: all 0.4s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .process-card:hover .process-icon {
-    background: var(--accent-color);
-    color: var(--bg-solid);
-    transform: rotate(360deg);
-    box-shadow: 0 0 20px var(--accent-color);
+    border-color: var(--accent-color);
 }
 
 .process-content h3 {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: var(--accent-color);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .process-content h4 {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text-title);
-    margin: 5px 0 15px 0;
+    margin: 5px 0 12px 0;
     font-weight: 600;
 }
 
 .process-content p {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-secondary);
     line-height: 1.6;
 }
@@ -224,7 +208,7 @@
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
+    gap: 30px;
     padding-bottom: 30px;
 }
 
@@ -241,16 +225,16 @@
     .process-container {
         flex-direction: column;
         align-items: center;
-        gap: 30px;
+        gap: 25px;
     }
 
     .process-line {
-        width: 4px;
+        width: 2px;
         height: 100%;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        background: linear-gradient(180deg, var(--border-color), var(--accent-color));
+        background: var(--border-color);
     }
 
     .process-card {

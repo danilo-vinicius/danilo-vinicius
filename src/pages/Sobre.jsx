@@ -33,20 +33,12 @@ export const Sobre = () => {
 
           <div className="hero-text">
             <span className="badge-gold">Data Scientist & BI Analyst</span>
-            <h1>Dados: A base da minha trajetória</h1>
+            <h1>Construindo inteligência através dos dados</h1>
             <p>
-              Minha carreira não migrou para a área de dados, ela{' '}
-              <strong>começou nos dados</strong>. Iniciei na <strong>EBSERH</strong>{' '}
-              transformando bases brutas em indicadores de progresso educacional e elevei
-              o nível de complexidade atuando com BI estratégico na{' '}
-              <strong>Presidência da República</strong>.
+              Especialista em <strong>Engenharia de Dados</strong> e <strong>Business Intelligence</strong> com trajetória profissional focada em transformar volumes complexos de informação em valor estratégico. Iniciei na <strong>EBSERH</strong> transformando bases brutas em indicadores operacionais e consolidei a atuação com BI na <strong>Presidência da República</strong>.
             </p>
             <p>
-              Hoje, na <strong>Brasfort</strong>, utilizo essa expertise para
-              revolucionar processos operacionais. Aplico <strong>Python</strong> e{' '}
-              <strong>Power BI</strong> para criar soluções de automação e
-              inteligência, provando na prática que a cultura <em>Data-Driven</em> gera
-              valor em qualquer ambiente.
+              Atualmente na <strong>Brasfort</strong>, desenvolvo arquiteturas de dados, automações em <strong>Python</strong> e painéis executivos em <strong>Power BI</strong>, eliminando tarefas manuais e proporcionando previsibilidade para a tomada de decisão.
             </p>
 
             <div className="hero-btns">
@@ -56,7 +48,7 @@ export const Sobre = () => {
                 rel="noopener noreferrer"
                 className="btn-primary"
               >
-                <FontAwesomeIcon icon={faFileDownload} style={{ marginRight: '8px' }} />
+                <FontAwesomeIcon icon={faFileDownload} className="btn-icon" />
                 Download CV
               </a>
               <Link to="/contato" className="btn-outline">
@@ -128,16 +120,15 @@ export const Sobre = () => {
         <div className="skills-intro">
           <h2 className="section-title">Tech Stack & Aprendizado</h2>
           <p className="skills-desc">
-            Minha caixa de ferramentas é focada em <strong>autonomia</strong> e{' '}
-            <strong>escalabilidade</strong>. Não apenas conheço a sintaxe, mas entendo
-            a arquitetura necessária para integrar essas tecnologias em soluções robustas.
+            Conjunto de ferramentas e metodologias focadas em <strong>autonomia</strong> e{' '}
+            <strong>escalabilidade</strong> para construir pipelines eficientes e análises consistentes.
           </p>
 
           <div className="skills-tags">
-            <span className="tag">📊 Visualização de Dados</span>
-            <span className="tag">⚙️ Engenharia de Dados (ETL)</span>
-            <span className="tag">🤖 Automação de Processos</span>
-            <span className="tag">🐍 Scripting Avançado</span>
+            <span className="tag">Visualização de Dados</span>
+            <span className="tag">Engenharia de Dados (ETL)</span>
+            <span className="tag">Automação de Processos</span>
+            <span className="tag">Scripting Avançado</span>
           </div>
         </div>
 

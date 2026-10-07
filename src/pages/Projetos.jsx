@@ -39,14 +39,12 @@ export const Projetos = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="hero-bg-overlay" aria-hidden="true" />
-
         <div className="proj-hero-content">
           <span className="badge-gold">Catálogo de Soluções</span>
 
           <h1>
             Soluções de{' '}
-            <span style={{ color: 'var(--accent-color)' }}>Impacto Real</span>
+            <span className="text-highlight">Impacto Real</span>
           </h1>
 
           <p>

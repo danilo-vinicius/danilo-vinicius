@@ -1,5 +1,5 @@
 /* =========================================
-   HOME PAGE STYLES
+   HOME PAGE STYLES (CLEAN MINIMAL DESIGN)
    ========================================= */
 
 #home-hero {
@@ -16,18 +16,6 @@
     background: var(--bg-gradient);
 }
 
-.hero-bg-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: var(--bg-overlay);
-    background-size: 50px 50px;
-    opacity: 0.5;
-    z-index: 0;
-}
-
 .hero-content {
     position: relative;
     z-index: 2;
@@ -36,44 +24,19 @@
     padding: 0 20px;
 }
 
-/* Badge Magic Border */
+/* Badge Clean & Subtil */
 .badge-gold {
-    position: relative;
     background: transparent;
     color: var(--accent-color);
     font-size: 0.8rem;
-    font-weight: bold;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    padding: 10px 20px;
+    letter-spacing: 1.5px;
+    padding: 6px 16px;
     margin-bottom: 25px;
     display: inline-block;
-    border-radius: 50px;
-    overflow: hidden;
-    border: none;
-    z-index: 1;
-}
-
-.badge-gold::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    width: 400%;
-    height: 400%;
-    background: conic-gradient(var(--accent-color), var(--bg-solid), #fff, var(--accent-color));
-    animation: rotate-border 4s linear infinite;
-    z-index: -2;
-}
-
-.badge-gold::after {
-    content: '';
-    position: absolute;
-    inset: 3px;
-    background: var(--bg-solid);
-    border-radius: 48px;
-    z-index: -1;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
 }
 
 #home-hero h1 {
@@ -82,6 +45,7 @@
     margin: 15px 0 20px 0;
     line-height: 1.15;
     font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .text-highlight {
@@ -113,34 +77,32 @@
 .btn-primary-lg {
     background-color: var(--accent-color);
     color: var(--bg-solid);
-    padding: 15px 35px;
+    padding: 14px 32px;
     border-radius: 6px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border: 2px solid var(--accent-color);
-    box-shadow: 0 0 20px rgba(198, 164, 110, 0.4);
-    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--accent-color);
+    box-shadow: none;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
 .btn-primary-lg:hover {
-    background: transparent;
-    color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(198, 164, 110, 0.6);
+    opacity: 0.9;
+    box-shadow: none;
 }
 
 .btn-outline-lg {
     background: transparent;
     color: var(--text-title);
-    padding: 15px 35px;
+    padding: 14px 32px;
     border-radius: 6px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    border: 1px solid var(--text-secondary);
-    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.2s ease, color 0.2s ease;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -149,15 +111,14 @@
 .btn-outline-lg:hover {
     border-color: var(--accent-color);
     color: var(--accent-color);
-    transform: translateY(-3px);
 }
 
 /* Responsividade Mobile */
 @media screen and (max-width: 768px) {
     #home-hero {
         padding-top: 110px;
-        padding-bottom: 90px;
-        min-height: auto;
+        padding-bottom: 0;
+        min-height: 100vh;
     }
 
     #home-hero h1 {

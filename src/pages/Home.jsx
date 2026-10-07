@@ -8,8 +8,6 @@ import './Home.css';
 export const Home = () => {
   return (
     <section id="home-hero" aria-label="Apresentação principal">
-      <div className="hero-bg-overlay" aria-hidden="true" />
-
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: 30 }}
@@ -19,8 +17,7 @@ export const Home = () => {
         <span className="badge-gold">Data Analyst & BI Specialist</span>
 
         <h1>
-          Danilo Vinícius <br />
-          <span className="text-highlight">Engenharia & Análise de Dados</span>
+          Olá, eu sou <span className="text-highlight">Danilo Vinícius</span>
         </h1>
 
         <Typewriter />

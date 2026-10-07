@@ -1,54 +1,51 @@
 /* =========================================
-   VARIÁVEIS DE TEMA (DARK / LIGHT)
+   VARIÁVEIS DE TEMA (DARK / LIGHT CLEAN)
    ========================================= */
 
 :root {
-    /* --- TEMA ESCURO (PADRÃO) --- */
-    --bg-gradient: linear-gradient(135deg, #1F2A44 0%, #161e31 100%);
-    --bg-solid: #1F2A44;         /* Usado em Footer, Navbar */
-    --bg-card: #2E2E2E;          /* Cards */
-    --bg-card-hover: #161e31;    /* Hovers */
-    --text-primary: #E6E6E6;     /* Texto principal */
-    --text-secondary: #a0a0a0;   /* Texto secundário */
-    --text-title: #F9F9F9;       /* Títulos */
-    --accent-color: #C6A46E;     /* Dourado */
-    --nav-bg: rgba(31, 42, 68, 0.95);
-    --border-color: #333;
-    --shadow-color: rgba(0,0,0,0.4);
-    --timeline-line: #333;
-    --bg-overlay: linear-gradient(rgba(198, 164, 110, 0.05) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(198, 164, 110, 0.05) 1px, transparent 1px);
+    /* --- TEMA ESCURO (MINIMAL CLEAN) --- */
+    --bg-gradient: #161E31;
+    --bg-solid: #161E31;         /* Usado em Footer, Navbar */
+    --bg-card: #1F2A44;          /* Cards */
+    --bg-card-hover: #263352;    /* Hovers */
+    --text-primary: #E2E8F0;     /* Texto principal */
+    --text-secondary: #94A3B8;   /* Texto secundário */
+    --text-title: #F8FAFC;       /* Títulos */
+    --accent-color: #C6A46E;     /* Dourado Nobre */
+    --nav-bg: rgba(22, 30, 49, 0.9);
+    --border-color: #2D3A58;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --timeline-line: #2D3A58;
+    --bg-overlay: none;
 }
 
-/* --- TEMA CLARO (PREMIUM CLEAN) --- */
+/* --- TEMA CLARO (PREMIUM OFF-WHITE) --- */
 body.light-mode {
-    /* Fundo: Um branco gelo sutil, mais limpo */
-    --bg-gradient: linear-gradient(135deg, #efefef 0%, #F3F4F6 100%);
+    /* Fundo: Off-white suave e descansativo */
+    --bg-gradient: #F8FAFC;
     
     /* Elementos Sólidos */
-    --bg-solid: #FFFFFF;
+    --bg-solid: #F8FAFC;
     
-    /* Cards: Branco puro para destacar do fundo gelo */
+    /* Cards: Branco suave com bordas delicadas */
     --bg-card: #FFFFFF;
-    --bg-card-hover: #F9FAFB; /* Cinza ultra leve no hover */
+    --bg-card-hover: #F1F5F9;
     
-    /* Tipografia: Azul Marinho Profundo (quase preto) para leitura perfeita */
-    --text-primary: #1F2937; 
-    --text-secondary: #4B5563;
-    --text-title: #111827;
+    /* Tipografia: Cinza escuro ardósia para excelente contraste e legibilidade */
+    --text-primary: #1E293B; 
+    --text-secondary: #64748B;
+    --text-title: #0F172A;
     
-    /* Acento: Um dourado levemente mais escuro/bronze para não sumir no branco */
+    /* Acento: Dourado bronze elegante */
     --accent-color: #B4925A; 
     
-    /* Navbar: Branco vidro */
-    --nav-bg: rgba(255, 255, 255, 0.8);
+    /* Navbar: Vidro fOSCO limpo */
+    --nav-bg: rgba(248, 250, 252, 0.85);
     
-    /* Bordas e Sombras: O segredo do design clean */
-    --border-color: #E5E7EB; /* Cinza bem claro */
-    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra suave e difusa */
-    --timeline-line: #D1D5DB;
+    /* Bordas e Sombras Limpas */
+    --border-color: #E2E8F0;
+    --shadow-color: rgba(0, 0, 0, 0.04);
+    --timeline-line: #CBD5E1;
     
-    /* Grid: Azul marinho super transparente (3%) */
-    --bg-overlay: linear-gradient(rgba(31, 42, 68, 0.1) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(31, 42, 68, 0.1) 1px, transparent 1px);
+    --bg-overlay: none;
 }

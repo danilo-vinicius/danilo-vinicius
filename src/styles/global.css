@@ -17,49 +17,44 @@ html, body {
     overflow-x: hidden;
     position: relative;
 
-    /* APLICA AS VARIÁVEIS */
     background: var(--bg-gradient);
     color: var(--text-primary);
-    font-family: 'Josefin Sans', sans-serif;
-    transition: background 0.3s, color 0.3s;
+    font-family: 'Josefin Sans', system-ui, -apple-system, sans-serif;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 ::-webkit-scrollbar { display: none; }
 html { scrollbar-width: none; -ms-overflow-style: none; }
 
-h1, h2, h3, h4 { color: var(--text-title); transition: color 0.3s; }
-a { text-decoration: none; transition: 0.3s; }
+h1, h2, h3, h4 { color: var(--text-title); transition: color 0.2s ease; }
+a { text-decoration: none; transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease; }
 
-/* --- AJUSTE FINO: BOTÕES E CARDS NO MODO CLARO --- */
-body.light-mode .btn-outline,
-body.light-mode .btn-outline-lg {
-    border-color: var(--text-title);
+/* --- BOTÕES E CARDS CLEAN (SEM SOMBRAS PESADAS/NEON) --- */
+.btn-outline,
+.btn-outline-lg {
+    border-color: var(--border-color);
     color: var(--text-title);
-    font-weight: 700;
+    font-weight: 600;
 }
 
-body.light-mode .btn-primary,
-body.light-mode .btn-primary-lg {
-    box-shadow: 0 4px 15px rgba(180, 146, 90, 0.4); 
+.btn-primary,
+.btn-primary-lg {
+    box-shadow: none; 
+    border-color: var(--accent-color);
 }
 
-body.light-mode .hero-bg-overlay {
-    opacity: 0.6;
+.project-card,
+.service-card,
+.edu-card-premium,
+.skill-box {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-body.light-mode .project-card,
-body.light-mode .service-card,
-body.light-mode .edu-card-premium,
-body.light-mode .skill-box {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-                0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    border: 1px solid #E5E7EB;
-}
-
-body.light-mode .project-card:hover,
-body.light-mode .service-card:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.project-card:hover,
+.service-card:hover {
+    box-shadow: none;
     border-color: var(--accent-color);
 }
 
@@ -68,18 +63,13 @@ body.light-mode .service-card:hover {
     cursor: pointer; padding: 0 15px; display: flex; align-items: center;
 }
 #theme-icon {
-    font-size: 1.2rem; color: var(--accent-color); transition: transform 0.3s;
+    font-size: 1.1rem; color: var(--accent-color); transition: opacity 0.2s ease;
 }
-#theme-icon:hover { transform: rotate(20deg) scale(1.1); }
+#theme-icon:hover { opacity: 0.8; }
 
 /* =========================================
-   ANIMAÇÕES GLOBAIS
+   ANIMAÇÕES GLOBAIS LEVES
    ========================================= */
-@keyframes rotate-border {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
 @keyframes scroll-ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }

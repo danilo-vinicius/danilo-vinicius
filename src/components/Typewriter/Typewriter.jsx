@@ -57,7 +57,7 @@ export const Typewriter = ({ phrases = defaultPhrases }) => {
         aria-live="polite"
         aria-label={`Texto digitado: ${text}`}
       >
-        {text}
+        {"Especialista em " + text}
       </span>
       <span className="cursor" aria-hidden="true">
         |
