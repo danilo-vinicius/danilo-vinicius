@@ -1,99 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="portifolio/Code/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;400;700&display=swap" rel="stylesheet" />
     <title>Danilo Vinícius | Data Analyst</title>
   </head>
   <body>
-    
-    <div class="fixed-logo">
-    <a href="index.html">DV <span class="logo-accent">|</span> Data Analyst</a>
-  </div>
-
-  <nav class="floating-menu">
-    
-    <div class="menu-links left-links">
-      <a href="index.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
-      <a href="portifolio/Code/sobre.html" class="nav-item"><i class="fas fa-user"></i> Sobre</a>
-    </div>
-
-    <div class="menu-center-icon">
-      <i class="fas fa-bars"></i>
-    </div>
-
-    <div class="menu-links right-links">
-      <a href="portifolio/Code/projetos.html" class="nav-item"><i class="fas fa-project-diagram"></i> Projetos</a>
-      <a href="portifolio/Code/contato.html" class="nav-item"><i class="fas fa-envelope"></i> Contato</a>
-    </div>
-
-  </nav>
-
-<div class="theme-floater" onclick="toggleTheme()">
-  <i class="fas fa-moon" id="theme-icon"></i>
-</div>
-    
-    <main>
-  
-  <section id="home-hero">
-    <div class="hero-bg-overlay"></div>
-
-    <div class="hero-content">
-      
-      <div class="badge-gold">
-        Data Scientist & BI Specialist
-      </div>
-
-      <h1>
-        Olá, eu sou <span class="text-highlight">Danilo Vinícius</span>.
-      </h1>
-      
-      <h2 class="typing-container">
-        Especialista em <span class="typewriter-text"></span><span class="cursor">|</span>
-      </h2>
-
-      <p class="hero-description">
-        Transformo volumes complexos de dados em <strong>decisões estratégicas</strong>. 
-        Com foco em <strong>Engenharia de Dados</strong> e <strong>Business Intelligence</strong>, ajudo empresas a automatizar processos manuais e descobrir padrões ocultos para maximizar resultados.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="portifolio/Code/projetos.html" class="btn-primary-lg">
-          <i class="fas fa-chart-line"></i> Ver Portfólio de Dados
-        </a>
-        <a href="portifolio/Code/sobre.html" class="btn-outline-lg">
-          Sobre Mim
-        </a>
-      </div>
-
-    </div>
-
-    <div class="tech-ticker-wrapper">
-      <p class="ticker-label">Tech Stack:</p>
-      <div class="ticker-track">
-          <span><i class="fab fa-python"></i> Python</span>
-          <span><i class="fas fa-database"></i> SQL & ETL</span>
-          <span><i class="fas fa-chart-bar"></i> Power BI & DAX</span>
-          <span><i class="fas fa-robot"></i> Automação</span>
-          <span><i class="fas fa-brain"></i> Machine Learning</span>
-          <span><i class="fab fa-git-alt"></i> Git</span>
-          
-          <span><i class="fab fa-python"></i> Pandas/NumPy</span>
-          <span><i class="fas fa-database"></i> SQL & ETL</span>
-          <span><i class="fas fa-chart-bar"></i> Power BI & DAX</span>
-          <span><i class="fas fa-robot"></i> Automação</span>
-          <span><i class="fas fa-brain"></i> Machine Learning</span>
-          <span><i class="fab fa-git-alt"></i> GitHub</span>
-        </div>
-    </div>
-  </section>
-
-</main>
-
-    <script src="portifolio/Code/script.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-
