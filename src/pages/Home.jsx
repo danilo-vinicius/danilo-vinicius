@@ -12,8 +12,8 @@ export const Home = () => {
 
   // Paleta de cores respeitando o tema da aplicação (Escuro vs Claro)
   const isLight = theme === 'light';
-  const horizonColor = isLight ? '#F8FAFC' : '#161E31';
-  const waveColor = isLight ? '#E2E8F0' : '#1F2A44';
+  const horizonColor = isLight ? '#E2E8F0' : '#161E31';
+  const waveColor = isLight ? '#94A3B8' : '#1F2A44';
   const crestColor = isLight ? '#B4925A' : '#C6A46E';
 
   return (
@@ -33,8 +33,8 @@ export const Home = () => {
         height={4.5}
         fogDepth={18}
         detail="medium"
-        brightness={isLight ? 0.95 : 0.85}
-        opacity={0.65}
+        brightness={isLight ? 1.0 : 0.85}
+        opacity={isLight ? 0.85 : 0.75}
         mouseInteraction={true}
         parallaxStrength={0.4}
         grain={true}
