@@ -3,11 +3,44 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Typewriter from '../components/Typewriter/Typewriter';
 import TechTicker from '../components/TechTicker/TechTicker';
+import GradientWaves from '../components/GradientWaves/GradientWaves';
+import { useTheme } from '../context/ThemeContext';
 import './Home.css';
 
 export const Home = () => {
+  const { theme } = useTheme();
+
+  // Paleta de cores respeitando o tema da aplicação (Escuro vs Claro)
+  const isLight = theme === 'light';
+  const horizonColor = isLight ? '#F8FAFC' : '#161E31';
+  const waveColor = isLight ? '#E2E8F0' : '#1F2A44';
+  const crestColor = isLight ? '#B4925A' : '#C6A46E';
+
   return (
     <section id="home-hero" aria-label="Apresentação principal">
+      <GradientWaves
+        horizonColor={horizonColor}
+        waveColor={waveColor}
+        crestColor={crestColor}
+        speed={0.3}
+        amplitude={2.0}
+        waveScale={0.5}
+        waveRatio={0.8}
+        swell={25}
+        turbulence={15}
+        tilt={1.1}
+        zoom={1.0}
+        height={4.5}
+        fogDepth={18}
+        detail="medium"
+        brightness={isLight ? 0.95 : 0.85}
+        opacity={0.65}
+        mouseInteraction={true}
+        parallaxStrength={0.4}
+        grain={true}
+        grainIntensity={0.03}
+      />
+
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: 30 }}
