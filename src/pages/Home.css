@@ -1,0 +1,181 @@
+/* =========================================
+   HOME PAGE STYLES
+   ========================================= */
+
+#home-hero {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px 80px;
+    overflow: hidden;
+    background: var(--bg-gradient);
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-overlay);
+    background-size: 50px 50px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Badge Magic Border */
+.badge-gold {
+    position: relative;
+    background: transparent;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border-radius: 50px;
+    overflow: hidden;
+    border: none;
+    z-index: 1;
+}
+
+.badge-gold::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 400%;
+    height: 400%;
+    background: conic-gradient(var(--accent-color), var(--bg-solid), #fff, var(--accent-color));
+    animation: rotate-border 4s linear infinite;
+    z-index: -2;
+}
+
+.badge-gold::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--bg-solid);
+    border-radius: 48px;
+    z-index: -1;
+}
+
+#home-hero h1 {
+    font-size: 3.5rem;
+    color: var(--text-title);
+    margin: 15px 0 20px 0;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.text-highlight {
+    color: var(--accent-color);
+    position: relative;
+    display: inline-block;
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin: 25px auto 40px auto;
+    line-height: 1.65;
+    max-width: 680px;
+}
+
+.hero-description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-primary-lg {
+    background-color: var(--accent-color);
+    color: var(--bg-solid);
+    padding: 15px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(198, 164, 110, 0.4);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary-lg:hover {
+    background: transparent;
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(198, 164, 110, 0.6);
+}
+
+.btn-outline-lg {
+    background: transparent;
+    color: var(--text-title);
+    padding: 15px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 1px solid var(--text-secondary);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-outline-lg:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Responsividade Mobile */
+@media screen and (max-width: 768px) {
+    #home-hero {
+        padding-top: 110px;
+        padding-bottom: 90px;
+        min-height: auto;
+    }
+
+    #home-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .btn-primary-lg,
+    .btn-outline-lg {
+        width: 100%;
+    }
+}

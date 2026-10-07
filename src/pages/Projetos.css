@@ -1,0 +1,265 @@
+/* =========================================
+   PROJETOS PAGE STYLES
+   ========================================= */
+
+.projetos-page {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#proj-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--bg-gradient);
+    padding: 100px 20px 60px;
+    overflow: hidden;
+}
+
+#proj-hero .hero-bg-overlay {
+    z-index: 0;
+    opacity: 0.4;
+}
+
+.proj-hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+}
+
+#proj-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--text-title);
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+#proj-hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#proj-hero p strong {
+    color: var(--text-primary);
+}
+
+.btn-scroll-down {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Services Section */
+#services {
+    padding: 80px 20px;
+    background-color: var(--bg-card-hover);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2.2rem;
+    color: var(--text-title);
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Work Process Section */
+#work-process {
+    padding: 80px 20px;
+    background: var(--bg-gradient);
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.process-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 60px auto 0;
+    position: relative;
+    gap: 20px;
+}
+
+.process-line {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    right: 50px;
+    height: 4px;
+    z-index: 0;
+    border-radius: 4px;
+    background: linear-gradient(90deg, 
+        var(--border-color) 0%, 
+        var(--accent-color) 50%, 
+        var(--border-color) 100%);
+    opacity: 0.3;
+}
+
+.process-card {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 280px;
+}
+
+.process-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px -10px var(--shadow-color);
+}
+
+.process-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--bg-solid);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 10px var(--bg-solid);
+    transition: all 0.4s ease;
+}
+
+.process-card:hover .process-icon {
+    background: var(--accent-color);
+    color: var(--bg-solid);
+    transform: rotate(360deg);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+.process-content h3 {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.process-content h4 {
+    font-size: 0.95rem;
+    color: var(--text-title);
+    margin: 5px 0 15px 0;
+    font-weight: 600;
+}
+
+.process-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Portfolio Showcase Section */
+#portfolio {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.portfolio-header h2 {
+    font-size: 2.2rem;
+    color: var(--text-title);
+    margin-bottom: 10px;
+}
+
+.portfolio-sub {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.projects-grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    padding-bottom: 30px;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 900px) {
+    #proj-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #proj-hero p {
+        font-size: 1rem;
+    }
+
+    .process-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .process-line {
+        width: 4px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, var(--border-color), var(--accent-color));
+    }
+
+    .process-card {
+        width: 100%;
+        max-width: 400px;
+        min-height: auto;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}

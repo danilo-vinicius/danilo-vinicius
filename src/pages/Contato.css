@@ -1,0 +1,143 @@
+/* =========================================
+   CONTATO PAGE STYLES
+   ========================================= */
+
+#contact {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px 60px;
+    background: radial-gradient(circle at center, rgba(198, 164, 110, 0.05) 0%, transparent 70%);
+}
+
+.contact-header {
+    max-width: 700px;
+    margin-bottom: 40px;
+}
+
+.contact-header h3 {
+    font-size: 2.8rem;
+    color: var(--text-title);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.contact-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.contact-header p strong {
+    color: var(--text-primary);
+}
+
+.contact-subtext {
+    margin-top: 15px;
+    font-size: 1rem !important;
+    opacity: 0.85;
+}
+
+/* Container dos Ícones de Contato */
+#contact-link {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+#contact-link a {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-solid);
+    text-align: center;
+    line-height: 76px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--border-color);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+#contact-link a svg,
+#contact-link a i {
+    position: relative;
+    color: var(--text-title);
+    transition: transform 0.5s ease, color 0.5s ease;
+    z-index: 3;
+}
+
+#contact-link a:hover svg,
+#contact-link a:hover i {
+    color: #ffffff;
+    transform: rotateY(360deg);
+}
+
+#contact-link a::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+#contact-link a:hover::before {
+    top: 0;
+}
+
+.icon-div-linkedin a::before {
+    background: #0077b5;
+}
+
+.icon-div-github a::before {
+    background: #333333;
+}
+
+.icon-div-email a::before {
+    background: #dd4b39;
+}
+
+.icon-div-wpp a::before {
+    background: #25d366;
+}
+
+#contact-link a:hover {
+    border-color: transparent;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade Mobile */
+@media screen and (max-width: 600px) {
+    .contact-header h3 {
+        font-size: 2.2rem;
+    }
+
+    .contact-header p {
+        font-size: 1rem;
+    }
+
+    #contact-link {
+        gap: 20px;
+    }
+
+    #contact-link a {
+        width: 65px;
+        height: 65px;
+        font-size: 28px;
+    }
+}
