@@ -1,0 +1,40 @@
+.typing-container {
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-bottom: 20px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter-text {
+  color: var(--text-primary);
+  font-weight: bold;
+  border-bottom: 2px solid var(--accent-color);
+  transition: color 0.3s;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--accent-color);
+  font-weight: 100;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .typing-container {
+    font-size: 1.3rem;
+    min-height: 35px;
+  }
+}

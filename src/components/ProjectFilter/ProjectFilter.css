@@ -1,0 +1,27 @@
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-secondary);
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--bg-solid);
+}
