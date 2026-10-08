@@ -723,7 +723,8 @@ const Lanyard = ({
   interactive = true,
   intro = true,
   className = '',
-  style
+  style,
+  targetRef
 }) => {
   const containerRef = useRef(null);
   const settingsRef = useRef(null);
@@ -749,7 +750,8 @@ const Lanyard = ({
     elasticity,
     breeze,
     interactive,
-    intro
+    intro,
+    targetRef
   };
 
   useEffect(() => {
@@ -773,6 +775,7 @@ const Lanyard = ({
     const canvas = renderer.domElement;
     canvas.className = 'lanyard-canvas';
     canvas.setAttribute('aria-hidden', 'true');
+    canvas.style.pointerEvents = 'none';
     container.appendChild(canvas);
 
     const anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
@@ -914,7 +917,15 @@ const Lanyard = ({
     const frameView = () => {
       const s = settingsRef.current;
       const aspect = view.width / view.height;
-      let viewHeight = layout.height / clamp(s.size, 0.15, 0.9);
+
+      let cardScale = clamp(s.size, 0.15, 0.9);
+      if (s.targetRef?.current && container) {
+        const targetRect = s.targetRef.current.getBoundingClientRect();
+        const baseHeight = targetRect.height || 620;
+        cardScale = clamp(s.size * (baseHeight / view.height), 0.08, 0.85);
+      }
+
+      let viewHeight = layout.height / cardScale;
       const minimumWidth = layout.width / 0.72;
       if (viewHeight * aspect < minimumWidth) viewHeight = minimumWidth / aspect;
       const viewWidth = viewHeight * aspect;
@@ -926,12 +937,27 @@ const Lanyard = ({
       foilUniforms.foilKey.value.set(-2.5, 4, 6).normalize().transformDirection(camera.matrixWorldInverse);
       foilUniforms.foilFill.value.set(3, -1, 4).normalize().transformDirection(camera.matrixWorldInverse);
       foilUniforms.foilTop.value.set(0.5, 4.5, 8).normalize().transformDirection(camera.matrixWorldInverse);
-      const anchorX = ((ANCHORS[s.anchor] ?? 0.5) - 0.5) * viewWidth;
+
+      let anchorX = ((ANCHORS[s.anchor] ?? (typeof s.anchor === 'number' ? s.anchor : 0.5)) - 0.5) * viewWidth;
       const anchorY = viewHeight / 2 + 0.2;
-      const cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+      let cardTop = viewHeight / 2 - viewHeight * mix(0.12, 0.42, clamp(s.strapLength, 0, 1));
+
+      if (s.targetRef?.current && container) {
+        const targetRect = s.targetRef.current.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        const targetCenterX = targetRect.left + targetRect.width / 2 - containerRect.left;
+        const anchorRatio = clamp(targetCenterX / view.width, 0.05, 0.95);
+        anchorX = (anchorRatio - 0.5) * viewWidth;
+
+        const targetCenterY = targetRect.top + targetRect.height * 0.52 - containerRect.top;
+        const targetWorldY = viewHeight / 2 - (targetCenterY / view.height) * viewHeight;
+        cardTop = targetWorldY + layout.height / 2;
+      }
+
       const hangTop = cardTop + (layout.hangY - layout.height / 2);
       sim.anchor.set(anchorX, anchorY, 0);
-      configureSimulation(sim, layout, anchorY - hangTop);
+      configureSimulation(sim, layout, Math.max(0.4, anchorY - hangTop));
       sim.nodes[0].copy(sim.anchor);
       sim.previous[0].copy(sim.anchor);
     };
@@ -954,7 +980,10 @@ const Lanyard = ({
         ring.position.set(0, layout.ringY, 0);
         applied.framingKey = '';
       }
-      const framingKey = `${layoutKey}|${s.size}|${s.anchor}|${s.strapLength}|${view.width}|${view.height}`;
+      const targetPos = s.targetRef?.current
+        ? `${Math.round(s.targetRef.current.getBoundingClientRect().left)}|${Math.round(s.targetRef.current.getBoundingClientRect().top)}`
+        : '';
+      const framingKey = `${layoutKey}|${s.size}|${s.anchor}|${s.strapLength}|${view.width}|${view.height}|${targetPos}`;
       if (framingKey !== applied.framingKey) {
         frameView();
         if (!placed) {
@@ -1218,6 +1247,7 @@ const Lanyard = ({
       if (event.pointerType === 'touch') return;
       hovering = !!pickCard();
       setCursor(hovering ? 'grab' : '');
+      canvas.style.pointerEvents = hovering ? 'auto' : 'none';
     };
 
     const onPointerUp = event => {
@@ -1226,16 +1256,53 @@ const Lanyard = ({
       if (press && event.type === 'pointerup' && performance.now() - press.time < 450) flip(press.point);
       press = null;
       canvas.releasePointerCapture?.(event.pointerId);
+      toPointer(event);
+      hovering = !!pickCard();
       setCursor(hovering && event.pointerType !== 'touch' ? 'grab' : '');
+      canvas.style.pointerEvents = hovering ? 'auto' : 'none';
       start();
     };
 
     const onTouchStart = event => {
       if (!settingsRef.current.interactive || event.touches.length !== 1) return;
       toPointer(event.touches[0]);
-      if (pickCard()) event.preventDefault();
+      if (pickCard()) {
+        canvas.style.pointerEvents = 'auto';
+        event.preventDefault();
+      }
     };
 
+    const onWindowPointerMove = event => {
+      if (!settingsRef.current.interactive) return;
+      if (sim.grab) {
+        canvas.style.pointerEvents = 'auto';
+        return;
+      }
+      toPointer(event);
+      const hit = pickCard();
+      hovering = !!hit;
+      if (hovering) {
+        canvas.style.pointerEvents = 'auto';
+        setCursor('grab');
+      } else {
+        canvas.style.pointerEvents = 'none';
+        setCursor('');
+      }
+    };
+
+    const onWindowPointerDown = event => {
+      if (!settingsRef.current.interactive || event.button > 0) return;
+      if (!sim.grab) {
+        toPointer(event);
+        if (pickCard()) {
+          canvas.style.pointerEvents = 'auto';
+          onPointerDown(event);
+        }
+      }
+    };
+
+    window.addEventListener('pointermove', onWindowPointerMove, { passive: true });
+    window.addEventListener('pointerdown', onWindowPointerDown);
     canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerup', onPointerUp);
@@ -1254,6 +1321,10 @@ const Lanyard = ({
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
+    if (settingsRef.current.targetRef?.current) {
+      resizeObserver.observe(settingsRef.current.targetRef.current);
+    }
+    window.addEventListener('resize', resize);
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (visible) start();
@@ -1273,6 +1344,9 @@ const Lanyard = ({
       applyRef.current = null;
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
+      window.removeEventListener('pointermove', onWindowPointerMove);
+      window.removeEventListener('pointerdown', onWindowPointerDown);
+      window.removeEventListener('resize', resize);
       document.removeEventListener('visibilitychange', onVisibility);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);

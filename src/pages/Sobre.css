@@ -2,10 +2,29 @@
    SOBRE PAGE STYLES (CLEAN DESIGN)
    ========================================= */
 
+.sobre-page-container {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+}
+
+.sobre-lanyard-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 900px;
+    z-index: 40;
+    pointer-events: none;
+    overflow: visible;
+}
+
 .sobre-page {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 20px 60px;
+    position: relative;
 }
 
 #sobre-hero {
@@ -35,18 +54,12 @@
     overflow: visible;
 }
 
-.hero-lanyard-wrapper {
+.hero-lanyard-placeholder {
     width: 100%;
     max-width: 480px;
     height: 620px;
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-    margin-top: -30px;
-    margin-bottom: -30px;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .hero-text {
@@ -275,6 +288,15 @@
     .hero-container {
         flex-direction: column;
         text-align: center;
+    }
+
+    .hero-lanyard-placeholder {
+        height: 480px;
+        max-width: 360px;
+    }
+
+    .sobre-lanyard-overlay {
+        min-height: 800px;
     }
 
     .hero-text {
