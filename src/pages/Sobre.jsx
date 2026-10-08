@@ -39,8 +39,8 @@ export const Sobre = () => {
       </div>
 
       <div className="sobre-page">
-        {/* Hero Section */}
-        <MagneticPullSection id="sobre-hero">
+        {/* SEÇÃO 1: Apresentação & KPIs */}
+        <MagneticPullSection id="secao-1-apresentacao" className="sobre-section secao-apresentacao">
           <div className="hero-container">
             <div className="hero-image" ref={heroImageRef}>
               <div className="hero-lanyard-placeholder" />
@@ -72,22 +72,24 @@ export const Sobre = () => {
               </div>
             </div>
           </div>
-        </MagneticPullSection>
 
-        {/* Stats Bar */}
-        <MagneticPullSection id="stats-bar">
-          {statsData.map((stat) => (
-            <div key={stat.id} className="stat-item">
-              <h2>{stat.value}</h2>
-              <p>{stat.label}</p>
+          {/* Stats / KPIs Bar integrados na Seção 1 */}
+          <div className="stats-bar-container">
+            <div className="stats-bar">
+              {statsData.map((stat) => (
+                <div key={stat.id} className="stat-item">
+                  <h2>{stat.value}</h2>
+                  <p>{stat.label}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </MagneticPullSection>
 
         <hr className="section-divider" />
 
-        {/* Trajetória Profissional */}
-        <MagneticPullSection id="experiencia">
+        {/* SEÇÃO 2: Trajetória Profissional */}
+        <MagneticPullSection id="secao-2-experiencia" className="sobre-section secao-experiencia">
           <h2 className="section-title">
             <FontAwesomeIcon icon={faBriefcase} /> Trajetória Profissional
           </h2>
@@ -96,8 +98,8 @@ export const Sobre = () => {
 
         <hr className="section-divider" />
 
-        {/* Formação Acadêmica */}
-        <MagneticPullSection id="formacao">
+        {/* SEÇÃO 3: Formação Acadêmica */}
+        <MagneticPullSection id="secao-3-formacao" className="sobre-section secao-formacao">
           <h2 className="section-title">
             <FontAwesomeIcon icon={faGraduationCap} /> Formação Acadêmica
           </h2>
@@ -106,8 +108,8 @@ export const Sobre = () => {
 
         <hr className="section-divider" />
 
-        {/* Skills & Dock */}
-        <MagneticPullSection id="skills">
+        {/* SEÇÃO 4: Tech Stack & Aprendizado */}
+        <MagneticPullSection id="secao-4-techstack" className="sobre-section secao-techstack">
           <div className="skills-intro">
             <h2 className="section-title">Tech Stack & Aprendizado</h2>
             <p className="skills-desc">

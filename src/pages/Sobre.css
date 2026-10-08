@@ -27,11 +27,18 @@
     position: relative;
 }
 
-#sobre-hero {
-    padding: 60px 0 40px;
+/* =========================================
+   SECTION LEVEL STRUCTURE
+   ========================================= */
+
+.sobre-section {
+    position: relative;
+    padding: 40px 0;
+}
+
+.secao-apresentacao {
+    padding-top: 40px;
     min-height: 60vh;
-    display: flex;
-    align-items: center;
 }
 
 .hero-container {
@@ -132,14 +139,18 @@
     color: var(--accent-color);
 }
 
-/* Stats Bar */
-#stats-bar {
+/* Stats / KPIs Bar Integrada */
+.stats-bar-container {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.stats-bar {
     display: flex;
     justify-content: center;
     gap: 60px;
     padding: 35px 20px;
     background: var(--bg-card);
-    margin: 40px 0;
     flex-wrap: wrap;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -168,7 +179,7 @@
     border: 0;
     height: 1px;
     background: var(--border-color);
-    margin: 40px 0;
+    margin: 50px 0;
 }
 
 .section-title {
