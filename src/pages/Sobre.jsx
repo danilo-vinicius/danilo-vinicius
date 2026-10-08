@@ -53,7 +53,7 @@ export const Sobre = () => {
                 Especialista em <strong>Engenharia de Dados</strong> e <strong>Business Intelligence</strong> com trajetória profissional focada em transformar volumes complexos de informação em valor estratégico. Iniciei na <strong>EBSERH</strong> transformando bases brutas em indicadores operacionais e consolidei a atuação com BI na <strong>Presidência da República</strong>.
               </p>
               <p>
-                Atualmente na <strong>Brasfort</strong>, desenvolvo arquiteturas de dados, automações em <strong>Python</strong> e painéis executivos em <strong>Power BI</strong>, eliminando tarefas manuais e proporcionando previsibilidade para a tomada de decisão.
+                Atualmente na <strong>Brasfort</strong>, atuo como <strong>Analista de Sistemas</strong> no <strong>Setor de Processos e Performance</strong> (Diretoria de Inovação e Processos), atuando na criação de dashboards para análises técnicas e estratégicas, revisão e construção de processos corporativos e desenvolvimento de automações.
               </p>
 
               <div className="hero-btns">

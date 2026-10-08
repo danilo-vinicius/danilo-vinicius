@@ -1,13 +1,13 @@
 export const experienceData = [
   {
     id: 'brasfort',
-    role: 'Técnico de Suporte & Dados',
-    company: 'Brasfort',
+    role: 'Analista de Sistemas',
+    company: 'Brasfort (Setor de Processos e Performance - Diretoria de Inovação e Processos)',
     period: 'Mar 2025 - Atual',
     responsibilities: [
-      'Desenvolvimento de painéis executivos em Power BI para segurança eletrônica.',
-      'Mapeamento de fluxos (BPMN) e estudos de integração via API.',
-      'Desenvolvimento de Apps corporativos via Google AppSheet.'
+      'Criação de dashboards executivos e operacionais para análises técnicas e estratégicas.',
+      'Revisão, mapeamento e construção de processos corporativos de performance.',
+      'Desenvolvimento de automações de dados, automação de tarefas e soluções low-code/scripting.'
     ]
   },
   {
@@ -34,14 +34,24 @@ export const experienceData = [
 
 export const educationData = [
   {
+    id: 'pos-eng-dados-ia',
+    degree: 'Pós-Graduação em Eng. de Dados e IA',
+    subtitle: 'Engenharia de Dados e Inteligência Artificial',
+    institution: 'Estácio',
+    period: 'Ago/2026 - Ago/2027',
+    status: 'Em Andamento',
+    icon: 'fas fa-brain',
+    isCurrent: true
+  },
+  {
     id: 'pos-data-science',
     degree: 'Pós-Graduação em Data Science',
     subtitle: 'Ciência de Dados e Big Data Analytics',
     institution: 'Estácio',
-    period: 'Previsão: Ago/2026',
-    status: 'Em Andamento',
-    icon: 'fas fa-brain',
-    isCurrent: true
+    period: 'Concluído em Jun/2026',
+    status: 'Concluído',
+    icon: 'fas fa-chart-line',
+    isCurrent: false
   },
   {
     id: 'grad-ads',
