@@ -27,15 +27,17 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.hero-image img {
-    width: 260px;
-    height: 260px;
-    border-radius: 12px;
-    object-fit: cover;
-    border: 1px solid var(--border-color);
-    box-shadow: none;
+.hero-lanyard-wrapper {
+    width: 100%;
+    max-width: 440px;
+    height: 540px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-text {

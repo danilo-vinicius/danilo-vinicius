@@ -7,10 +7,15 @@ import {
   faGraduationCap,
   faFileDownload
 } from '@fortawesome/free-solid-svg-icons';
+import Lanyard from '../components/Lanyard/Lanyard';
 import Timeline from '../components/Timeline/Timeline';
 import { statsData } from '../data/statsData';
 import { experienceData, educationData, skillsData } from '../data/experienceData';
 import { getIcon } from '../utils/iconHelper';
+
+import cardBackSvg from '../assets/card-back.svg';
+import strapPatternSvg from '../assets/strap-pattern.svg';
+
 import './Sobre.css';
 
 export const Sobre = () => {
@@ -25,10 +30,18 @@ export const Sobre = () => {
       >
         <div className="hero-container">
           <div className="hero-image">
-            <img
-              src="https://github.com/user-attachments/assets/8465b79f-71aa-46ef-8746-ef12bceb366c"
-              alt="Danilo Vinícius"
-            />
+            <div className="hero-lanyard-wrapper">
+              <Lanyard
+                frontImage="https://github.com/user-attachments/assets/8465b79f-71aa-46ef-8746-ef12bceb366c"
+                backImage={cardBackSvg}
+                strapImage={strapPatternSvg}
+                cardColor="#0F172A"
+                metal="gold"
+                finish="metallic"
+                gravity={1}
+                breeze={0.6}
+              />
+            </div>
           </div>
 
           <div className="hero-text">
