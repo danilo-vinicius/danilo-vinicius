@@ -1159,7 +1159,7 @@ const Lanyard = ({
 
     const tick = now => {
       raf = 0;
-      if (!alive) return;
+      if (!alive || !visible) return;
       const dt = Math.min(1 / 30, Math.max(1 / 240, (now - last) / 1000));
       last = now;
       time += dt;
@@ -1273,9 +1273,23 @@ const Lanyard = ({
     };
 
     const onWindowPointerMove = event => {
-      if (!settingsRef.current.interactive) return;
+      if (!settingsRef.current.interactive || !visible) return;
       if (sim.grab) {
         canvas.style.pointerEvents = 'auto';
+        return;
+      }
+      const rect = canvas.getBoundingClientRect();
+      if (
+        event.clientX < rect.left - 40 ||
+        event.clientX > rect.right + 40 ||
+        event.clientY < rect.top - 40 ||
+        event.clientY > rect.bottom + 40
+      ) {
+        if (hovering) {
+          hovering = false;
+          canvas.style.pointerEvents = 'none';
+          setCursor('');
+        }
         return;
       }
       toPointer(event);

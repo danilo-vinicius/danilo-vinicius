@@ -6,23 +6,25 @@ export const MagneticPullSection = ({ children, id, className = '', style = {} }
     <motion.section
       id={id}
       className={className}
-      style={style}
+      style={{
+        willChange: 'transform, opacity',
+        transform: 'translateZ(0)',
+        ...style
+      }}
       initial={{
         opacity: 0,
-        y: 90,
-        scale: 0.92
+        y: 50,
+        scale: 0.96
       }}
       whileInView={{
         opacity: 1,
         y: 0,
-        scale: [0.92, 1.03, 0.99, 1]
+        scale: 1
       }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{
-        duration: 0.85,
-        ease: [0.22, 1.25, 0.36, 1],
-        opacity: { duration: 0.5, ease: 'easeOut' },
-        scale: { duration: 0.85, times: [0, 0.6, 0.85, 1] }
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1]
       }}
     >
       {children}
