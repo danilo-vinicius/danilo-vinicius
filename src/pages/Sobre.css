@@ -21,6 +21,8 @@
     gap: 50px;
     flex-wrap: wrap;
     width: 100%;
+    position: relative;
+    overflow: visible;
 }
 
 .hero-image {
@@ -28,21 +30,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 10;
+    overflow: visible;
 }
 
 .hero-lanyard-wrapper {
     width: 100%;
-    max-width: 440px;
-    height: 540px;
+    max-width: 480px;
+    height: 620px;
     position: relative;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+    margin-top: -30px;
+    margin-bottom: -30px;
 }
 
 .hero-text {
     flex: 1.5;
     text-align: left;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-text h1 {
