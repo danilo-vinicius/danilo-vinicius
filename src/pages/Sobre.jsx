@@ -50,10 +50,10 @@ export const Sobre = () => {
               <span className="badge-gold">Data Scientist & BI Analyst</span>
               <h1>Construindo inteligência através dos dados</h1>
               <p>
-                Especialista em <strong>Engenharia de Dados</strong> e <strong>Business Intelligence</strong> com trajetória profissional focada em transformar volumes complexos de informação em valor estratégico. Iniciei na <strong>EBSERH</strong> transformando bases brutas em indicadores operacionais e consolidei a atuação com BI na <strong>Presidência da República</strong>.
+                Especialista em <strong>Engenharia de Dados</strong> e <strong>Business Intelligence</strong> com trajetória profissional focada em transformar volumes complexos de informação em valor estratégico. Iniciei na <strong>EBSERH</strong> transformando bases brutas em indicadores operacionais, consolidei a atuação com BI na <strong>Presidência da República</strong> e atuei na <strong>Brasfort</strong> em Segurança Eletrônica como Técnico de Suporte & Dados.
               </p>
               <p>
-                Atualmente na <strong>Brasfort</strong>, atuo como <strong>Analista de Sistemas</strong> no <strong>Setor de Processos e Performance</strong> (Diretoria de Inovação e Processos), atuando na criação de dashboards para análises técnicas e estratégicas, revisão e construção de processos corporativos e desenvolvimento de automações.
+                Atualmente na <strong>Brasfort</strong>, fui promovido a <strong>Analista de Sistemas</strong> no <strong>Setor de Processos e Performance</strong> (Diretoria de Inovação e Processos), atuando na criação de dashboards para análises técnicas e estratégicas, revisão e construção de processos corporativos e desenvolvimento de automações.
               </p>
 
               <div className="hero-btns">

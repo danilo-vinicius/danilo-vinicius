@@ -1,13 +1,24 @@
 export const experienceData = [
   {
-    id: 'brasfort',
+    id: 'brasfort-analista',
     role: 'Analista de Sistemas',
-    company: 'Brasfort (Setor de Processos e Performance - Diretoria de Inovação e Processos)',
-    period: 'Mar 2025 - Atual',
+    company: 'Brasfort (Setor de Processos e Performance - Dir. de Inovação e Processos)',
+    period: 'Ago 2026 - Atual',
     responsibilities: [
       'Criação de dashboards executivos e operacionais para análises técnicas e estratégicas.',
       'Revisão, mapeamento e construção de processos corporativos de performance.',
-      'Desenvolvimento de automações de dados, automação de tarefas e soluções low-code/scripting.'
+      'Desenvolvimento de automações de dados e otimização de rotinas de trabalho.'
+    ]
+  },
+  {
+    id: 'brasfort-tecnico',
+    role: 'Técnico de Suporte & Dados',
+    company: 'Brasfort (Segurança Eletrônica)',
+    period: 'Mar 2025 - Ago 2026',
+    responsibilities: [
+      'Desenvolvimento de painéis executivos em Power BI para segurança eletrônica.',
+      'Mapeamento de fluxos (BPMN) e estudos de integração via API.',
+      'Desenvolvimento de Apps corporativos via Google AppSheet.'
     ]
   },
   {
