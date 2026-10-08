@@ -15,6 +15,8 @@ import { statsData } from '../data/statsData';
 import { experienceData, educationData, skillsData } from '../data/experienceData';
 import { getIcon } from '../utils/iconHelper';
 
+import TimelineBlock01 from '../components/ui/timeline-01';
+
 import cardBackSvg from '../assets/card-back.svg';
 import strapPatternSvg from '../assets/strap-pattern.svg';
 import profilePhoto from '../assets/foto.jpg';
@@ -96,10 +98,7 @@ export const Sobre = () => {
           {/* SEÇÃO 2: Trajetória Profissional */}
           <Section id="secao-2-experiencia" transition={MagneticPull} className="sobre-section secao-experiencia">
             <MagneticPullSection id="experiencia-magnetic-wrap">
-              <h2 className="section-title">
-                <FontAwesomeIcon icon={faBriefcase} /> Trajetória Profissional
-              </h2>
-              <Timeline items={experienceData} type="experience" />
+              <TimelineBlock01 items={experienceData} />
             </MagneticPullSection>
           </Section>
 
