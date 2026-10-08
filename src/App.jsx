@@ -22,7 +22,7 @@ function ScrollToTop() {
 
 export function App() {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollToTop />
       <ThemeProvider>
         <div className="app-layout" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
