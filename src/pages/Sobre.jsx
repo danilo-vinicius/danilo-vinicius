@@ -15,6 +15,7 @@ import { getIcon } from '../utils/iconHelper';
 
 import cardBackSvg from '../assets/card-back.svg';
 import strapPatternSvg from '../assets/strap-pattern.svg';
+import profilePhoto from '../assets/foto.jpg';
 
 import './Sobre.css';
 
@@ -32,7 +33,7 @@ export const Sobre = () => {
           <div className="hero-image">
             <div className="hero-lanyard-wrapper">
               <Lanyard
-                frontImage="https://github.com/user-attachments/assets/8465b79f-71aa-46ef-8746-ef12bceb366c"
+                frontImage={profilePhoto}
                 backImage={cardBackSvg}
                 strapImage={strapPatternSvg}
                 cardColor="#0F172A"
