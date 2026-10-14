@@ -17,7 +17,7 @@ const contactChannels = [
     subtitle: 'Perfil profissional & conexões',
     actionText: 'Conectar',
     icon: faLinkedinIn,
-    url: 'https://www.linkedin.com/in/danilovinicius57',
+    url: 'https://www.linkedin.com/in/danilovin%C3%ADcius57/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKuukIoe7T2uxes8IaoRASw%3D%3D',
     target: '_blank'
   },
   {
