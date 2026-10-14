@@ -76,6 +76,51 @@ export const educationData = [
   }
 ];
 
+export const specialtiesData = [
+  {
+    id: 'engenharia-dados',
+    icon: 'fas fa-database',
+    title: 'Engenharia & Modelagem de Dados',
+    badge: 'Pipelines & ETL',
+    description:
+      'Construção e sustentação de pipelines de dados eficientes. Extração, limpeza e modelagem dimensional para alimentar análises e relatórios com dados confiáveis e escaláveis.',
+    skills: [
+      { name: 'Python', role: 'Pandas, automação e scripts de tratamento' },
+      { name: 'SQL Analítico', role: 'Queries avançadas, Views e joins complexos' },
+      { name: 'Modelagem de Dados', role: 'Estruturação relacional e Star Schema' },
+      { name: 'Git & Versionamento', role: 'Controle de versão e boas práticas' }
+    ]
+  },
+  {
+    id: 'bi-analytics',
+    icon: 'fas fa-chart-bar',
+    title: 'BI & Data Analytics',
+    badge: 'Estratégia & Decisão',
+    description:
+      'Desenvolvimento de painéis executivos e gerenciais de alto impacto. Tradução de grandes volumes de informação em narrativas visuais orientadas à tomada de decisão ágil.',
+    skills: [
+      { name: 'Power BI', role: 'DAX avançado, modelagem e relatórios dinâmicos' },
+      { name: 'Data Storytelling', role: 'UX/UI voltado à experiência analítica' },
+      { name: 'Excel Avançado', role: 'Power Query, fórmulas complexas e modelos' },
+      { name: 'KPIs Executivos', role: 'Gestão de indicadores e metas operacionais' }
+    ]
+  },
+  {
+    id: 'automacao-processos',
+    icon: 'fas fa-robot',
+    title: 'Automação & Processos',
+    badge: 'Inovação & Eficiência',
+    description:
+      'Mapeamento de fluxos corporativos e eliminação de tarefas manuais repetitivas por meio de fluxos automatizados em nuvem e desenvolvimento de soluções integradas.',
+    skills: [
+      { name: 'Power Automate', role: 'Fluxos em nuvem e automação de rotinas' },
+      { name: 'Mapeamento de Processos', role: 'Notação BPMN e melhoria contínua' },
+      { name: 'Google AppSheet', role: 'Aplicações corporativas ágeis' },
+      { name: 'Integrações de Dados', role: 'Conexão entre bases e APIs' }
+    ]
+  }
+];
+
 export const skillsData = [
   {
     name: 'Python',
@@ -105,7 +150,7 @@ export const skillsData = [
     name: 'Power Automate',
     detail: 'Fluxos Cloud',
     icon: 'fas fa-robot',
-    color: '#C6A46E'
+    color: '#38BDF8'
   },
   {
     name: 'Git',
@@ -114,3 +159,4 @@ export const skillsData = [
     color: '#f14e32'
   }
 ];
+

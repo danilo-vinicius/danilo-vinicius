@@ -1,51 +1,56 @@
 /* =========================================
-   VARIÁVEIS DE TEMA (DARK / LIGHT CLEAN)
+   VARIÁVEIS DE TEMA (SLATE, SKY & INDIGO)
    ========================================= */
 
 :root {
-    /* --- TEMA ESCURO (MINIMAL CLEAN) --- */
-    --bg-gradient: #161E31;
-    --bg-solid: #161E31;         /* Usado em Footer, Navbar */
-    --bg-card: #1F2A44;          /* Cards */
-    --bg-card-hover: #263352;    /* Hovers */
-    --text-primary: #E2E8F0;     /* Texto principal */
-    --text-secondary: #94A3B8;   /* Texto secundário */
-    --text-title: #F8FAFC;       /* Títulos */
-    --accent-color: #C6A46E;     /* Dourado Nobre */
-    --nav-bg: rgba(22, 30, 49, 0.9);
-    --border-color: #2D3A58;
-    --shadow-color: rgba(0, 0, 0, 0.15);
-    --timeline-line: #2D3A58;
+    /* --- 1. PALETA DE CORES (Tema Escuro - Padrão) --- */
+    --bg-primary: #0F172A;        /* Slate 900 - Cor do fundo principal */
+    --bg-surface: #1E293B;        /* Slate 800 - Cards, estatísticas, contêineres */
+    --text-primary: #F8FAFC;      /* Slate 50 - Títulos, números de destaque */
+    --text-secondary: #94A3B8;    /* Slate 400 - Corpo de texto, legendas, rótulos */
+    --accent-primary: #38BDF8;    /* Sky 400 - Destaque vibrante (CV, tag, números KPIs) */
+    --accent-secondary: #6366F1;  /* Indigo 500 - Hovers, gradientes, cordão crachá */
+
+    /* Mapeamento retrocompatível para variáveis legadas */
+    --bg-gradient: var(--bg-primary);
+    --bg-solid: var(--bg-primary);
+    --bg-card: var(--bg-surface);
+    --bg-card-hover: #273549;     /* Slate 800 ligeiramente suavizado (~10%) */
+    --text-title: var(--text-primary);
+    --accent-color: var(--accent-primary);
+    --nav-bg: rgba(15, 23, 42, 0.85);
+    --border-color: rgba(148, 163, 184, 0.2); /* Bordas finas em Slate 400 */
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --timeline-line: #334155;
     --bg-overlay: none;
+    --btn-text-on-accent: #0F172A; /* Alto contraste sobre Sky 400 */
+
+    /* Famílias de Tipografia */
+    --font-title: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* --- TEMA CLARO (PREMIUM OFF-WHITE) --- */
+/* --- 2. PALETA DE CORES (Tema Claro) --- */
 body.light-mode {
-    /* Fundo: Off-white suave e descansativo */
-    --bg-gradient: #F8FAFC;
-    
-    /* Elementos Sólidos */
-    --bg-solid: #F8FAFC;
-    
-    /* Cards: Branco suave com bordas delicadas */
-    --bg-card: #FFFFFF;
-    --bg-card-hover: #F1F5F9;
-    
-    /* Tipografia: Cinza escuro ardósia para excelente contraste e legibilidade */
-    --text-primary: #1E293B; 
-    --text-secondary: #64748B;
-    --text-title: #0F172A;
-    
-    /* Acento: Dourado bronze elegante */
-    --accent-color: #B4925A; 
-    
-    /* Navbar: Vidro fOSCO limpo */
+    --bg-primary: #F8FAFC;        /* Slate 50 - Cor do fundo principal */
+    --bg-surface: #FFFFFF;        /* Branco - Cards e seções com sombra leve */
+    --text-primary: #0F172A;      /* Slate 900 - Títulos e textos principais */
+    --text-secondary: #64748B;    /* Slate 500 - Corpo de texto, legendas e bordas */
+    --accent-primary: #0284C7;    /* Sky 600 - Ajustado para melhor contraste no claro */
+    --accent-secondary: #4F46E5;  /* Indigo 600 - Detalhes e fitas */
+
+    /* Mapeamento retrocompatível */
+    --bg-gradient: var(--bg-primary);
+    --bg-solid: var(--bg-primary);
+    --bg-card: var(--bg-surface);
+    --bg-card-hover: #F1F5F9;     /* Slate 100 */
+    --text-title: var(--text-primary);
+    --accent-color: var(--accent-primary);
     --nav-bg: rgba(248, 250, 252, 0.85);
-    
-    /* Bordas e Sombras Limpas */
-    --border-color: #E2E8F0;
-    --shadow-color: rgba(0, 0, 0, 0.04);
+    --border-color: rgba(100, 116, 139, 0.2); /* Bordas sutis em Slate 500 */
+    --shadow-color: rgba(0, 0, 0, 0.05);
     --timeline-line: #CBD5E1;
-    
     --bg-overlay: none;
+    --btn-text-on-accent: #FFFFFF; /* Alto contraste sobre Sky 600 */
 }

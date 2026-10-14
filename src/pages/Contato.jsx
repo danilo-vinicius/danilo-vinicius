@@ -10,9 +10,48 @@ import {
 import Footer from '../components/Footer/Footer';
 import './Contato.css';
 
+const contactChannels = [
+  {
+    id: 'linkedin',
+    title: 'LinkedIn',
+    subtitle: 'Perfil profissional & conexões',
+    actionText: 'Conectar',
+    icon: faLinkedinIn,
+    url: 'https://www.linkedin.com/in/danilovinicius57',
+    target: '_blank'
+  },
+  {
+    id: 'github',
+    title: 'GitHub',
+    subtitle: 'Repositórios & códigos',
+    actionText: 'Ver Código',
+    icon: faGithub,
+    url: 'https://github.com/danilo-vinicius',
+    target: '_blank'
+  },
+  {
+    id: 'email',
+    title: 'E-mail',
+    subtitle: 'danilovinicius570@gmail.com',
+    actionText: 'Enviar E-mail',
+    icon: faEnvelope,
+    url: 'mailto:danilovinicius570@gmail.com',
+    target: '_self'
+  },
+  {
+    id: 'whatsapp',
+    title: 'WhatsApp',
+    subtitle: 'Conversa direta e ágil',
+    actionText: 'Conversar',
+    icon: faWhatsapp,
+    url: 'https://wa.me/5561984853715',
+    target: '_blank'
+  }
+];
+
 export const Contato = () => {
   return (
-    <>
+    <div className="contato-page-wrapper">
       <motion.section
         id="contact"
         initial={{ opacity: 0, y: 30 }}
@@ -21,65 +60,53 @@ export const Contato = () => {
         aria-label="Canais de contato"
       >
         <div className="contact-header">
-          <h3>Vamos transformar dados em resultados?</h3>
+          <h1 className="contact-title">
+            Vamos transformar dados em{' '}
+            <span className="contact-title-highlight">resultados</span>?
+          </h1>
 
-          <p>
-            Estou em busca de oportunidades desafiadoras em{' '}
-            <strong>Análise de Dados</strong>, <strong>Ciência de Dados</strong>,{' '}
-            <strong>Engenharia de Dados (ETL)</strong> e{' '}
-            <strong>Business Intelligence</strong>.
-          </p>
-          <p className="contact-subtext">
-            Se você precisa de alguém para automatizar processos, criar painéis
-            estratégicos ou descobrir insights ocultos, conecte-se comigo pelos canais
-            abaixo.
+          <p className="contact-description">
+            Estou disponível para novas oportunidades, projetos desafiadores e consultorias em{' '}
+            <strong>Engenharia de Dados</strong>, <strong>Business Intelligence</strong> e{' '}
+            <strong>Automações</strong>. Conecte-se comigo por um dos canais abaixo:
           </p>
         </div>
 
-        <div id="contact-link">
-          <div className="icon-div-linkedin" title="LinkedIn">
-            <a
-              href="https://www.linkedin.com/in/danilovinicius57"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Perfil no LinkedIn"
+        <div className="contact-cards-grid">
+          {contactChannels.map((channel, index) => (
+            <motion.a
+              key={channel.id}
+              href={channel.url}
+              target={channel.target || '_blank'}
+              rel={channel.target === '_blank' ? 'noopener noreferrer' : undefined}
+              className="contact-card"
+              aria-label={channel.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </a>
-          </div>
+              <div className="contact-card-icon-box">
+                <FontAwesomeIcon icon={channel.icon} />
+              </div>
 
-          <div className="icon-div-github" title="GitHub">
-            <a
-              href="https://github.com/danilo-vinicius"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Perfil no GitHub"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-          </div>
+              <div className="contact-card-info">
+                <h3 className="contact-card-title">{channel.title}</h3>
+                <p className="contact-card-subtitle">{channel.subtitle}</p>
+              </div>
 
-          <div className="icon-div-email" title="Enviar E-mail">
-            <a href="mailto:danilovinicius570@gmail.com" aria-label="Enviar E-mail">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </a>
-          </div>
-
-          <div className="icon-div-wpp" title="WhatsApp">
-            <a
-              href="https://wa.me/5561984853715"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Contato via WhatsApp"
-            >
-              <FontAwesomeIcon icon={faWhatsapp} />
-            </a>
-          </div>
+              <div className="contact-card-action">
+                <span>{channel.actionText}</span>
+                <span className="contact-arrow" aria-hidden="true">↗</span>
+              </div>
+            </motion.a>
+          ))}
         </div>
       </motion.section>
+
       <Footer />
-    </>
+    </div>
   );
 };
 
 export default Contato;
+

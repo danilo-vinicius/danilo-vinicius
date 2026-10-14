@@ -12,9 +12,9 @@ export const Home = () => {
 
   // Paleta de cores respeitando o tema da aplicação (Escuro vs Claro)
   const isLight = theme === 'light';
-  const backgroundColor = isLight ? '#F8FAFC' : '#161E31';
-  const shardColor = isLight ? '#CBD5E1' : '#1F2A44';
-  const accentColor = isLight ? '#B4925A' : '#C6A46E';
+  const backgroundColor = isLight ? '#F8FAFC' : '#0F172A';
+  const shardColor = isLight ? '#E2E8F0' : '#1E293B';
+  const accentColor = isLight ? '#0284C7' : '#38BDF8';
 
   return (
     <section id="home-hero" aria-label="Apresentação principal">

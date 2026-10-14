@@ -1,0 +1,47 @@
+/* =========================================
+   PERSPECTIVE SECTION TRANSITION (Olivier Larose Pattern)
+   ========================================= */
+
+.perspective-section-container {
+    width: 100%;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.perspective-section-layer {
+    width: 100%;
+    background-color: var(--bg-primary);
+    position: relative;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    will-change: transform, opacity, filter;
+    transition: background-color 0.3s ease;
+}
+
+/* Sombra superior suave que surge sobre a seção anterior conforme a nova sobe */
+.perspective-section-layer.has-overlap-shadow {
+    box-shadow: 0 -25px 60px -10px rgba(0, 0, 0, 0.55);
+    border-top: 1px solid var(--border-color);
+}
+
+body.light-mode .perspective-section-layer.has-overlap-shadow {
+    box-shadow: 0 -20px 40px -10px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid var(--border-color);
+}
+
+/* Conteúdo centralizado livre e responsivo, sem confinamento de card */
+.perspective-section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 40px 24px 80px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .perspective-section-content {
+        padding: 30px 16px 50px;
+    }
+}
+

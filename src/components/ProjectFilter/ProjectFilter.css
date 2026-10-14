@@ -1,27 +1,48 @@
 .filter-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: 24px;
+  margin-bottom: 36px;
 }
 
 .filter-btn {
-  background: transparent;
-  border: 1px solid var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
   padding: 8px 20px;
-  border-radius: 30px;
+  border-radius: 9999px;
   cursor: pointer;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
-  transition: 0.3s;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  outline: none;
 }
 
-.filter-btn:hover,
-.filter-btn.active {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  color: var(--bg-solid);
+body.light-mode .filter-btn {
+  background: #FFFFFF;
+  border-color: rgba(226, 232, 240, 0.9);
 }
+
+.filter-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.filter-btn.active {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #FFFFFF !important;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+}
+
+body.light-mode .filter-btn.active {
+  background: #0284C7;
+  border-color: #0284C7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+

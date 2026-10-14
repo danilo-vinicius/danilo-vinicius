@@ -73,28 +73,28 @@ export const projectsData = [
 
 export const servicesData = [
   {
+    id: 'de',
+    title: 'Engenharia de Dados',
+    description:
+      'Construção de pipelines (ETL/ELT) robustos e escaláveis. Garanto que o dado saia da fonte bruta e chegue ao consumo analítico limpo, estruturado e confiável.',
+    icon: 'fas fa-database',
+    tags: ['SQL', 'ETL/ELT', 'Modelagem']
+  },
+  {
     id: 'bi',
     title: 'Business Intelligence',
     description:
-      'Transformação de dados complexos em painéis visuais intuitivos. Foco em storytelling de dados para facilitar a tomada de decisão estratégica.',
+      'Transformação de grandes volumes em painéis interativos de alto impacto. Foco em storytelling de dados e métricas operacionais para a tomada de decisão.',
     icon: 'fas fa-chart-pie',
     tags: ['Power BI', 'DAX', 'Storytelling']
   },
   {
     id: 'rpa',
-    title: 'Automação de Processos',
+    title: 'Automações & IA',
     description:
-      'Substituição de tarefas manuais e repetitivas por robôs inteligentes. Redução de erros humanos e economia de horas operacionais.',
+      'Eliminação de tarefas manuais repetitivas com scripts inteligentes e robôs. Integração de processos corporativos, automação de rotinas e soluções analíticas.',
     icon: 'fas fa-robot',
     tags: ['Python', 'Selenium', 'Power Automate']
-  },
-  {
-    id: 'de',
-    title: 'Engenharia de Dados',
-    description:
-      'Construção de pipelines (ETL) robustos. Garanto que o dado saia da fonte e chegue ao analista limpo, tratado e confiável.',
-    icon: 'fas fa-database',
-    tags: ['SQL', 'ETL/ELT', 'Modelagem']
   }
 ];
 

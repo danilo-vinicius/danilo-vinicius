@@ -1,4 +1,5 @@
 @import './variables.css';
+@import 'lenis/dist/lenis.css';
 
 /* =========================================
    REGRAS GLOBAIS E RESET
@@ -14,58 +15,164 @@ html, body {
     width: 100%;
     max-width: 100vw;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
 
-    background: var(--bg-gradient);
+    background: var(--bg-primary);
     color: var(--text-primary);
-    font-family: 'Josefin Sans', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body);
+    line-height: 1.6;
     transition: background 0.2s ease, color 0.2s ease;
 }
 
 ::-webkit-scrollbar { display: none; }
 html { scrollbar-width: none; -ms-overflow-style: none; }
 
-h1, h2, h3, h4 { color: var(--text-title); transition: color 0.2s ease; }
-a { text-decoration: none; transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease; }
-
-/* --- BOTÕES E CARDS CLEAN (SEM SOMBRAS PESADAS/NEON) --- */
-.btn-outline,
-.btn-outline-lg {
-    border-color: var(--border-color);
-    color: var(--text-title);
-    font-weight: 600;
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    transition: color 0.2s ease;
 }
 
+p, span, li, a, label, button, input {
+    font-family: var(--font-body);
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* --- BADGES E TAGS COM FONTE TECH MONO --- */
+.badge-gold,
+.badge-accent,
+.tech-mono,
+.stat-item h2 {
+    font-family: var(--font-mono);
+}
+
+.badge-gold,
+.badge-accent {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 16px;
+    margin-bottom: 25px;
+    display: inline-block;
+    border-radius: 20px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+body.light-mode .badge-gold,
+body.light-mode .badge-accent {
+    background: rgba(2, 132, 199, 0.08);
+    color: var(--accent-primary);
+    border-color: rgba(2, 132, 199, 0.25);
+}
+
+/* --- ESTILOS DE BOTÕES REFINADOS --- */
 .btn-primary,
 .btn-primary-lg {
-    box-shadow: none; 
-    border-color: var(--accent-color);
+    background-color: var(--accent-primary);
+    color: var(--btn-text-on-accent);
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid var(--accent-primary);
+    box-shadow: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
 }
 
+.btn-primary-lg {
+    padding: 14px 32px;
+    font-size: 1rem;
+}
+
+.btn-primary:hover,
+.btn-primary-lg:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.btn-outline,
+.btn-outline-lg {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid var(--text-secondary);
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-outline-lg {
+    padding: 14px 32px;
+    font-size: 1rem;
+}
+
+.btn-outline:hover,
+.btn-outline-lg:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background-color: rgba(56, 189, 248, 0.08);
+    transform: translateY(-1px);
+}
+
+/* --- CARDS & ELEMENTOS SURFACE --- */
 .project-card,
 .service-card,
 .edu-card-premium,
 .skill-box {
     box-shadow: none;
+    background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    border-radius: 12px;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+body.light-mode .project-card,
+body.light-mode .service-card,
+body.light-mode .edu-card-premium,
+body.light-mode .skill-box {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .project-card:hover,
 .service-card:hover {
     box-shadow: none;
-    border-color: var(--accent-color);
+    border-color: var(--accent-primary);
 }
 
 /* Ícone de Troca de Tema */
 .theme-switch-item {
-    cursor: pointer; padding: 0 15px; display: flex; align-items: center;
+    cursor: pointer;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
 }
 #theme-icon {
-    font-size: 1.1rem; color: var(--accent-color); transition: opacity 0.2s ease;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
-#theme-icon:hover { opacity: 0.8; }
+#theme-icon:hover {
+    color: var(--accent-primary);
+}
 
 /* =========================================
    ANIMAÇÕES GLOBAIS LEVES

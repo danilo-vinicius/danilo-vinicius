@@ -84,8 +84,8 @@
     align-items: center;
     
     font-size: 1.5rem;
-    color: var(--accent-color);
-    background: var(--bg-solid);
+    color: var(--text-secondary);
+    background: var(--bg-surface);
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -95,8 +95,8 @@
 }
 
 .floating-menu:hover .menu-center-icon {
-    background: var(--accent-color);
-    color: var(--bg-solid);
+    background: var(--accent-primary);
+    color: var(--btn-text-on-accent);
     transform: rotate(90deg);
 }
 
@@ -137,8 +137,8 @@
 /* --- FORMATAÇÃO DOS LINKS --- */
 .nav-item {
     color: var(--text-primary) !important;
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: 0.95rem;
     padding: 8px 15px;
     border-radius: 30px;
     transition: 0.3s;
@@ -150,13 +150,19 @@
 
 .nav-item svg {
     font-size: 1.1rem;
-    color: var(--accent-color);
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
 }
 
 .nav-item:hover,
 .nav-item.active {
-    background: rgba(198, 164, 110, 0.15);
-    color: var(--accent-color) !important;
+    background: rgba(56, 189, 248, 0.12);
+    color: var(--accent-primary) !important;
+}
+
+.nav-item:hover svg,
+.nav-item.active svg {
+    color: var(--accent-primary);
 }
 
 .nav-item:hover {

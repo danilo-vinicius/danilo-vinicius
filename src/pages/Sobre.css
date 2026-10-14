@@ -15,30 +15,21 @@
     width: 100%;
     height: 100vh;
     min-height: 900px;
-    z-index: 40;
+    z-index: 15;
     pointer-events: none;
     overflow: visible;
 }
 
-.sobre-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 20px 60px;
-    position: relative;
-}
-
 /* =========================================
-   SECTION LEVEL STRUCTURE
+   SECTION LEVEL STRUCTURE (PERSPECTIVE TRANSITION)
    ========================================= */
 
-.sobre-section {
+.sobre-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     position: relative;
-    padding: 40px 0;
-}
-
-.secao-apresentacao {
-    padding-top: 40px;
-    min-height: 60vh;
 }
 
 .hero-container {
@@ -150,10 +141,14 @@
     justify-content: center;
     gap: 60px;
     padding: 35px 20px;
-    background: var(--bg-card);
+    background: var(--bg-surface);
     flex-wrap: wrap;
-    border-radius: 8px;
+    border-radius: 12px;
     border: 1px solid var(--border-color);
+}
+
+body.light-mode .stats-bar {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .stat-item {
@@ -161,13 +156,15 @@
 }
 
 .stat-item h2 {
+    font-family: var(--font-mono);
     font-size: 2.8rem;
-    color: var(--accent-color);
+    color: var(--accent-primary);
     margin: 0;
     font-weight: 700;
 }
 
 .stat-item p {
+    font-family: var(--font-body);
     color: var(--text-secondary);
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -196,101 +193,275 @@
     margin-right: 10px;
 }
 
-/* Skills Section & Dock */
-#skills {
-    padding: 20px 20px 60px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
+/* =========================================
+   SEÇÃO 4: ESPECIALIDADES & COMPETÊNCIAS
+   ========================================= */
+
+.secao-especialidades {
+    padding-bottom: 40px;
 }
 
-.skills-desc {
-    max-width: 700px;
-    margin: 0 auto 30px auto;
+.specialties-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+.specialties-header .badge-gold {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.specialties-desc {
     color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.6;
+    margin-top: 10px;
 }
 
-.skills-tags {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-}
-
-.tag {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+.specialties-desc strong {
     color: var(--text-primary);
-    padding: 7px 16px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: border-color 0.2s ease;
-    cursor: default;
 }
 
-.tag:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
+.specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 45px;
 }
 
-.dock-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.skills-dock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    width: max-content;
+.specialty-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    box-shadow: none;
-}
-
-.dock-item {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    background: var(--bg-solid);
-    border: 1px solid var(--border-color);
-    transition: border-color 0.2s ease;
-    cursor: pointer;
+    border-radius: 16px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    flex-shrink: 0;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.specialty-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.specialty-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .specialty-card:hover {
+    border-color: rgba(2, 132, 199, 0.4);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+.specialty-card:hover::before {
+    opacity: 1;
+}
+
+.specialty-card-top {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 20px;
 }
 
-.dock-icon {
-    font-size: 1.3rem;
-    color: var(--text-secondary);
-    transition: color 0.2s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
-
-.dock-item:hover {
-    border-color: var(--accent-color);
-}
-
-.dock-item:hover .dock-icon {
+.specialty-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(56, 189, 248, 0.1);
     color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
-/* Mobile Responsiveness */
+body.light-mode .specialty-icon-wrapper {
+    background: rgba(2, 132, 199, 0.1);
+}
+
+.specialty-card:hover .specialty-icon-wrapper {
+    transform: scale(1.08);
+    background: var(--accent-color);
+    color: var(--btn-text-on-accent);
+}
+
+.specialty-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+body.light-mode .specialty-badge {
+    background: rgba(2, 132, 199, 0.08);
+    border-color: rgba(2, 132, 199, 0.2);
+}
+
+.specialty-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 12px;
+    line-height: 1.35;
+}
+
+.specialty-description {
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.specialty-skills {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-color);
+}
+
+.specialty-skills-title {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.specialty-skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.specialty-skill-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.skill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.skill-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.skill-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-role {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* =========================================
+   BLOCO DE FECHAMENTO (CTA SOBRE)
+   ========================================= */
+
+.sobre-cta-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.95) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 34px 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+body.light-mode .sobre-cta-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.sobre-cta-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+}
+
+.sobre-cta-text h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.sobre-cta-text p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 620px;
+    line-height: 1.55;
+}
+
+.sobre-cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.sobre-cta-actions .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================= */
+
+@media screen and (max-width: 992px) {
+    .specialties-grid {
+        grid-template-columns: 1fr;
+        max-width: 620px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .sobre-cta-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 @media screen and (max-width: 768px) {
     #sobre-hero {
         padding-top: 40px;
@@ -327,14 +498,23 @@
         gap: 25px;
     }
 
-    .skills-dock {
-        width: 100%;
-        height: auto;
-        flex-wrap: wrap;
+    .specialty-card {
+        padding: 24px 20px;
     }
 
-    .dock-item {
-        width: 48px;
-        height: 48px;
+    .sobre-cta-card {
+        padding: 28px 20px;
+    }
+
+    .sobre-cta-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .sobre-cta-actions .btn-primary,
+    .sobre-cta-actions .btn-outline {
+        width: 100%;
+        justify-content: center;
     }
 }
+

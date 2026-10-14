@@ -8,23 +8,23 @@
 }
 
 .page-btn {
-  background: var(--bg-card);
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
 }
 
 .page-btn:hover,
 .page-btn.active {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
-  color: var(--bg-solid);
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--btn-text-on-accent);
   transform: translateY(-2px);
 }
 

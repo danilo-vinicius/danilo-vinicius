@@ -1,0 +1,518 @@
+/* =========================================
+   DASHBOARD MOCKUP (ANALYTICS PREVIEW)
+   ========================================= */
+
+.dashboard-mockup-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+/* Painel Principal com formato de Janela de Aplicativo */
+.dashboard-main-frame {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 20px 22px 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  backdrop-filter: blur(12px);
+}
+
+body.light-mode .dashboard-main-frame {
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 25px 45px -12px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+/* Barra de Topo da Janela */
+.dashboard-window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.window-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.window-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-close {
+  background: #EF4444;
+}
+.dot-minimize {
+  background: #F59E0B;
+}
+.dot-maximize {
+  background: #10B981;
+}
+
+.window-title {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.window-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.status-ping {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulsePing 2s infinite ease-in-out;
+}
+
+@keyframes pulsePing {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+.status-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #10B981;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Grade de 3 Cards de KPIs Superiores */
+.mockup-kpis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mockup-kpi-card {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body.light-mode .mockup-kpi-card {
+  background: #F8FAFC;
+  border-color: rgba(226, 232, 240, 0.9);
+}
+
+.kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.kpi-label {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.kpi-trend {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: #10B981;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.kpi-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-primary);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.kpi-value {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.kpi-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.kpi-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0284C7, #38BDF8);
+  border-radius: 99px;
+}
+
+.kpi-subtext {
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+}
+
+/* Card Principal do Gráfico */
+.mockup-chart-card {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+body.light-mode .mockup-chart-card {
+  background: #F8FAFC;
+  border-color: rgba(226, 232, 240, 0.9);
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chart-title {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.chart-subtitle {
+  margin: 3px 0 0;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.chart-legend {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.legend-item {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot.current {
+  background-color: var(--accent-primary);
+}
+
+.legend-dot.baseline {
+  background-color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.chart-svg-container {
+  position: relative;
+  width: 100%;
+  height: 140px;
+}
+
+.chart-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart-grid-line {
+  stroke: var(--border-color);
+  stroke-dasharray: 4 4;
+  opacity: 0.4;
+}
+
+.chart-tooltip-pin {
+  position: absolute;
+  top: 18px;
+  left: 68%;
+  transform: translateX(-50%);
+  background: var(--bg-surface);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  padding: 3px 8px;
+  pointer-events: none;
+}
+
+body.light-mode .chart-tooltip-pin {
+  background: #FFFFFF;
+}
+
+.tooltip-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  white-space: nowrap;
+}
+
+.chart-x-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  padding: 0 4px;
+}
+
+.chart-x-labels span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+}
+
+/* Bloco Inferior de Barras e Auditoria */
+.mockup-bottom-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 12px;
+}
+
+.mini-bars-block,
+.mini-audit-block {
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+body.light-mode .mini-bars-block,
+body.light-mode .mini-audit-block {
+  background: #F8FAFC;
+  border-color: rgba(226, 232, 240, 0.9);
+}
+
+.mini-block-title {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.bar-row:last-child {
+  margin-bottom: 0;
+}
+
+.bar-label {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  width: 105px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(148, 163, 184, 0.18);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38BDF8, #818CF8);
+  border-radius: 99px;
+}
+
+.bar-num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  width: 28px;
+  text-align: right;
+}
+
+.mini-audit-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audit-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.audit-text strong {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.audit-text p {
+  margin: 2px 0 0;
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* Cards Flutuantes com Elevação e Profundidade 3D */
+.floating-badge-card {
+  position: absolute;
+  z-index: 5;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  pointer-events: none;
+}
+
+body.light-mode .floating-badge-card {
+  background: #FFFFFF;
+  border-color: rgba(226, 232, 240, 0.9);
+  box-shadow: 0 16px 32px -6px rgba(15, 23, 42, 0.12);
+}
+
+.top-float {
+  top: -24px;
+  right: -18px;
+  animation: floatTop 4.5s ease-in-out infinite alternate;
+}
+
+.bottom-float {
+  bottom: -22px;
+  left: -20px;
+  animation: floatBottom 5s ease-in-out infinite alternate;
+}
+
+@keyframes floatTop {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
+}
+
+@keyframes floatBottom {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(6px); }
+}
+
+.float-badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.15);
+  color: #F59E0B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.float-badge-icon.database-icon {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-primary);
+}
+
+.float-badge-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.float-badge-label {
+  font-size: 0.64rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.float-badge-val {
+  font-size: 0.76rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Responsividade do Mockup */
+@media screen and (max-width: 640px) {
+  .mockup-kpis-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .mockup-bottom-row {
+    grid-template-columns: 1fr;
+  }
+  .top-float,
+  .bottom-float {
+    position: static;
+    margin-bottom: 12px;
+    animation: none;
+  }
+  .dashboard-mockup-wrapper {
+    max-width: 100%;
+  }
+}

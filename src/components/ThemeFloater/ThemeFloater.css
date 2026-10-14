@@ -9,7 +9,7 @@
     height: 45px;
     background: var(--nav-bg);
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(198, 164, 110, 0.2); /* Borda sutil */
+    border: 1px solid var(--border-color); /* Borda sutil */
     border-radius: 50%;
     
     display: flex;
@@ -23,17 +23,18 @@
 .theme-floater i,
 .theme-floater svg {
     font-size: 1.2rem;
-    color: var(--accent-color);
-    transition: transform 0.5s;
+    color: var(--text-secondary);
+    transition: transform 0.5s, color 0.3s;
 }
 
 .theme-floater:hover {
     transform: scale(1.1);
-    border-color: var(--accent-color);
+    border-color: var(--accent-primary);
 }
 
 .theme-floater:hover i,
 .theme-floater:hover svg {
+    color: var(--accent-primary);
     transform: rotate(30deg);
 }
 
